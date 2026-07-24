@@ -4,7 +4,7 @@ class SiteLogo extends HTMLElement{
 
         this.innerHTML=`
 
-<a href="/"
+<a href="./"
    class="logo-cube"
    aria-label="IMPERATOR — Tigr">
 
