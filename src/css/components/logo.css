@@ -18,13 +18,29 @@
 
 }
 
+.logo-plate{
+
+    fill:var(--logo-bg);
+
+}
+
+.logo-frame-outer{
+
+    fill:none;
+
+    stroke:url(#goldGradient);
+
+    stroke-width:8;
+
+}
+
 .logo-grid-line{
 
-    stroke:var(--color-primary);
+    stroke:url(#goldGradient);
 
-    stroke-width:1;
+    stroke-width:2;
 
-    opacity:.15;
+    opacity:.55;
 
     transition:opacity var(--speed-normal) ease;
 
@@ -32,13 +48,13 @@
 
 .logo-letter{
 
-    font-family:"Cormorant Garamond",serif;
+    font-family:"Cinzel",serif;
 
-    font-weight:700;
+    font-weight:600;
 
-    font-size:44px;
+    font-size:40px;
 
-    fill:var(--color-title);
+    fill:url(#goldGradient);
 
     text-anchor:middle;
 
@@ -62,7 +78,7 @@
 
     font-size:100px;
 
-    fill:var(--color-accent);
+    fill:#FFFFFF;
 
     text-anchor:middle;
 
@@ -75,6 +91,8 @@
     transform-origin:50% 50%;
 
     transform:scale(.6);
+
+    filter:drop-shadow(0 0 14px rgba(212,160,23,.85));
 
     transition:
         opacity var(--speed-normal) ease,
@@ -92,7 +110,7 @@
 
 .logo-cube:hover .logo-grid-line{
 
-    opacity:0;
+    opacity:.12;
 
 }
 
@@ -101,16 +119,5 @@
     opacity:1;
 
     transform:scale(1);
-
-}
-@media (max-width:480px){
-
-    .logo-cube{
-
-        width:52px;
-
-        height:52px;
-
-    }
 
 }

@@ -16,6 +16,12 @@
 
     --color-text:#404040;
 
+    --gold-light:#F4D27A;
+    --gold-mid:#D4A017;
+    --gold-deep:#9C6B12;
+
+    --logo-bg:#0B1F33;
+
     /* Radius */
 
     --radius-sm:.5rem;
