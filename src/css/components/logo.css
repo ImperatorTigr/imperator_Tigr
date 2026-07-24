@@ -1,0 +1,105 @@
+.logo-cube{
+
+    display:inline-flex;
+
+    width:64px;
+
+    height:64px;
+
+}
+
+.logo-svg{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:visible;
+
+}
+
+.logo-grid-line{
+
+    stroke:var(--color-primary);
+
+    stroke-width:1;
+
+    opacity:.15;
+
+    transition:opacity var(--speed-normal) ease;
+
+}
+
+.logo-letter{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:700;
+
+    font-size:44px;
+
+    fill:var(--color-title);
+
+    text-anchor:middle;
+
+    dominant-baseline:central;
+
+    transform-box:fill-box;
+
+    transform-origin:50% 50%;
+
+    transition:
+        opacity var(--speed-normal) ease,
+        transform var(--speed-normal) ease;
+
+}
+
+.logo-word{
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:800;
+
+    font-size:60px;
+
+    fill:var(--color-accent);
+
+    text-anchor:middle;
+
+    dominant-baseline:central;
+
+    opacity:0;
+
+    transform-box:fill-box;
+
+    transform-origin:50% 50%;
+
+    transform:scale(.6);
+
+    transition:
+        opacity var(--speed-normal) ease,
+        transform var(--speed-normal) ease;
+
+}
+
+.logo-cube:hover .logo-letter{
+
+    opacity:0;
+
+    transform:scale(.4);
+
+}
+
+.logo-cube:hover .logo-grid-line{
+
+    opacity:0;
+
+}
+
+.logo-cube:hover .logo-word{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
