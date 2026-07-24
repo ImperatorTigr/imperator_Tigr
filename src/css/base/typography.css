@@ -1,0 +1,37 @@
+body{
+
+    font-family:"Manrope",sans-serif;
+
+    color:var(--color-text);
+
+    background:var(--color-bg);
+
+    line-height:1.7;
+
+}
+
+h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(3rem,7vw,5rem);
+
+    font-weight:700;
+
+    line-height:1.05;
+
+    color:var(--color-title);
+
+    max-width:10ch;
+
+}
+
+p{
+
+    font-size:clamp(1rem,2vw,1.25rem);
+
+    max-width:45rem;
+
+    margin-top:2rem;
+
+}
