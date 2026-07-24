@@ -1,0 +1,193 @@
+.site-header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:var(--color-bg);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+}
+
+.site-header .container{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding-block:.75rem;
+
+}
+
+.nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:2rem;
+
+}
+
+.nav-list{
+
+    display:flex;
+
+    gap:1.75rem;
+
+}
+
+.nav-link{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.95rem;
+
+    font-weight:500;
+
+    color:var(--color-text);
+
+    transition:color var(--speed-fast) ease;
+
+}
+
+.nav-link:hover{
+
+    color:var(--color-primary);
+
+}
+
+.nav-cta{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.9rem;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    background:var(--color-accent);
+
+    padding:.6rem 1.4rem;
+
+    border-radius:var(--radius-sm);
+
+    transition:opacity var(--speed-fast) ease;
+
+}
+
+.nav-cta:hover{
+
+    opacity:.85;
+
+}
+
+.nav-toggle{
+
+    display:none;
+
+    flex-direction:column;
+
+    gap:5px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:.5rem;
+
+}
+
+.nav-toggle span{
+
+    width:24px;
+
+    height:2px;
+
+    background:var(--color-title);
+
+    transition:transform var(--speed-fast) ease,opacity var(--speed-fast) ease;
+
+}
+
+@media (max-width:768px){
+
+    .nav-toggle{
+
+        display:flex;
+
+    }
+
+    .nav{
+
+        position:fixed;
+
+        top:0;
+
+        left:0;
+
+        right:0;
+
+        bottom:0;
+
+        background:var(--color-bg);
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        gap:2.5rem;
+
+        opacity:0;
+
+        pointer-events:none;
+
+        transform:translateY(-8px);
+
+        transition:
+            opacity var(--speed-normal) ease,
+            transform var(--speed-normal) ease;
+
+    }
+
+    .nav.is-open{
+
+        opacity:1;
+
+        pointer-events:auto;
+
+        transform:translateY(0);
+
+    }
+
+    .nav-list{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:2rem;
+
+    }
+
+    .nav-link{
+
+        font-size:1.4rem;
+
+    }
+
+    body.nav-open{
+
+        overflow:hidden;
+
+    }
+
+}
