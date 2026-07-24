@@ -22,9 +22,6 @@ class SiteLogo extends HTMLElement{
 
 </defs>
 
-<rect class="logo-plate"
-      x="4" y="4" width="292" height="292" rx="48"/>
-
 <rect class="logo-frame-outer"
       x="4" y="4" width="292" height="292" rx="48"/>
 
