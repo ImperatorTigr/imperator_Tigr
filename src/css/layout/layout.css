@@ -5,3 +5,13 @@
     margin-inline:auto;
 
 }
+
+@media (max-width:480px){
+
+    .container{
+
+        width:min(100% - 1.5rem,var(--container));
+
+    }
+
+}

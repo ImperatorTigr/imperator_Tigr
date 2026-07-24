@@ -103,3 +103,14 @@
     transform:scale(1);
 
 }
+@media (max-width:480px){
+
+    .logo-cube{
+
+        width:52px;
+
+        height:52px;
+
+    }
+
+}

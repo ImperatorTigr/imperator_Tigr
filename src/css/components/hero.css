@@ -2,11 +2,15 @@
 
     min-height:100vh;
 
+    min-height:100dvh;
+
     display:grid;
 
     place-items:center;
 
     position:relative;
+
+    padding-block:4rem;
 
 }
 
@@ -25,5 +29,15 @@
         transparent 45%);
 
     pointer-events:none;
+
+}
+
+@media (max-width:480px){
+
+    .hero{
+
+        padding-block:3rem;
+
+    }
 
 }
