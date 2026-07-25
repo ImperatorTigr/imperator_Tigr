@@ -1,0 +1,425 @@
+.testimonials{
+
+    padding-block:5rem;
+
+}
+
+.testimonials-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:1.75rem;
+
+}
+
+.testimonial-card{
+
+    position:relative;
+
+    background:var(--color-surface);
+
+    border-radius:var(--radius-md);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-soft);
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.testimonial-badge{
+
+    position:absolute;
+
+    top:1rem;
+
+    left:1rem;
+
+    z-index:2;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.7rem;
+
+    font-weight:700;
+
+    letter-spacing:.04em;
+
+    text-transform:uppercase;
+
+    color:#FFFFFF;
+
+    background:rgba(11,31,51,.55);
+
+    backdrop-filter:blur(4px);
+
+    padding:.35rem .7rem;
+
+    border-radius:999px;
+
+}
+
+/* ---------- Видео ---------- */
+
+.testimonial-video-trigger{
+
+    position:relative;
+
+    display:block;
+
+    width:100%;
+
+    aspect-ratio:4/3;
+
+    border:none;
+
+    padding:0;
+
+    cursor:pointer;
+
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
+
+}
+
+.testimonial-video-trigger img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.testimonial-play-icon{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.9);
+
+    color:var(--color-primary);
+
+    font-size:1.1rem;
+
+    transition:transform var(--speed-fast) ease;
+
+}
+
+.testimonial-video-trigger:hover .testimonial-play-icon{
+
+    transform:translate(-50%,-50%) scale(1.1);
+
+}
+
+/* ---------- Голосовое ---------- */
+
+.testimonial-audio{
+
+    padding:2.5rem 1.5rem 1.5rem;
+
+}
+
+.testimonial-audio-player{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.75rem;
+
+    background:var(--color-bg);
+
+    border-radius:var(--radius-sm);
+
+    padding:.75rem 1rem;
+
+    margin-bottom:1.25rem;
+
+}
+
+.audio-play-btn{
+
+    flex-shrink:0;
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--color-primary);
+
+    color:#FFFFFF;
+
+    font-size:.9rem;
+
+    cursor:pointer;
+
+    transition:background var(--speed-fast) ease;
+
+}
+
+.audio-play-btn:hover{
+
+    background:var(--gold-mid);
+
+}
+
+.audio-progress{
+
+    flex:1;
+
+    height:5px;
+
+    border-radius:3px;
+
+    background:rgba(0,0,0,.08);
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+}
+
+.audio-progress-fill{
+
+    height:100%;
+
+    width:0%;
+
+    background:var(--gold-mid);
+
+    border-radius:3px;
+
+    transition:width .1s linear;
+
+}
+
+.audio-time{
+
+    flex-shrink:0;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.75rem;
+
+    color:var(--color-secondary);
+
+    min-width:36px;
+
+}
+
+/* ---------- Текст ---------- */
+
+.testimonial-text{
+
+    padding:2.5rem 1.75rem 1.5rem;
+
+}
+
+.testimonial-quote-mark{
+
+    display:block;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:3.5rem;
+
+    line-height:1;
+
+    color:var(--gold-mid);
+
+    opacity:.4;
+
+    margin-bottom:-.5rem;
+
+}
+
+.testimonial-text-body{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.95rem;
+
+    color:var(--color-text);
+
+    line-height:1.65;
+
+    margin-bottom:1.5rem;
+
+}
+
+/* ---------- Общий блок автора ---------- */
+
+.testimonial-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.75rem;
+
+    padding:1.25rem 1.5rem;
+
+    margin-top:auto;
+
+}
+
+.testimonial-video .testimonial-meta,
+
+.testimonial-audio .testimonial-meta,
+
+.testimonial-text .testimonial-meta{
+
+    padding-left:0;
+
+    padding-right:0;
+
+    padding-bottom:0;
+
+}
+
+.testimonial-video .testimonial-meta{
+
+    padding-inline:1.5rem;
+
+    padding-bottom:1.5rem;
+
+}
+
+.testimonial-avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));
+
+    flex-shrink:0;
+
+}
+
+.testimonial-name{
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:700;
+
+    font-size:.9rem;
+
+    color:var(--color-title);
+
+}
+
+/* ---------- Лайтбокс для видео ---------- */
+
+.testimonial-lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(11,31,51,.92);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity var(--speed-normal) ease;
+
+    padding:2rem;
+
+}
+
+.testimonial-lightbox.is-open{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+.testimonial-lightbox video{
+
+    max-width:min(90vw,720px);
+
+    max-height:85vh;
+
+    border-radius:var(--radius-sm);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+
+}
+
+.testimonial-lightbox-close{
+
+    position:absolute;
+
+    top:1.5rem;
+
+    right:1.5rem;
+
+    width:44px;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.1);
+
+    color:#FFFFFF;
+
+    font-size:1.5rem;
+
+    cursor:pointer;
+
+    transition:background var(--speed-fast) ease;
+
+}
+
+.testimonial-lightbox-close:hover{
+
+    background:rgba(255,255,255,.2);
+
+}
