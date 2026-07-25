@@ -1,0 +1,253 @@
+.events{
+
+    padding-block:5rem;
+
+    background:var(--color-surface);
+
+}
+
+.events-subheading{
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:700;
+
+    font-size:1.1rem;
+
+    color:var(--color-title);
+
+    margin-bottom:1.5rem;
+
+}
+
+.events-upcoming{
+
+    display:grid;
+
+    gap:1.25rem;
+
+    margin-bottom:4rem;
+
+}
+
+.event-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1.5rem;
+
+    background:var(--color-bg);
+
+    border-radius:var(--radius-md);
+
+    padding:1.5rem;
+
+    box-shadow:var(--shadow-soft);
+
+}
+
+.event-date{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:var(--radius-sm);
+
+    background:var(--color-primary);
+
+    color:#FFFFFF;
+
+}
+
+.event-date-day{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:700;
+
+    font-size:1.75rem;
+
+    line-height:1;
+
+}
+
+.event-date-month{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.7rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:.05em;
+
+    margin-top:.25rem;
+
+}
+
+.event-body{
+
+    flex:1;
+
+}
+
+.event-title{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:600;
+
+    font-size:1.35rem;
+
+    color:var(--color-title);
+
+    margin-bottom:.35rem;
+
+}
+
+.event-meta{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.85rem;
+
+    color:var(--color-secondary);
+
+}
+
+.event-cta{
+
+    flex-shrink:0;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    background:var(--color-accent);
+
+    padding:.6rem 1.2rem;
+
+    border-radius:var(--radius-sm);
+
+    white-space:nowrap;
+
+    transition:opacity var(--speed-fast) ease;
+
+}
+
+.event-cta:hover{
+
+    opacity:.85;
+
+}
+
+.events-past-list{
+
+    display:grid;
+
+    gap:1rem;
+
+}
+
+.event-past-item{
+
+    display:flex;
+
+    align-items:baseline;
+
+    gap:1.25rem;
+
+    padding-block:1rem;
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+}
+
+.event-past-date{
+
+    flex-shrink:0;
+
+    width:90px;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.8rem;
+
+    color:var(--color-secondary);
+
+}
+
+.event-past-body{
+
+    flex:1;
+
+}
+
+.event-past-title{
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:600;
+
+    font-size:1rem;
+
+    color:var(--color-title);
+
+    margin-bottom:.25rem;
+
+}
+
+.event-past-text{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.9rem;
+
+    color:var(--color-text);
+
+}
+
+@media (max-width:600px){
+
+    .event-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .event-cta{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .event-past-item{
+
+        flex-direction:column;
+
+        gap:.35rem;
+
+    }
+
+}
