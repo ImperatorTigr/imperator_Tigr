@@ -4,17 +4,45 @@
 
 }
 
-.testimonials-grid{
+.testimonials-wall{
 
-    display:grid;
+    columns:3;
 
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    column-gap:1.75rem;
 
-    gap:1.75rem;
+}
+
+@media (max-width:900px){
+
+    .testimonials-wall{
+
+        columns:2;
+
+    }
+
+}
+
+@media (max-width:600px){
+
+    .testimonials-wall{
+
+        columns:1;
+
+    }
 
 }
 
 .testimonial-card{
+
+    break-inside:avoid;
+
+    -webkit-column-break-inside:avoid;
+
+    margin-bottom:1.75rem;
+
+    display:block;
+
+    width:100%;
 
     position:relative;
 
@@ -22,13 +50,23 @@
 
     border-radius:var(--radius-md);
 
-    overflow:hidden;
-
     box-shadow:var(--shadow-soft);
 
-    display:flex;
+    overflow:hidden;
 
-    flex-direction:column;
+    transform:rotate(var(--rot,0deg));
+
+    transition:transform .35s ease,box-shadow .35s ease;
+
+}
+
+.testimonial-card:hover{
+
+    transform:rotate(0deg) scale(1.035) translateY(-3px);
+
+    box-shadow:0 22px 48px rgba(0,0,0,.16);
+
+    z-index:5;
 
 }
 
@@ -36,15 +74,15 @@
 
     position:absolute;
 
-    top:1rem;
+    top:.9rem;
 
-    left:1rem;
+    left:.9rem;
 
     z-index:2;
 
     font-family:"Manrope",sans-serif;
 
-    font-size:.7rem;
+    font-size:.68rem;
 
     font-weight:700;
 
@@ -58,225 +96,11 @@
 
     backdrop-filter:blur(4px);
 
-    padding:.35rem .7rem;
+    padding:.3rem .65rem;
 
     border-radius:999px;
 
 }
-
-/* ---------- Видео ---------- */
-
-.testimonial-video-trigger{
-
-    position:relative;
-
-    display:block;
-
-    width:100%;
-
-    aspect-ratio:4/3;
-
-    border:none;
-
-    padding:0;
-
-    cursor:pointer;
-
-    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
-
-}
-
-.testimonial-video-trigger img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-
-}
-
-.testimonial-play-icon{
-
-    position:absolute;
-
-    top:50%;
-
-    left:50%;
-
-    transform:translate(-50%,-50%);
-
-    width:56px;
-
-    height:56px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.9);
-
-    color:var(--color-primary);
-
-    font-size:1.1rem;
-
-    transition:transform var(--speed-fast) ease;
-
-}
-
-.testimonial-video-trigger:hover .testimonial-play-icon{
-
-    transform:translate(-50%,-50%) scale(1.1);
-
-}
-
-/* ---------- Голосовое ---------- */
-
-.testimonial-audio{
-
-    padding:2.5rem 1.5rem 1.5rem;
-
-}
-
-.testimonial-audio-player{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:.75rem;
-
-    background:var(--color-bg);
-
-    border-radius:var(--radius-sm);
-
-    padding:.75rem 1rem;
-
-    margin-bottom:1.25rem;
-
-}
-
-.audio-play-btn{
-
-    flex-shrink:0;
-
-    width:38px;
-
-    height:38px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:var(--color-primary);
-
-    color:#FFFFFF;
-
-    font-size:.9rem;
-
-    cursor:pointer;
-
-    transition:background var(--speed-fast) ease;
-
-}
-
-.audio-play-btn:hover{
-
-    background:var(--gold-mid);
-
-}
-
-.audio-progress{
-
-    flex:1;
-
-    height:5px;
-
-    border-radius:3px;
-
-    background:rgba(0,0,0,.08);
-
-    overflow:hidden;
-
-    cursor:pointer;
-
-}
-
-.audio-progress-fill{
-
-    height:100%;
-
-    width:0%;
-
-    background:var(--gold-mid);
-
-    border-radius:3px;
-
-    transition:width .1s linear;
-
-}
-
-.audio-time{
-
-    flex-shrink:0;
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:.75rem;
-
-    color:var(--color-secondary);
-
-    min-width:36px;
-
-}
-
-/* ---------- Текст ---------- */
-
-.testimonial-text{
-
-    padding:2.5rem 1.75rem 1.5rem;
-
-}
-
-.testimonial-quote-mark{
-
-    display:block;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:3.5rem;
-
-    line-height:1;
-
-    color:var(--gold-mid);
-
-    opacity:.4;
-
-    margin-bottom:-.5rem;
-
-}
-
-.testimonial-text-body{
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:.95rem;
-
-    color:var(--color-text);
-
-    line-height:1.65;
-
-    margin-bottom:1.5rem;
-
-}
-
-/* ---------- Общий блок автора ---------- */
 
 .testimonial-meta{
 
@@ -286,39 +110,15 @@
 
     gap:.75rem;
 
-    padding:1.25rem 1.5rem;
-
-    margin-top:auto;
-
-}
-
-.testimonial-video .testimonial-meta,
-
-.testimonial-audio .testimonial-meta,
-
-.testimonial-text .testimonial-meta{
-
-    padding-left:0;
-
-    padding-right:0;
-
-    padding-bottom:0;
-
-}
-
-.testimonial-video .testimonial-meta{
-
-    padding-inline:1.5rem;
-
-    padding-bottom:1.5rem;
+    padding:1.1rem 1.5rem 1.5rem;
 
 }
 
 .testimonial-avatar{
 
-    width:42px;
+    width:40px;
 
-    height:42px;
+    height:40px;
 
     border-radius:50%;
 
@@ -336,9 +136,257 @@
 
     font-weight:700;
 
-    font-size:.9rem;
+    font-size:.88rem;
 
     color:var(--color-title);
+
+}
+
+/* ---------- Текст: крупная дерзкая цитата ---------- */
+
+.testimonial-text{
+
+    padding:2.5rem 1.75rem 0;
+
+}
+
+.testimonial-quote-mark{
+
+    display:block;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4rem;
+
+    line-height:1;
+
+    color:var(--gold-mid);
+
+    opacity:.45;
+
+    margin-bottom:-.75rem;
+
+}
+
+.testimonial-text-body{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:600;
+
+    font-size:1.4rem;
+
+    line-height:1.4;
+
+    color:var(--color-title);
+
+    margin-bottom:1.25rem;
+
+}
+
+/* ---------- Видео: живой превью-кадр ---------- */
+
+.testimonial-video{
+
+    padding:0;
+
+}
+
+.testimonial-video-frame{
+
+    position:relative;
+
+    aspect-ratio:4/3;
+
+    overflow:hidden;
+
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
+
+}
+
+.testimonial-video-frame video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    animation:kenBurns 14s ease-in-out infinite alternate;
+
+}
+
+@keyframes kenBurns{
+
+    from{transform:scale(1) translate(0,0);}
+
+    to{transform:scale(1.09) translate(-1.5%,-1.5%);}
+
+}
+
+.testimonial-video-trigger{
+
+    position:absolute;
+
+    inset:0;
+
+    border:none;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.testimonial-play-icon{
+
+    width:54px;
+
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.92);
+
+    color:var(--color-primary);
+
+    font-size:1.05rem;
+
+    animation:playPulse 2.6s ease-in-out infinite;
+
+}
+
+@keyframes playPulse{
+
+    0%,100%{transform:scale(1);}
+
+    50%{transform:scale(1.08);}
+
+}
+
+.testimonial-video .testimonial-meta{
+
+    padding-top:1.1rem;
+
+}
+
+/* ---------- Голосовое: звуковая волна ---------- */
+
+.testimonial-audio{
+
+    padding:2.25rem 1.5rem 0;
+
+}
+
+.audio-waveform{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:2px;
+
+    height:52px;
+
+    margin-bottom:1rem;
+
+    cursor:pointer;
+
+}
+
+.wave-bar{
+
+    flex:1;
+
+    min-width:2px;
+
+    border-radius:2px;
+
+    background:rgba(212,160,23,.3);
+
+    transform-origin:bottom;
+
+    animation:waveIdle 1.8s ease-in-out infinite;
+
+}
+
+.wave-bar.is-past{
+
+    background:var(--gold-mid);
+
+}
+
+@keyframes waveIdle{
+
+    0%,100%{transform:scaleY(.65);}
+
+    50%{transform:scaleY(1);}
+
+}
+
+.audio-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.75rem;
+
+    margin-bottom:1.1rem;
+
+}
+
+.audio-play-btn{
+
+    flex-shrink:0;
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--color-primary);
+
+    color:#FFFFFF;
+
+    font-size:.85rem;
+
+    cursor:pointer;
+
+    transition:background var(--speed-fast) ease;
+
+}
+
+.audio-play-btn:hover{
+
+    background:var(--gold-mid);
+
+}
+
+.audio-time{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.75rem;
+
+    color:var(--color-secondary);
 
 }
 
