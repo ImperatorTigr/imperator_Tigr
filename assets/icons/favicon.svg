@@ -1,0 +1,38 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+
+<linearGradient id="goldGradient" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%"  stop-color="#F4D27A"/>
+<stop offset="50%" stop-color="#D4A017"/>
+<stop offset="100%" stop-color="#9C6B12"/>
+</linearGradient>
+
+</defs>
+
+<rect x="4" y="4" width="292" height="292" rx="48"
+      fill="none" stroke="url(#goldGradient)" stroke-width="10"/>
+
+<line x1="100" y1="20"  x2="100" y2="280" stroke="#9C6B12" stroke-width="4"/>
+<line x1="200" y1="20"  x2="200" y2="280" stroke="#9C6B12" stroke-width="4"/>
+<line x1="20"  y1="100" x2="280" y2="100" stroke="#9C6B12" stroke-width="4"/>
+<line x1="20"  y1="200" x2="280" y2="200" stroke="#9C6B12" stroke-width="4"/>
+
+<g font-family="Cinzel, serif" font-weight="600" font-size="56"
+   fill="url(#goldGradient)" text-anchor="middle" dominant-baseline="central">
+
+<text x="50"  y="52">I</text>
+<text x="150" y="52">M</text>
+<text x="250" y="52">P</text>
+
+<text x="50"  y="152">E</text>
+<text x="150" y="152">R</text>
+<text x="250" y="152">A</text>
+
+<text x="50"  y="252">T</text>
+<text x="150" y="252">O</text>
+<text x="250" y="252">R</text>
+
+</g>
+
+</svg>
