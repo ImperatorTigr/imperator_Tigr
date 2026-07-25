@@ -76,7 +76,7 @@
 
     font-size:.8rem;
 
-    color:var(--color-secondary);
+    color:var(--gold-mid);
 
     white-space:nowrap;
 
@@ -196,11 +196,6 @@
 
 @media (max-width:768px){
 
-    .brand-subtitle{
-
-        display:none;
-
-    }
 
     .brand-name{
 
