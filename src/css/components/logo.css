@@ -178,7 +178,7 @@
 
     animation:none;
 
-    opacity:1;
+    opacity:.6;
 
     transform:scale(1);
 
@@ -212,7 +212,7 @@
 
 .logo-cube:hover .logo-grid-line{
 
-    opacity:.18;
+    opacity:.04;
 
 }
 
