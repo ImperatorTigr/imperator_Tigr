@@ -203,3 +203,95 @@
     }
 
 }
+
+.gallery-lightbox-arrow{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.1);
+
+    color:#FFFFFF;
+
+    font-size:1.75rem;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:background var(--speed-fast) ease;
+
+}
+
+.gallery-lightbox-arrow:hover{
+
+    background:rgba(255,255,255,.2);
+
+}
+
+.gallery-lightbox-arrow.prev{
+
+    left:1.5rem;
+
+}
+
+.gallery-lightbox-arrow.next{
+
+    right:1.5rem;
+
+}
+
+.gallery-lightbox-counter{
+
+    position:absolute;
+
+    bottom:1.5rem;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.85rem;
+
+    color:rgba(255,255,255,.7);
+
+}
+
+@media (max-width:600px){
+
+    .gallery-lightbox-arrow{
+
+        width:44px;
+
+        height:44px;
+
+        font-size:1.4rem;
+
+    }
+
+    .gallery-lightbox-arrow.prev{
+
+        left:.5rem;
+
+    }
+
+    .gallery-lightbox-arrow.next{
+
+        right:.5rem;
+
+    }
+
+}
