@@ -35,3 +35,13 @@ p{
     margin-top:2rem;
 
 }
+
+h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:600;
+
+    color:var(--color-title);
+
+}
