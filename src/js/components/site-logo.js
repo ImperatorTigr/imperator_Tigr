@@ -22,6 +22,8 @@ class SiteLogo extends HTMLElement{
 
 </defs>
 
+<circle class="logo-point" cx="150" cy="150" r="7"/>
+
 <rect class="logo-frame-outer"
       x="4" y="4" width="292" height="292" rx="48"/>
 
@@ -30,17 +32,17 @@ class SiteLogo extends HTMLElement{
 <line class="logo-grid-line" x1="20"  y1="100" x2="280" y2="100"/>
 <line class="logo-grid-line" x1="20"  y1="200" x2="280" y2="200"/>
 
-<text class="logo-letter" style="--tx:100px;--ty:100px"   x="50"  y="50">I</text>
-<text class="logo-letter" style="--tx:0px;--ty:100px"     x="150" y="50">M</text>
-<text class="logo-letter" style="--tx:-100px;--ty:100px"  x="250" y="50">P</text>
+<text class="logo-letter" style="--tx:100px;--ty:100px;--delay:0s"     x="50"  y="50">I</text>
+<text class="logo-letter" style="--tx:0px;--ty:100px;--delay:.13s"     x="150" y="50">M</text>
+<text class="logo-letter" style="--tx:-100px;--ty:100px;--delay:.26s"  x="250" y="50">P</text>
 
-<text class="logo-letter" style="--tx:100px;--ty:0px"     x="50"  y="150">E</text>
-<text class="logo-letter" style="--tx:0px;--ty:0px"       x="150" y="150">R</text>
-<text class="logo-letter" style="--tx:-100px;--ty:0px"    x="250" y="150">A</text>
+<text class="logo-letter" style="--tx:100px;--ty:0px;--delay:.39s"     x="50"  y="150">E</text>
+<text class="logo-letter" style="--tx:0px;--ty:0px;--delay:.52s"       x="150" y="150">R</text>
+<text class="logo-letter" style="--tx:-100px;--ty:0px;--delay:.65s"    x="250" y="150">A</text>
 
-<text class="logo-letter" style="--tx:100px;--ty:-100px"  x="50"  y="250">T</text>
-<text class="logo-letter" style="--tx:0px;--ty:-100px"    x="150" y="250">O</text>
-<text class="logo-letter" style="--tx:-100px;--ty:-100px" x="250" y="250">R</text>
+<text class="logo-letter" style="--tx:100px;--ty:-100px;--delay:.78s"  x="50"  y="250">T</text>
+<text class="logo-letter" style="--tx:0px;--ty:-100px;--delay:.91s"    x="150" y="250">O</text>
+<text class="logo-letter" style="--tx:-100px;--ty:-100px;--delay:1.04s" x="250" y="250">R</text>
 
 <text class="logo-word" x="150" y="150">Tigr</text>
 
