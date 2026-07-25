@@ -1,0 +1,109 @@
+.blog{
+
+    padding-block:5rem;
+
+    background:var(--color-surface);
+
+}
+
+.blog-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:1.75rem;
+
+}
+
+.blog-card{
+
+    display:block;
+
+    background:var(--color-bg);
+
+    border-radius:var(--radius-md);
+
+    overflow:hidden;
+
+    transition:transform var(--speed-fast) ease;
+
+}
+
+.blog-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.blog-card-cover{
+
+    aspect-ratio:16/9;
+
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
+
+}
+
+.blog-card-cover img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.blog-card-body{
+
+    padding:1.5rem;
+
+}
+
+.blog-card-date{
+
+    display:block;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.75rem;
+
+    font-weight:600;
+
+    letter-spacing:.04em;
+
+    text-transform:uppercase;
+
+    color:var(--gold-mid);
+
+    margin-bottom:.6rem;
+
+}
+
+.blog-card-title{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:600;
+
+    font-size:1.3rem;
+
+    color:var(--color-title);
+
+    margin-bottom:.6rem;
+
+}
+
+.blog-card-excerpt{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.9rem;
+
+    color:var(--color-text);
+
+    line-height:1.6;
+
+}
