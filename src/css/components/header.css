@@ -10,6 +10,8 @@
 
     border-bottom:1px solid rgba(0,0,0,.06);
 
+    transition:padding var(--speed-normal) ease;
+
 }
 
 .site-header .container{
@@ -21,6 +23,80 @@
     justify-content:space-between;
 
     padding-block:.75rem;
+
+    transition:padding var(--speed-normal) ease;
+
+}
+
+.site-header.is-scrolled .container{
+
+    padding-block:.4rem;
+
+}
+
+.site-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.85rem;
+
+}
+
+.brand-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.25;
+
+}
+
+.brand-name{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:600;
+
+    font-size:1.15rem;
+
+    color:var(--color-title);
+
+    white-space:nowrap;
+
+}
+
+.brand-subtitle{
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:500;
+
+    font-size:.8rem;
+
+    color:var(--color-secondary);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    max-height:1.2em;
+
+    opacity:1;
+
+    transition:
+        opacity var(--speed-normal) ease,
+        max-height var(--speed-normal) ease;
+
+}
+
+.site-header.is-scrolled .brand-subtitle{
+
+    opacity:0;
+
+    max-height:0;
 
 }
 
@@ -120,6 +196,18 @@
 
 @media (max-width:768px){
 
+    .brand-subtitle{
+
+        display:none;
+
+    }
+
+    .brand-name{
+
+        font-size:1rem;
+
+    }
+    
     .nav-toggle{
 
         display:flex;

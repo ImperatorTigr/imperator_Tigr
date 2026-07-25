@@ -8,7 +8,16 @@ class SiteHeader extends HTMLElement{
 
 <div class="container">
 
+<div class="site-brand">
+
 <site-logo></site-logo>
+
+<div class="brand-text">
+<span class="brand-name">Дмитрий Карякин</span>
+<span class="brand-subtitle">Игропрактик</span>
+</div>
+
+</div>
 
 <button class="nav-toggle"
         aria-label="Открыть меню"
@@ -43,8 +52,21 @@ class SiteHeader extends HTMLElement{
 
 `;
 
+        const header=this.querySelector(".site-header");
         const toggle=this.querySelector(".nav-toggle");
         const nav=this.querySelector(".nav");
+
+        const SCROLL_THRESHOLD=40;
+
+        const onScroll=()=>{
+
+            header.classList.toggle("is-scrolled",window.scrollY>SCROLL_THRESHOLD);
+
+        };
+
+        window.addEventListener("scroll",onScroll,{passive:true});
+
+        onScroll();
 
         toggle.addEventListener("click",()=>{
 
