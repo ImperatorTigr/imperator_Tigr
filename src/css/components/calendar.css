@@ -1,0 +1,215 @@
+.calendar{
+
+    padding-block:5rem;
+
+}
+
+.calendar-box{
+
+    max-width:520px;
+
+    margin-inline:auto;
+
+    background:var(--color-surface);
+
+    border-radius:var(--radius-md);
+
+    box-shadow:var(--shadow-soft);
+
+    padding:2rem;
+
+}
+
+.calendar-nav{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:1.5rem;
+
+}
+
+.calendar-nav-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--color-bg);
+
+    color:var(--color-title);
+
+    font-size:1.2rem;
+
+    cursor:pointer;
+
+    transition:background var(--speed-fast) ease;
+
+}
+
+.calendar-nav-btn:hover{
+
+    background:rgba(212,160,23,.15);
+
+}
+
+.calendar-title{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-weight:600;
+
+    font-size:1.4rem;
+
+    color:var(--color-title);
+
+    text-transform:capitalize;
+
+}
+
+.calendar-weekdays{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    margin-bottom:.5rem;
+
+}
+
+.calendar-weekdays span{
+
+    text-align:center;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.75rem;
+
+    font-weight:600;
+
+    color:var(--color-secondary);
+
+    text-transform:uppercase;
+
+}
+
+.calendar-days{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:.35rem;
+
+}
+
+.calendar-day{
+
+    position:relative;
+
+    aspect-ratio:1;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.9rem;
+
+    color:var(--color-text);
+
+}
+
+.calendar-day.is-empty{
+
+    visibility:hidden;
+
+}
+
+.calendar-day.has-event{
+
+    background:var(--color-primary);
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.calendar-day.has-event::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:4px;
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+    background:var(--gold-mid);
+
+}
+
+.calendar-events-list{
+
+    margin-top:2rem;
+
+    display:grid;
+
+    gap:.75rem;
+
+}
+
+.calendar-event-item{
+
+    display:flex;
+
+    gap:.75rem;
+
+    align-items:baseline;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.9rem;
+
+}
+
+.calendar-event-date{
+
+    flex-shrink:0;
+
+    font-weight:700;
+
+    color:var(--gold-mid);
+
+}
+
+.calendar-event-empty{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.9rem;
+
+    color:var(--color-secondary);
+
+    text-align:center;
+
+}
