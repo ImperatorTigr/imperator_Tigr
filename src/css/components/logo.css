@@ -34,7 +34,7 @@
 
     transform:scale(.3);
 
-    animation:frameGrow .5s ease-out .35s forwards;
+    animation:frameGrow .5s ease-out .3s forwards;
 
 }
 
@@ -42,13 +42,13 @@
 
     stroke:url(#goldGradient);
 
-    stroke-width:3;
+    stroke-width:4;
 
     opacity:0;
 
     animation:lineFade .3s ease-out .55s forwards;
 
-    transition:opacity .3s ease .05s;
+    transition:opacity .3s ease;
 
 }
 
@@ -119,8 +119,8 @@
     filter:drop-shadow(0 0 14px rgba(212,160,23,.85));
 
     transition:
-        opacity .4s ease .85s,
-        transform .5s cubic-bezier(.34,1.56,.64,1) .85s;
+        opacity .4s ease .75s,
+        transform .5s cubic-bezier(.34,1.56,.64,1) .75s;
 
 }
 
@@ -170,9 +170,49 @@
 
 }
 
+/* Фиксируем финальное состояние после загрузочной анимации,
+
+   иначе она блокирует CSS-переходы при hover */
+
+.logo-cube.logo-ready .logo-frame-outer{
+
+    animation:none;
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+.logo-cube.logo-ready .logo-grid-line{
+
+    animation:none;
+
+    opacity:1;
+
+}
+
+.logo-cube.logo-ready .logo-point{
+
+    animation:none;
+
+    opacity:0;
+
+}
+
+.logo-cube.logo-ready .logo-letter{
+
+    animation:none;
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
 .logo-cube:hover .logo-grid-line{
 
-    opacity:.15;
+    opacity:.18;
 
 }
 
@@ -186,7 +226,7 @@
 
 .logo-cube:hover .logo-point{
 
-    animation:hoverPointPulse .7s ease-out .35s both;
+    animation:hoverPointPulse .6s ease-out .3s both;
 
 }
 

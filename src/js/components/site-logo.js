@@ -32,17 +32,17 @@ class SiteLogo extends HTMLElement{
 <line class="logo-grid-line" x1="20"  y1="100" x2="280" y2="100"/>
 <line class="logo-grid-line" x1="20"  y1="200" x2="280" y2="200"/>
 
-<text class="logo-letter" style="--tx:100px;--ty:100px;--delay:0s"     x="50"  y="50">I</text>
-<text class="logo-letter" style="--tx:0px;--ty:100px;--delay:.13s"     x="150" y="50">M</text>
-<text class="logo-letter" style="--tx:-100px;--ty:100px;--delay:.26s"  x="250" y="50">P</text>
+<text class="logo-letter" style="--tx:100px;--ty:100px;--delay:.9s"    x="50"  y="50">I</text>
+<text class="logo-letter" style="--tx:0px;--ty:100px;--delay:1.02s"    x="150" y="50">M</text>
+<text class="logo-letter" style="--tx:-100px;--ty:100px;--delay:1.14s" x="250" y="50">P</text>
 
-<text class="logo-letter" style="--tx:100px;--ty:0px;--delay:.39s"     x="50"  y="150">E</text>
-<text class="logo-letter" style="--tx:0px;--ty:0px;--delay:.52s"       x="150" y="150">R</text>
-<text class="logo-letter" style="--tx:-100px;--ty:0px;--delay:.65s"    x="250" y="150">A</text>
+<text class="logo-letter" style="--tx:100px;--ty:0px;--delay:1.26s"    x="50"  y="150">E</text>
+<text class="logo-letter" style="--tx:0px;--ty:0px;--delay:1.38s"      x="150" y="150">R</text>
+<text class="logo-letter" style="--tx:-100px;--ty:0px;--delay:1.5s"    x="250" y="150">A</text>
 
-<text class="logo-letter" style="--tx:100px;--ty:-100px;--delay:.78s"  x="50"  y="250">T</text>
-<text class="logo-letter" style="--tx:0px;--ty:-100px;--delay:.91s"    x="150" y="250">O</text>
-<text class="logo-letter" style="--tx:-100px;--ty:-100px;--delay:1.04s" x="250" y="250">R</text>
+<text class="logo-letter" style="--tx:100px;--ty:-100px;--delay:1.62s" x="50"  y="250">T</text>
+<text class="logo-letter" style="--tx:0px;--ty:-100px;--delay:1.74s"   x="150" y="250">O</text>
+<text class="logo-letter" style="--tx:-100px;--ty:-100px;--delay:1.86s" x="250" y="250">R</text>
 
 <text class="logo-word" x="150" y="150">Tigr</text>
 
@@ -51,6 +51,14 @@ class SiteLogo extends HTMLElement{
 </a>
 
 `;
+
+        const cube=this.querySelector(".logo-cube");
+
+        setTimeout(()=>{
+
+            cube.classList.add("logo-ready");
+
+        },2400);
 
     }
 
