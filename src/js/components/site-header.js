@@ -1,6 +1,16 @@
+function getHomePrefix(){
+
+    const inSubfolder=window.location.pathname.includes("/blog/");
+
+    return inSubfolder?"../index.html":"./";
+
+}
+
 class SiteHeader extends HTMLElement{
 
     connectedCallback(){
+
+        const home=getHomePrefix();
 
         this.innerHTML=`
 
@@ -31,18 +41,18 @@ class SiteHeader extends HTMLElement{
 
 <ul class="nav-list">
 
-<li><a class="nav-link" href="#games">Игры</a></li>
-<li><a class="nav-link" href="#events">Мероприятия</a></li>
-<li><a class="nav-link" href="#gallery">Галерея</a></li>
-<li><a class="nav-link" href="#about">Обо мне</a></li>
-<li><a class="nav-link" href="#calendar">Календарь</a></li>
-<li><a class="nav-link" href="#blog">Блог</a></li>
-<li><a class="nav-link" href="#feedbacks">Отзывы</a></li>
-<li><a class="nav-link" href="#contacts">Контакты</a></li>
+<li><a class="nav-link" href="${home}#games">Игры</a></li>
+<li><a class="nav-link" href="${home}#events">Мероприятия</a></li>
+<li><a class="nav-link" href="${home}#gallery">Галерея</a></li>
+<li><a class="nav-link" href="${home}#about">Обо мне</a></li>
+<li><a class="nav-link" href="${home}#calendar">Календарь</a></li>
+<li><a class="nav-link" href="${home}#blog">Блог</a></li>
+<li><a class="nav-link" href="${home}#feedbacks">Отзывы</a></li>
+<li><a class="nav-link" href="${home}#contacts">Контакты</a></li>
 
 </ul>
 
-<a class="nav-cta" href="#contacts">Записаться</a>
+<a class="nav-cta" href="${home}#contacts">Записаться</a>
 
 </nav>
 

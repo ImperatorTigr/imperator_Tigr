@@ -2,9 +2,13 @@ class SiteLogo extends HTMLElement{
 
     connectedCallback(){
 
+        const inSubfolder=window.location.pathname.includes("/blog/");
+
+        const home=inSubfolder?"../index.html":"./";
+
         this.innerHTML=`
 
-<a href="./"
+<a href="${home}"
    class="logo-cube"
    aria-label="IMPERATOR — Tigr">
 
