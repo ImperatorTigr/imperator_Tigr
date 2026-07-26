@@ -1,0 +1,198 @@
+/* ==========================================================
+   IMPERATOR TIGR
+   Logo V2 Laboratory
+   Version: LC-0.1
+========================================================== */
+
+:root {
+
+    --background: #07131f;
+    --background-soft: #102338;
+
+    --text: #f5f7fa;
+    --text-secondary: #b9c3cf;
+
+    --accent: #d7b46a;
+
+    --container: 1280px;
+
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+
+    font-size: 16px;
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            var(--background-soft) 0%,
+            var(--background) 72%
+        );
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        system-ui,
+        sans-serif;
+
+}
+
+.page {
+
+    width: 100%;
+
+}
+
+.hero {
+
+    width: min(92%, var(--container));
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(420px, 1fr)
+        560px;
+
+    align-items: center;
+
+    gap: 80px;
+
+}
+
+.hero_content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+.hero_label {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    font-size: .82rem;
+
+    font-weight: 600;
+
+    letter-spacing: .35em;
+
+    color: var(--accent);
+
+    text-transform: uppercase;
+
+}
+
+.hero_content h1 {
+
+    margin: 0;
+
+    font-size: clamp(3rem,5vw,5rem);
+
+    line-height: 1.04;
+
+    font-weight: 600;
+
+}
+
+.hero_content p {
+
+    max-width: 560px;
+
+    margin-top: 32px;
+
+    font-size: 1.15rem;
+
+    line-height: 1.8;
+
+    color: var(--text-secondary);
+
+}
+
+.hero_logo {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.logo {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    aspect-ratio: 1;
+
+    display: block;
+
+}
+
+@media (max-width: 1100px) {
+
+    .hero {
+
+        grid-template-columns: 1fr;
+
+        gap: 56px;
+
+        padding: 80px 0;
+
+    }
+
+    .hero_content {
+
+        order: 1;
+
+    }
+
+    .hero_logo {
+
+        order: 2;
+
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    .hero {
+
+        width: min(94%, var(--container));
+
+    }
+
+    .hero_content h1 {
+
+        font-size: 2.6rem;
+
+    }
+
+}

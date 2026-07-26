@@ -5,5 +5,6 @@ import "./components/site-calendar.js";
 import "./components/testimonials.js";
 import "./components/post-nav.js";
 import "./components/contact-form.js";
+import "./components/nav-active.js";
 
 console.log("Project IMPERATOR initialized");
