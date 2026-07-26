@@ -44,9 +44,29 @@ function spawnParticles(container,count){
 
 }
 
-function initHeroParallax(hero,bg){
+function initHeroParallax(hero,bg,sweep){
 
     let ticking=false;
+
+    const update=()=>{
+
+        const rect=hero.getBoundingClientRect();
+
+        const progress=Math.min(Math.max(-rect.top/rect.height,0),1);
+
+        bg.style.transform=`translateY(${progress*40}px)`;
+
+        if(sweep){
+
+            const sweepLeft=-50+progress*155;
+
+            sweep.style.setProperty("--sweep-left",`${sweepLeft}%`);
+
+        }
+
+        ticking=false;
+
+    };
 
     const onScroll=()=>{
 
@@ -54,21 +74,13 @@ function initHeroParallax(hero,bg){
 
         ticking=true;
 
-        requestAnimationFrame(()=>{
-
-            const rect=hero.getBoundingClientRect();
-
-            const progress=Math.min(Math.max(-rect.top/rect.height,0),1);
-
-            bg.style.transform=`translateY(${progress*40}px)`;
-
-            ticking=false;
-
-        });
+        requestAnimationFrame(update);
 
     };
 
     window.addEventListener("scroll",onScroll,{passive:true});
+
+    update();
 
 }
 
@@ -122,6 +134,8 @@ function initHero(){
 
     const bg=hero.querySelector(".hero-bg");
 
+    const sweep=hero.querySelector(".hero-light-sweep");
+
     const particlesContainer=hero.querySelector(".hero-particles");
 
     if(particlesContainer){
@@ -134,7 +148,7 @@ function initHero(){
 
     if(bg){
 
-        initHeroParallax(hero,bg);
+        initHeroParallax(hero,bg,sweep);
 
     }
 

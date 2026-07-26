@@ -144,18 +144,6 @@
 
     );
 
-    animation:lightSweep 22s ease-in-out infinite;
-
-}
-
-@keyframes lightSweep{
-
-    0%{left:-50%;}
-
-    50%{left:105%;}
-
-    100%{left:-50%;}
-
 }
 
 /* ---------- Слой 4: плавающие пылинки ---------- */
