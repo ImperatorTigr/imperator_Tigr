@@ -255,7 +255,17 @@
 
         grid-template-columns:1fr;
 
-        gap:2.5rem;
+        gap:0;
+
+    }
+
+    .contacts-info{
+
+        padding-bottom:2.5rem;
+
+        margin-bottom:2.5rem;
+
+        border-bottom:1px solid rgba(0,0,0,.08);
 
     }
 
@@ -298,5 +308,19 @@
 .form-error.is-visible{
 
     display:block;
+
+}
+
+.contacts-subheading{
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:700;
+
+    font-size:1.1rem;
+
+    color:var(--color-title);
+
+    margin-bottom:1.25rem;
 
 }
