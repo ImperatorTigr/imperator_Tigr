@@ -6,6 +6,8 @@
 
     height:64px;
 
+    transition:width var(--speed-normal) ease,height var(--speed-normal) ease;
+
 }
 
 .logo-svg{

@@ -50,13 +50,23 @@ function initHeroParallax(hero,bg,sweep){
 
     const SWEEP_SCROLL_RANGE=500;
 
+    const isMobile=()=>window.innerWidth<768;
+
     const update=()=>{
 
         const rect=hero.getBoundingClientRect();
 
-        const bgProgress=Math.min(Math.max(-rect.top/rect.height,0),1);
+        if(!isMobile()){
 
-        bg.style.transform=`translateY(${bgProgress*40}px)`;
+            const bgProgress=Math.min(Math.max(-rect.top/rect.height,0),1);
+
+            bg.style.transform=`translateY(${bgProgress*40}px)`;
+
+        }else{
+
+            bg.style.transform="none";
+
+        }
 
         if(sweep){
 
@@ -85,6 +95,8 @@ function initHeroParallax(hero,bg,sweep){
     };
 
     window.addEventListener("scroll",onScroll,{passive:true});
+
+    window.addEventListener("resize",update,{passive:true});
 
     update();
 
