@@ -1,0 +1,302 @@
+.contacts{
+
+    padding-block:5rem;
+
+    background:var(--color-surface);
+
+}
+
+.contacts-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:3rem;
+
+}
+
+.contacts-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.75rem;
+
+}
+
+.contact-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:1rem;
+
+}
+
+.contact-item-icon{
+
+    flex-shrink:0;
+
+    width:44px;
+
+    height:44px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--color-bg);
+
+    color:var(--gold-mid);
+
+    font-size:1.1rem;
+
+}
+
+.contact-item-label{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.78rem;
+
+    color:var(--color-secondary);
+
+    margin-bottom:.2rem;
+
+}
+
+.contact-item-value{
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:600;
+
+    font-size:1rem;
+
+    color:var(--color-title);
+
+}
+
+.contact-item-value:hover{
+
+    color:var(--gold-mid);
+
+}
+
+.contacts-socials{
+
+    display:flex;
+
+    gap:.75rem;
+
+    margin-top:.5rem;
+
+}
+
+.contacts-social-link{
+
+    width:44px;
+
+    height:44px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--color-bg);
+
+    color:var(--color-title);
+
+    font-family:"Manrope",sans-serif;
+
+    font-weight:700;
+
+    font-size:.85rem;
+
+    transition:
+        background var(--speed-fast) ease,
+
+        color var(--speed-fast) ease;
+
+}
+
+.contacts-social-link:hover{
+
+    background:var(--gold-mid);
+
+    color:#FFFFFF;
+
+}
+
+.contact-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.1rem;
+
+}
+
+.form-field label{
+
+    display:block;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    color:var(--color-title);
+
+    margin-bottom:.4rem;
+
+}
+
+.form-field input,
+
+.form-field textarea{
+
+    width:100%;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.95rem;
+
+    color:var(--color-text);
+
+    background:var(--color-bg);
+
+    border:1px solid transparent;
+
+    border-radius:var(--radius-sm);
+
+    padding:.8rem 1rem;
+
+    transition:border-color var(--speed-fast) ease;
+
+}
+
+.form-field input:focus,
+
+.form-field textarea:focus{
+
+    outline:none;
+
+    border-color:var(--gold-mid);
+
+}
+
+.form-field textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+.form-submit{
+
+    align-self:flex-start;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+    background:var(--color-accent);
+
+    padding:.85rem 2rem;
+
+    border:none;
+
+    border-radius:var(--radius-sm);
+
+    cursor:pointer;
+
+    transition:opacity var(--speed-fast) ease;
+
+}
+
+.form-submit:hover{
+
+    opacity:.85;
+
+}
+
+.form-note{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.78rem;
+
+    color:var(--color-secondary);
+
+}
+
+@media (max-width:768px){
+
+    .contacts-grid{
+
+        grid-template-columns:1fr;
+
+        gap:2.5rem;
+
+    }
+
+}
+
+.form-honeypot{
+
+    position:absolute;
+
+    left:-9999px;
+
+    width:1px;
+
+    height:1px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+.form-error{
+
+    display:none;
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:.85rem;
+
+    color:#B23A3A;
+
+    background:rgba(178,58,58,.08);
+
+    border-radius:var(--radius-sm);
+
+    padding:.7rem 1rem;
+
+}
+
+.form-error.is-visible{
+
+    display:block;
+
+}

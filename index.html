@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="src/css/components/calendar.css">
     <link rel="stylesheet" href="src/css/components/blog.css">
     <link rel="stylesheet" href="src/css/components/testimonials.css">
+    <link rel="stylesheet" href="src/css/components/contacts.css">
     <link rel="stylesheet" href="src/css/utilities/utilities.css">
 
 </head>
@@ -559,6 +560,101 @@
                         </article>
 
                     </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="contacts" id="contacts">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-eyebrow">На связи</span>
+
+                    <h2 class="section-title">Контакты</h2>
+
+                </div>
+
+                <div class="contacts-grid">
+
+                    <div class="contacts-info">
+
+                        <div class="contact-item">
+                            <span class="contact-item-icon">✉</span>
+                            <div>
+                                <span class="contact-item-label">Email</span>
+                                <a class="contact-item-value" href="mailto:[ЗАМЕНИТЬ: your@email.com]">[ЗАМЕНИТЬ: your@email.com]</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-item-icon">☏</span>
+                            <div>
+                                <span class="contact-item-label">Телефон</span>
+                                <a class="contact-item-value" href="tel:+7[ЗАМЕНИТЬ: номер]">+7 [ЗАМЕНИТЬ: номер]</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-item-icon">📍</span>
+                            <div>
+                                <span class="contact-item-label">Город</span>
+                                <span class="contact-item-value">[ЗАМЕНИТЬ: город]</span>
+                            </div>
+                        </div>
+
+                        <div class="contacts-socials">
+
+                            <a class="contacts-social-link" href="[ЗАМЕНИТЬ: ссылка Telegram]" aria-label="Telegram">TG</a>
+
+                            <a class="contacts-social-link" href="[ЗАМЕНИТЬ: ссылка VK]" aria-label="VK">VK</a>
+
+                            <a class="contacts-social-link" href="[ЗАМЕНИТЬ: ссылка Instagram]" aria-label="Instagram">IG</a>
+
+                        </div>
+
+                    </div>
+
+                    <form class="contact-form" id="contact-form">
+
+                        <div class="form-field form-honeypot">
+                            <label for="cf-website">Сайт</label>
+                            <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="cf-name">Имя</label>
+                            <input type="text" id="cf-name" name="name" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="cf-contact">Email или телефон для связи</label>
+                            <input type="text" id="cf-contact" name="contact" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="cf-message">Сообщение</label>
+                            <textarea id="cf-message" name="message" required></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label id="cf-math-label" for="cf-math">Проверка</label>
+                            <input type="number" id="cf-math" name="math" required>
+                        </div>
+
+                        <p class="form-error" id="cf-error"></p>
+
+                        <button class="form-submit" type="submit">Отправить заявку</button>
+
+                        <p class="form-note">
+                            При отправке откроется ваш почтовый клиент с уже заполненным письмом.
+                        </p>
+
+                    </form>
 
                 </div>
 

@@ -4,5 +4,6 @@ import "./components/gallery-lightbox.js";
 import "./components/site-calendar.js";
 import "./components/testimonials.js";
 import "./components/post-nav.js";
+import "./components/contact-form.js";
 
 console.log("Project IMPERATOR initialized");
