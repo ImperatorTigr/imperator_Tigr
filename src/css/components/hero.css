@@ -12,23 +12,267 @@
 
     padding-block:4rem;
 
+    overflow:hidden;
+
+    isolation:isolate;
+
 }
 
-.hero::before{
+/* ---------- Слой 1: фоновое фото ---------- */
 
-    content:"";
+.hero-bg{
 
     position:absolute;
 
     inset:0;
 
+    z-index:0;
+
+    overflow:hidden;
+
+}
+
+.hero-bg picture,
+
+.hero-bg img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.hero-bg img{
+
+    animation:heroBreathe 14s ease-in-out infinite alternate;
+
+}
+
+@keyframes heroBreathe{
+
+    from{transform:scale(1);}
+
+    to{transform:scale(1.045);}
+
+}
+
+/* Параллакс — фон двигается медленнее переднего плана при скролле */
+
+.hero-bg{
+
+    will-change:transform;
+
+}
+
+/* ---------- Слой 2: затемняющий градиент для читаемости текста ---------- */
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
     background:
 
-        radial-gradient(circle at top right,
-        rgba(212,160,23,.12),
-        transparent 45%);
+        linear-gradient(100deg,
+
+            rgba(11,31,51,.88) 0%,
+
+            rgba(11,31,51,.72) 32%,
+
+            rgba(11,31,51,.32) 58%,
+
+            rgba(11,31,51,.05) 78%);
 
     pointer-events:none;
+
+}
+
+/* ---------- Слой 3: бегущий свет (8-12 сек, бесшовно) ---------- */
+
+.hero-light-sweep{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    mix-blend-mode:soft-light;
+
+}
+
+.hero-light-sweep::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+
+    left:-20%;
+
+    width:70%;
+
+    height:200%;
+
+    background:linear-gradient(
+
+        75deg,
+
+        transparent 0%,
+
+        rgba(244,210,122,.35) 45%,
+
+        rgba(244,210,122,.5) 50%,
+
+        rgba(244,210,122,.35) 55%,
+
+        transparent 100%
+
+    );
+
+    animation:lightSweep 11s ease-in-out infinite;
+
+}
+
+@keyframes lightSweep{
+
+    0%{transform:translateX(-40%);}
+
+    50%{transform:translateX(160%);}
+
+    100%{transform:translateX(-40%);}
+
+}
+
+/* ---------- Слой 4: плавающие пылинки ---------- */
+
+.hero-particles{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:3;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+.hero-particle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,rgba(244,210,122,.9),rgba(244,210,122,0) 70%);
+
+    opacity:0;
+
+    animation:particleFloat linear infinite;
+
+}
+
+@keyframes particleFloat{
+
+    0%{
+
+        transform:translate(0,0);
+
+        opacity:0;
+
+    }
+
+    8%{
+
+        opacity:var(--p-op,.5);
+
+    }
+
+    92%{
+
+        opacity:var(--p-op,.5);
+
+    }
+
+    100%{
+
+        transform:translate(var(--p-dx,20px),var(--p-dy,-140px));
+
+        opacity:0;
+
+    }
+
+}
+
+/* ---------- Слой 5: видео cinemagraph (заготовка на будущее) ---------- */
+
+.hero-cinemagraph{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:0;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+}
+
+.hero-cinemagraph.is-loaded{
+
+    opacity:1;
+
+}
+
+.hero-cinemagraph video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+/* ---------- Контент поверх всех слоёв ---------- */
+
+.hero .container{
+
+    position:relative;
+
+    z-index:4;
+
+}
+
+.hero h1,
+
+.hero p{
+
+    color:#FFFFFF;
+
+}
+
+.hero p{
+
+    color:rgba(255,255,255,.85);
 
 }
 
@@ -37,6 +281,34 @@
     .hero{
 
         padding-block:3rem;
+
+    }
+
+    .hero-overlay{
+
+        background:
+
+            linear-gradient(180deg,
+
+                rgba(11,31,51,.5) 0%,
+
+                rgba(11,31,51,.82) 55%,
+
+                rgba(11,31,51,.9) 100%);
+
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    .hero-bg img,
+
+    .hero-light-sweep::before,
+
+    .hero-particle{
+
+        animation:none !important;
 
     }
 
