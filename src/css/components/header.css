@@ -265,13 +265,45 @@
 
     .nav-link{
 
+        position:relative;
+
         font-size:1.4rem;
+
+    }
+
+    .nav-link.is-active::before{
+
+        content:"";
+
+        position:absolute;
+
+        left:-28px;
+
+        top:50%;
+
+        transform:translateY(-50%);
+
+        width:8px;
+
+        height:8px;
+
+        border-radius:50%;
+
+        background:var(--gold-mid);
+
+        box-shadow:0 0 10px rgba(212,160,23,.8);
 
     }
 
     body.nav-open{
 
         overflow:hidden;
+
+    }
+
+    .nav-thread{
+
+        display:none;
 
     }
 
@@ -342,15 +374,5 @@
     background:var(--gold-mid);
 
     box-shadow:0 0 8px rgba(212,160,23,.75);
-
-}
-
-@media (max-width:768px){
-
-    .nav-thread{
-
-        display:none;
-
-    }
 
 }
