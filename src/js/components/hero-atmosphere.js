@@ -139,3 +139,27 @@ function initHero(){
     if(!hero)return;
 
     const bg=hero.querySelector(".hero-bg");
+
+    const sweep=hero.querySelector(".hero-light-sweep");
+
+    const particlesContainer=hero.querySelector(".hero-particles");
+
+    if(particlesContainer){
+
+        const particleCount=window.innerWidth<600?8:16;
+
+        spawnParticles(particlesContainer,particleCount);
+
+    }
+
+    if(bg){
+
+        initHeroParallax(hero,bg,sweep);
+
+    }
+
+    initHeroCinemagraph();
+
+}
+
+document.addEventListener("DOMContentLoaded",initHero);
