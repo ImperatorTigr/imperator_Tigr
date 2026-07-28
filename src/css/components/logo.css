@@ -247,3 +247,32 @@
     height:44px;
 
 }
+/* ---------- Touch-эквивалент hover (управляется JS-классом, не курсором) ---------- */
+
+.logo-cube.is-triggered .logo-grid-line{
+
+    opacity:.04;
+
+}
+
+.logo-cube.is-triggered .logo-letter{
+
+    opacity:0;
+
+    transform:translate(var(--tx),var(--ty)) scale(.2);
+
+}
+
+.logo-cube.is-triggered .logo-point{
+
+    animation:hoverPointPulse .6s ease-out .3s both;
+
+}
+
+.logo-cube.is-triggered .logo-word{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}

@@ -16,27 +16,69 @@ function initPostHeroReveal(){
 
     stage.appendChild(photo);
 
-    const REVEAL_DELAY_MS=1000;
+    const cube=stage.querySelector(".logo-cube");
 
-    let timer=null;
+    const hasHover=window.matchMedia("(hover:hover)").matches;
 
-    stage.addEventListener("mouseenter",()=>{
+    if(hasHover){
 
-        timer=setTimeout(()=>{
+        const REVEAL_DELAY_MS=1000;
+
+        let timer=null;
+
+        stage.addEventListener("mouseenter",()=>{
+
+            timer=setTimeout(()=>{
+
+                stage.classList.add("is-revealing");
+
+            },REVEAL_DELAY_MS);
+
+        });
+
+        stage.addEventListener("mouseleave",()=>{
+
+            clearTimeout(timer);
+
+            stage.classList.remove("is-revealing");
+
+        });
+
+        return;
+
+    }
+
+    /*
+
+      Touch-сценарий: буквы уже сами загружаются и "замирают"
+
+      (см. site-logo.js — класс logo-ready ставится через 2400мс).
+
+      Дальше — без участия пользователя — один раз проигрываем
+
+      трансформацию в Tigr, затем показываем фото и на этом
+
+      останавливаемся насовсем, до перезагрузки страницы.
+
+    */
+
+    const LETTERS_SETTLE_MS=2400;
+
+    const PAUSE_BEFORE_TRANSFORM_MS=500;
+
+    const TRANSFORM_TO_PHOTO_MS=900;
+
+    setTimeout(()=>{
+
+        if(cube)cube.classList.add("is-triggered");
+
+        setTimeout(()=>{
 
             stage.classList.add("is-revealing");
 
-        },REVEAL_DELAY_MS);
+        },TRANSFORM_TO_PHOTO_MS);
 
-    });
-
-    stage.addEventListener("mouseleave",()=>{
-
-        clearTimeout(timer);
-
-        stage.classList.remove("is-revealing");
-
-    });
+    },LETTERS_SETTLE_MS+PAUSE_BEFORE_TRANSFORM_MS);
 
 }
 
