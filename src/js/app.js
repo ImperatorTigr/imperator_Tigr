@@ -7,5 +7,6 @@ import "./components/post-nav.js";
 import "./components/contact-form.js";
 import "./components/nav-active.js";
 import "./components/hero-atmosphere.js";
+import "./components/post-hero-reveal.js";
 
 console.log("Project IMPERATOR initialized");
