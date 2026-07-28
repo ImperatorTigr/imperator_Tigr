@@ -24,7 +24,7 @@ class SiteHeader extends HTMLElement{
 
 <div class="brand-text">
 <span class="brand-name">Дмитрий Карякин</span>
-<span class="brand-subtitle">Игропрактик</span>
+<span class="brand-subtitle">Фасилитатор</span>
 </div>
 
 </div>
@@ -41,6 +41,7 @@ class SiteHeader extends HTMLElement{
 
 <ul class="nav-list">
 
+<li><a class="nav-link" href="${home}#hero">Главная</a></li>
 <li><a class="nav-link" href="${home}#games">Игры</a></li>
 <li><a class="nav-link" href="${home}#events">Мероприятия</a></li>
 <li><a class="nav-link" href="${home}#gallery">Галерея</a></li>
@@ -52,7 +53,7 @@ class SiteHeader extends HTMLElement{
 
 </ul>
 
-<a class="nav-cta" href="${home}#contacts">Записаться</a>
+<a class="nav-cta" href="${home}#contacts">Связаться</a>
 
 </nav>
 
