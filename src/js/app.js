@@ -1,5 +1,6 @@
 import "./components/site-header.js";
 import "./components/site-logo.js";
+import "./components/site-logo-sila.js";
 import "./components/gallery-lightbox.js";
 import "./components/site-calendar.js";
 import "./components/testimonials.js";

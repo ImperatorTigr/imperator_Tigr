@@ -20,7 +20,7 @@ class SiteHeader extends HTMLElement{
 
 <div class="site-brand">
 
-<site-logo></site-logo>
+<site-logo-sila></site-logo-sila>
 
 <div class="brand-text">
 <span class="brand-name">Дмитрий Карякин</span>
