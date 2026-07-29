@@ -24,7 +24,7 @@ class SiteHeader extends HTMLElement{
 
 <div class="brand-text">
 <span class="brand-name">Дмитрий Карякин</span>
-<span class="brand-subtitle">Фасилитатор</span>
+<span class="brand-subtitle">Игропрактик</span>
 </div>
 
 </div>
@@ -53,7 +53,7 @@ class SiteHeader extends HTMLElement{
 
 </ul>
 
-<a class="nav-cta" href="${home}#contacts">Связаться</a>
+<a class="nav-cta" href="${home}#contacts">Связь</a>
 
 </nav>
 
