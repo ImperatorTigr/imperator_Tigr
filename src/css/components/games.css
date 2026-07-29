@@ -119,6 +119,8 @@
 /* ===== НОВОЕ: картинка в карточке игры ===== */
 .game-card-image{
 
+    display:block;          /* ← добавлено */
+    
     width:100%;
 
     aspect-ratio:16/10;
