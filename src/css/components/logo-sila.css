@@ -86,8 +86,6 @@
 
     animation:silaChipIn .9s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
 
-    transition:transform .9s cubic-bezier(.4,.1,.2,1) .55s;
-
 }
 
 .sila-chip-letter{
@@ -114,8 +112,6 @@
 
     animation:silaChipIn .9s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
 
-    transition:transform .9s cubic-bezier(.4,.1,.2,1) .55s;
-
 }
 
 @keyframes silaChipIn{
@@ -125,46 +121,6 @@
     60%{opacity:1;transform:scale(1.08);}
 
     100%{opacity:1;transform:scale(1);}
-
-}
-
-.sila-chip-tl{transform:translate(0,0);}
-
-.sila-chip-tr{transform:translate(0,0);}
-
-.sila-chip-bl{transform:translate(0,0);}
-
-.sila-chip-br{transform:translate(0,0);}
-
-.sila-logo.is-split .sila-chip-tl,
-
-.sila-logo.is-split .sila-chip-tl + .sila-chip-letter{
-
-    transform:translate(0,-22px);
-
-}
-
-.sila-logo.is-split .sila-chip-tr,
-
-.sila-logo.is-split .sila-chip-tr + .sila-chip-letter{
-
-    transform:translate(0,-22px);
-
-}
-
-.sila-logo.is-split .sila-chip-bl,
-
-.sila-logo.is-split .sila-chip-bl + .sila-chip-letter{
-
-    transform:translate(0,22px);
-
-}
-
-.sila-logo.is-split .sila-chip-br,
-
-.sila-logo.is-split .sila-chip-br + .sila-chip-letter{
-
-    transform:translate(0,22px);
 
 }
 
@@ -214,7 +170,7 @@
 
 }
 
-/* ---------- Флаг "Т" — тонкая рамка с несколькими диагональными штрихами ---------- */
+/* ---------- Флаг "Т" — контур + диагональные штрихи ---------- */
 
 .sila-flag-group{
 
@@ -260,7 +216,7 @@
 
 }
 
-/* ---------- Слово ИГРА / IGRA ---------- */
+/* ---------- Слово ИГРА / IGRA — слитно, по нижнему краю квадратов ---------- */
 
 .sila-igra-letter{
 
@@ -268,7 +224,7 @@
 
     font-weight:800;
 
-    font-size:30px;
+    font-size:34px;
 
     fill:var(--gold-mid);
 
@@ -318,10 +274,6 @@
 
     opacity:1;
 
-}
-
-.sila-logo.is-ready .sila-chip-letter{
-
     transform:scale(1);
 
 }
@@ -331,18 +283,6 @@
     animation:none;
 
     opacity:0;
-
-}
-
-.sila-logo.is-ready .sila-flag-group{
-
-    transform:scale(1);
-
-}
-
-.sila-logo.is-ready .sila-igra-letter{
-
-    transform:scale(1);
 
 }
 
