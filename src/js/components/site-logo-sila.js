@@ -1,37 +1,63 @@
-const CHIP_DELAYS={tl:"0s",bl:".12s",br:".24s",tr:".36s"};
+function buildFace(faceId,letters){
 
-function buildFace(letters){
+    const chip=(pos,cx,cy,rx,ry,ch,delay)=>`
 
-    const chip=(pos,ch)=>`
+<rect class="sila-chip-rect sila-chip-${pos}" x="${cx}" y="${cy}" width="${rx}" height="${ry}" rx="18" style="--chip-delay:${delay}"/>
 
-<div class="sila-chip" style="--chip-delay:${CHIP_DELAYS[pos]}">
-<span class="sila-chip-letter">${ch}</span>
-</div>
+<text class="sila-chip-letter" x="${cx+rx/2}" y="${cy+ry/2+2}" style="--chip-delay:${delay}">${ch}</text>
 
 `;
 
     return `
 
-<div class="sila-grid">
+<svg class="sila-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
 
-${chip("tl",letters.tl)}
-${chip("tr",letters.tr)}
-${chip("bl",letters.bl)}
-${chip("br",letters.br)}
+<defs>
 
-</div>
+<linearGradient id="silaGold${faceId}" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="var(--gold-light)"/>
+<stop offset="50%" stop-color="var(--gold-mid)"/>
+<stop offset="100%" stop-color="var(--gold-deep)"/>
+</linearGradient>
 
-<div class="sila-flag" aria-hidden="true">
-<span class="sila-flag-top"></span>
-<span class="sila-flag-stem"></span>
-</div>
+</defs>
 
-<div class="sila-igra" aria-hidden="true">
-<span>${letters.igra[0]}</span>
-<span>${letters.igra[1]}</span>
-<span>${letters.igra[2]}</span>
-<span>${letters.igra[3]}</span>
-</div>
+${chip("tl",10,10,130,130,letters.tl,"0s")}
+${chip("tr",160,10,130,130,letters.tr,".12s")}
+${chip("bl",10,160,130,130,letters.bl,".24s")}
+${chip("br",160,160,130,130,letters.br,".36s")}
+
+<path class="sila-hint" transform="translate(150,150)"
+      d="M-4 -22 C-24 -22 -32 -6 -22 10 C-14 22 6 22 14 10"/>
+
+<path class="sila-hint" transform="translate(150,150)"
+      d="M14 10 L20 4 M14 10 L6 16" fill="none"/>
+
+<g class="sila-flag-group">
+
+<rect class="sila-flag-shape" x="118" y="-22" width="64" height="26" rx="6"/>
+
+<rect class="sila-flag-shape" x="138" y="0" width="24" height="30" rx="4"/>
+
+<line class="sila-flag-stripe" x1="126" y1="-16" x2="140" y2="0"/>
+
+<line class="sila-flag-stripe" x1="140" y1="-16" x2="154" y2="0"/>
+
+<line class="sila-flag-stripe" x1="154" y1="-16" x2="168" y2="0"/>
+
+<line class="sila-flag-stripe" x1="144" y1="6" x2="156" y2="18"/>
+
+</g>
+
+<text class="sila-igra-letter" x="150" y="60">${letters.igra[0]}</text>
+
+<text class="sila-igra-letter" x="150" y="92">${letters.igra[1]}</text>
+
+<text class="sila-igra-letter" x="150" y="208">${letters.igra[2]}</text>
+
+<text class="sila-igra-letter" x="150" y="240">${letters.igra[3]}</text>
+
+</svg>
 
 `;
 
@@ -41,9 +67,9 @@ class SiteLogoSila extends HTMLElement{
 
     connectedCallback(){
 
-        const front=buildFace({tl:"С",tr:"А",bl:"И",br:"Л",igra:["И","Г","Р","А"]});
+        const front=buildFace("Front",{tl:"С",tr:"А",bl:"И",br:"Л",igra:["И","Г","Р","А"]});
 
-        const back=buildFace({tl:"S",tr:"A",bl:"I",br:"L",igra:["I","G","R","A"]});
+        const back=buildFace("Back",{tl:"S",tr:"A",bl:"I",br:"L",igra:["I","G","R","A"]});
 
         this.innerHTML=`
 
@@ -51,24 +77,9 @@ class SiteLogoSila extends HTMLElement{
 
 <div class="sila-flip">
 
-<div class="sila-face sila-face-front">
+<div class="sila-face sila-face-front">${front}</div>
 
-${front}
-
-<div class="sila-hint" aria-hidden="true">
-<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-<path d="M28 10 C14 10 8 20 14 28 C18 33 26 32 28 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-<path d="M28 26 L32 24 M28 26 L26 21" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</div>
-
-</div>
-
-<div class="sila-face sila-face-back">
-
-${back}
-
-</div>
+<div class="sila-face sila-face-back">${back}</div>
 
 </div>
 
@@ -86,9 +97,15 @@ ${back}
 
         setTimeout(()=>{
 
+            link.classList.add("is-split");
+
+        },400);
+
+        setTimeout(()=>{
+
             link.classList.add("is-ready");
 
-        },3600);
+        },3200);
 
         const hasHover=window.matchMedia("(hover:hover)").matches;
 

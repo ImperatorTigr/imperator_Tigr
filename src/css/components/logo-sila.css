@@ -1,7 +1,5 @@
 .sila-logo{
 
-    container-type:inline-size;
-
     position:relative;
 
     display:inline-flex;
@@ -58,59 +56,37 @@
 
 }
 
-/* ---------- Сетка 2×2 ---------- */
+.sila-svg{
 
-.sila-grid{
+    width:100%;
 
-    position:absolute;
+    height:100%;
 
-    inset:0;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    grid-template-rows:1fr 1fr;
-
-    gap:2cqw;
-
-    animation:silaGridGap 3.8s ease-in-out forwards;
+    overflow:visible;
 
 }
 
-@keyframes silaGridGap{
+/* ---------- Квадранты ---------- */
 
-    0%{gap:2cqw;}
+.sila-chip-rect{
 
-    40%{gap:2cqw;}
+    fill:none;
 
-    62%{gap:22cqw;}
+    stroke:url(#silaGold);
 
-    100%{gap:9cqw;}
+    stroke-width:5;
 
-}
+    transform-box:fill-box;
 
-.sila-chip{
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:7cqw;
-
-    border:2.5cqw solid transparent;
-
-    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep)) border-box;
+    transform-origin:50% 50%;
 
     opacity:0;
 
     transform:scale(.4);
 
     animation:silaChipIn .9s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
+
+    transition:transform .9s cubic-bezier(.4,.1,.2,1) .55s;
 
 }
 
@@ -120,15 +96,25 @@
 
     font-weight:600;
 
-    font-size:27cqw;
+    font-size:56px;
 
-    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
+    fill:url(#silaGold);
 
-    -webkit-background-clip:text;
+    text-anchor:middle;
 
-    background-clip:text;
+    dominant-baseline:central;
 
-    color:transparent;
+    transform-box:fill-box;
+
+    transform-origin:50% 50%;
+
+    opacity:0;
+
+    transform:scale(.4);
+
+    animation:silaChipIn .9s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
+
+    transition:transform .9s cubic-bezier(.4,.1,.2,1) .55s;
 
 }
 
@@ -136,189 +122,179 @@
 
     0%{opacity:0;transform:scale(.4);}
 
-    60%{opacity:1;transform:scale(1.1);}
+    60%{opacity:1;transform:scale(1.08);}
 
     100%{opacity:1;transform:scale(1);}
 
 }
 
-/* ---------- Подсказка направления чтения (только на лицевой стороне) ---------- */
+.sila-chip-tl{transform:translate(0,0);}
 
-.sila-hint{
+.sila-chip-tr{transform:translate(0,0);}
 
-    position:absolute;
+.sila-chip-bl{transform:translate(0,0);}
 
-    top:50%;
+.sila-chip-br{transform:translate(0,0);}
 
-    left:50%;
+.sila-logo.is-split .sila-chip-tl,
 
-    width:20cqw;
+.sila-logo.is-split .sila-chip-tl + .sila-chip-letter{
 
-    height:20cqw;
-
-    color:var(--gold-mid);
-
-    opacity:0;
-
-    transform:translate(-50%,-50%) scale(.3);
-
-    animation:
-
-        silaHintIn .7s ease-out .18s forwards,
-
-        silaHintOut .63s ease-in 1.9s forwards;
+    transform:translate(0,-22px);
 
 }
 
-.sila-hint svg{
+.sila-logo.is-split .sila-chip-tr,
 
-    width:100%;
+.sila-logo.is-split .sila-chip-tr + .sila-chip-letter{
 
-    height:100%;
+    transform:translate(0,-22px);
+
+}
+
+.sila-logo.is-split .sila-chip-bl,
+
+.sila-logo.is-split .sila-chip-bl + .sila-chip-letter{
+
+    transform:translate(0,22px);
+
+}
+
+.sila-logo.is-split .sila-chip-br,
+
+.sila-logo.is-split .sila-chip-br + .sila-chip-letter{
+
+    transform:translate(0,22px);
+
+}
+
+/* ---------- Подсказка направления чтения ---------- */
+
+.sila-hint{
+
+    stroke:var(--gold-mid);
+
+    stroke-width:5;
+
+    fill:none;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    transform-box:fill-box;
+
+    transform-origin:50% 50%;
+
+    opacity:0;
+
+    transform:scale(.3);
+
+    animation:
+
+        silaHintIn .5s ease-out .15s forwards,
+
+        silaHintOut .5s ease-in 1.5s forwards;
 
 }
 
 @keyframes silaHintIn{
 
-    from{opacity:0;transform:translate(-50%,-50%) scale(.3);}
+    from{opacity:0;transform:scale(.3);}
 
-    to{opacity:1;transform:translate(-50%,-50%) scale(1);}
+    to{opacity:1;transform:scale(1);}
 
 }
 
 @keyframes silaHintOut{
 
-    from{opacity:1;transform:translate(-50%,-50%) scale(1);}
+    from{opacity:1;transform:scale(1);}
 
-    to{opacity:0;transform:translate(-50%,-50%) scale(0);}
+    to{opacity:0;transform:scale(0);}
 
 }
 
-/* ---------- Флаг "Т" в тигровую полоску ---------- */
+/* ---------- Флаг "Т" — тонкая рамка с несколькими диагональными штрихами ---------- */
 
-.sila-flag{
-
-    position:absolute;
-
-    top:-6cqw;
-
-    left:50%;
-
-    width:34cqw;
+.sila-flag-group{
 
     opacity:0;
 
-    transform:translateX(-50%) scale(.5);
+    transform-box:fill-box;
 
-    animation:silaFlagIn .8s cubic-bezier(.34,1.3,.64,1) 2.1s forwards;
+    transform-origin:50% 0%;
+
+    transform:scale(.5);
+
+    animation:silaFlagIn .7s cubic-bezier(.34,1.3,.64,1) 1.75s forwards;
 
 }
 
 @keyframes silaFlagIn{
 
-    from{opacity:0;transform:translateX(-50%) scale(.5);}
+    from{opacity:0;transform:scale(.5);}
 
-    to{opacity:1;transform:translateX(-50%) scale(1);}
-
-}
-
-.sila-flag-top,
-
-.sila-flag-stem{
-
-    display:block;
-
-    margin-inline:auto;
-
-    border-radius:18% / 40%;
-
-    background:
-
-        repeating-linear-gradient(
-
-            45deg,
-
-            var(--gold-mid) 0,
-
-            var(--gold-mid) 2.5cqw,
-
-            var(--logo-bg,#0B1F33) 2.5cqw,
-
-            var(--logo-bg,#0B1F33) 6cqw
-
-        );
-
-    border:1.5cqw solid var(--gold-deep);
+    to{opacity:1;transform:scale(1);}
 
 }
 
-.sila-flag-top{
+.sila-flag-shape{
 
-    width:100%;
+    fill:none;
 
-    height:11cqw;
+    stroke:url(#silaGold);
 
-}
-
-.sila-flag-stem{
-
-    width:38%;
-
-    height:16cqw;
-
-    margin-top:-1.5cqw;
+    stroke-width:4;
 
 }
 
-/* ---------- Слово ИГРА / IGRA вертикально ---------- */
+.sila-flag-stripe{
 
-.sila-igra{
+    stroke:var(--gold-mid);
 
-    position:absolute;
+    stroke-width:2.5;
 
-    top:22cqw;
+    stroke-linecap:round;
 
-    left:50%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:.5cqw;
-
-    transform:translateX(-50%);
+    opacity:.85;
 
 }
 
-.sila-igra span{
+/* ---------- Слово ИГРА / IGRA ---------- */
+
+.sila-igra-letter{
 
     font-family:"Manrope",sans-serif;
 
     font-weight:800;
 
-    font-size:14cqw;
+    font-size:30px;
 
-    line-height:1;
+    fill:var(--gold-mid);
 
-    color:var(--gold-mid);
+    text-anchor:middle;
+
+    dominant-baseline:central;
+
+    transform-box:fill-box;
+
+    transform-origin:50% 50%;
 
     opacity:0;
 
     transform:scale(.4);
 
-    animation:silaIgraIn .63s cubic-bezier(.34,1.4,.64,1) forwards;
+    animation:silaIgraIn .55s cubic-bezier(.34,1.4,.64,1) forwards;
 
 }
 
-.sila-igra span:nth-child(1){animation-delay:2.28s;}
+.sila-igra-letter:nth-of-type(1){animation-delay:1.9s;}
 
-.sila-igra span:nth-child(2){animation-delay:2.46s;}
+.sila-igra-letter:nth-of-type(2){animation-delay:2.08s;}
 
-.sila-igra span:nth-child(3){animation-delay:2.64s;}
+.sila-igra-letter:nth-of-type(3){animation-delay:2.26s;}
 
-.sila-igra span:nth-child(4){animation-delay:2.82s;}
+.sila-igra-letter:nth-of-type(4){animation-delay:2.44s;}
 
 @keyframes silaIgraIn{
 
@@ -330,19 +306,21 @@
 
 /* ---------- После окончания входной анимации — фиксируем состояние ---------- */
 
-.sila-logo.is-ready .sila-grid{
+.sila-logo.is-ready .sila-chip-rect,
 
-    animation:none;
+.sila-logo.is-ready .sila-chip-letter,
 
-    gap:9cqw;
+.sila-logo.is-ready .sila-flag-group,
 
-}
-
-.sila-logo.is-ready .sila-chip{
+.sila-logo.is-ready .sila-igra-letter{
 
     animation:none;
 
     opacity:1;
+
+}
+
+.sila-logo.is-ready .sila-chip-letter{
 
     transform:scale(1);
 
@@ -356,23 +334,25 @@
 
 }
 
-.sila-logo.is-ready .sila-flag{
+.sila-logo.is-ready .sila-flag-group{
 
-    animation:none;
-
-    opacity:1;
-
-    transform:translateX(-50%) scale(1);
+    transform:scale(1);
 
 }
 
-.sila-logo.is-ready .sila-igra span{
-
-    animation:none;
-
-    opacity:1;
+.sila-logo.is-ready .sila-igra-letter{
 
     transform:scale(1);
+
+}
+
+/* ---------- Плавное уменьшение при сжатии хедера ---------- */
+
+.site-header.is-scrolled .sila-logo{
+
+    width:44px;
+
+    height:44px;
 
 }
 
