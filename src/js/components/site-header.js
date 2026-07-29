@@ -43,13 +43,9 @@ class SiteHeader extends HTMLElement{
 
 <li><a class="nav-link" href="${home}#hero">Главная</a></li>
 <li><a class="nav-link" href="${home}#games">Игры</a></li>
-<li><a class="nav-link" href="${home}#events">Мероприятия</a></li>
 <li><a class="nav-link" href="${home}#gallery">Галерея</a></li>
 <li><a class="nav-link" href="${home}#about">Обо мне</a></li>
-<li><a class="nav-link" href="${home}#calendar">Календарь</a></li>
-<li><a class="nav-link" href="${home}#blog">Блог</a></li>
 <li><a class="nav-link" href="${home}#feedbacks">Отзывы</a></li>
-<li><a class="nav-link" href="${home}#contacts">Контакты</a></li>
 
 </ul>
 
