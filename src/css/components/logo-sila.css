@@ -74,7 +74,7 @@
 
     gap:2cqw;
 
-    animation:silaGridGap 2.1s ease-in-out forwards;
+    animation:silaGridGap 3.8s ease-in-out forwards;
 
 }
 
@@ -100,21 +100,17 @@
 
     justify-content:center;
 
-    border-radius:24cqw;
+    border-radius:7cqw;
 
     border:2.5cqw solid transparent;
 
-    background:
-
-        linear-gradient(var(--logo-bg,#0B1F33),var(--logo-bg,#0B1F33)) padding-box,
-
-        linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep)) border-box;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep)) border-box;
 
     opacity:0;
 
     transform:scale(.4);
 
-    animation:silaChipIn .5s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
+    animation:silaChipIn .9s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
 
 }
 
@@ -124,7 +120,7 @@
 
     font-weight:600;
 
-    font-size:26cqw;
+    font-size:27cqw;
 
     background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
 
@@ -168,9 +164,9 @@
 
     animation:
 
-        silaHintIn .4s ease-out .1s forwards,
+        silaHintIn .7s ease-out .18s forwards,
 
-        silaHintOut .35s ease-in 1.05s forwards;
+        silaHintOut .63s ease-in 1.9s forwards;
 
 }
 
@@ -214,7 +210,7 @@
 
     transform:translateX(-50%) scale(.5);
 
-    animation:silaFlagIn .45s cubic-bezier(.34,1.3,.64,1) 1.15s forwards;
+    animation:silaFlagIn .8s cubic-bezier(.34,1.3,.64,1) 2.1s forwards;
 
 }
 
@@ -302,7 +298,7 @@
 
     font-weight:800;
 
-    font-size:9cqw;
+    font-size:14cqw;
 
     line-height:1;
 
@@ -312,17 +308,17 @@
 
     transform:scale(.4);
 
-    animation:silaIgraIn .35s cubic-bezier(.34,1.4,.64,1) forwards;
+    animation:silaIgraIn .63s cubic-bezier(.34,1.4,.64,1) forwards;
 
 }
 
-.sila-igra span:nth-child(1){animation-delay:1.25s;}
+.sila-igra span:nth-child(1){animation-delay:2.28s;}
 
-.sila-igra span:nth-child(2){animation-delay:1.34s;}
+.sila-igra span:nth-child(2){animation-delay:2.46s;}
 
-.sila-igra span:nth-child(3){animation-delay:1.43s;}
+.sila-igra span:nth-child(3){animation-delay:2.64s;}
 
-.sila-igra span:nth-child(4){animation-delay:1.52s;}
+.sila-igra span:nth-child(4){animation-delay:2.82s;}
 
 @keyframes silaIgraIn{
 

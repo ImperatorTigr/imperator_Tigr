@@ -88,7 +88,7 @@ ${back}
 
             link.classList.add("is-ready");
 
-        },2000);
+        },3600);
 
         const hasHover=window.matchMedia("(hover:hover)").matches;
 
