@@ -43,6 +43,7 @@ class SiteHeader extends HTMLElement{
 
 <li><a class="nav-link" href="${home}#hero">Главная</a></li>
 <li><a class="nav-link" href="${home}#games">Игры</a></li>
+<li><a class="nav-link" href="${home}#test">Тест</a></li>
 <li><a class="nav-link" href="${home}#gallery">Галерея</a></li>
 <li><a class="nav-link" href="${home}#about">Обо мне</a></li>
 <li><a class="nav-link" href="${home}#feedbacks">Отзывы</a></li>

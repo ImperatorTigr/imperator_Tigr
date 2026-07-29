@@ -116,6 +116,35 @@
 
 }
 
+/* ===== НОВОЕ: картинка в карточке игры ===== */
+.game-card-image{
+
+    width:100%;
+
+    aspect-ratio:16/10;
+
+    border-radius:var(--radius-sm);
+
+    overflow:hidden;
+
+    margin-bottom:1rem;
+
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
+
+}
+
+.game-card-image img{
+
+    display:block;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
 .game-card-text{
 
     font-family:"Manrope",sans-serif;

@@ -36,23 +36,11 @@
 
 }
 
+/* Картинки убраны — cover скрыт */
 .blog-card-cover{
 
-    aspect-ratio:16/9;
+    display:none;
 
-    background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
-
-}
-
-.blog-card-cover picture,
-.blog-card-cover img{
-    display:block;
-    width:100%;
-    height:100%;
-}
-
-.blog-card-cover img{
-    object-fit:cover;
 }
 
 .blog-card-body{

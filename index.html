@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="src/css/components/logo-sila.css">
     <link rel="stylesheet" href="src/css/components/header.css">
     <link rel="stylesheet" href="src/css/components/games.css">
+    <link rel="stylesheet" href="src/css/components/test.css">
     <link rel="stylesheet" href="src/css/components/events.css">
     <link rel="stylesheet" href="src/css/components/gallery.css">
     <link rel="stylesheet" href="src/css/components/about.css">
@@ -121,6 +122,13 @@
 
                         <h3 class="game-card-title">Лила.Поток</h3>
 
+                        <div class="game-card-image">
+    <picture>
+        <source srcset="assets/images/lila.webp" type="image/webp">
+        <img src="assets/images/lila.jpg" alt="Игра Лила" loading="lazy" decoding="async">
+    </picture>
+</div>
+
                         <p class="game-card-text">
                             Что, если один бросок кубика способен сказать о вас больше, чем месяцы размышлений? «Лила.Поток» - практика, которая не даёт играть вполсилы: каждый ход поднимает то, что давно пряталось даже от вас самих. Я веду эту игру так, чтобы после неё не осталось белых пятен в ответах на ваши вопросы - только ясность, ради которой стоит рискнуть и шагнуть в настоящую встречу с собой.
                         </p>
@@ -137,6 +145,13 @@
                         </div>
 
                         <h3 class="game-card-title">Деньги просто деньги</h3>
+
+                        <div class="game-card-image">
+    <picture>
+        <source srcset="assets/images/dpd.webp" type="image/webp">
+        <img src="assets/images/dpd.jpg" alt="Игра Деньги просто деньги" loading="lazy" decoding="async">
+    </picture>
+</div>
 
                         <p class="game-card-text">
                             Практика-полигон, наполняющая энергией созидания и помогающая разобраться со своим финансовым потолком. Нетворкинг за игровым полем заиграет новыми красками, влюбляя в себя. Непременно вскроются ваши личные установки о деньгах, незаметно тормозящие решения и рост, ведь именно это наделяет игру силой трансформации. Подходит тем, кто хочет  обзавестись полезными связями, выявить и проработать ограничивающие установки и негативные убеждения.
@@ -155,6 +170,13 @@
 
                         <h3 class="game-card-title">Источники женской силы</h3>
 
+                        <div class="game-card-image">
+    <picture>
+        <source srcset="assets/images/igs.webp" type="image/webp">
+        <img src="assets/images/igs.jpg" alt="Игра Источники женской силы" loading="lazy" decoding="async">
+    </picture>
+</div>
+
                         <p class="game-card-text">
                             Семь богинь Юнга - это семь граней вас, о которых вы, возможно, забыли или никогда не разрешали себе прожить. Практика проводит через архетипы, в которых оживает то, что было спрятано под ролями "удобной", "правильной", "сильной", и возвращает контакт с той частью себя, что действует, чувствует и хочет по-настоящему. Каждая богиня открывает свой источник силы, а вместе они складываются в цельный образ женщины, которой вы можете быть. Подходит тем, кто устал искать опору снаружи и готов найти её в себе, во всём многообразии своих проявлений.
                         </p>
@@ -172,6 +194,13 @@
 
                         <h3 class="game-card-title">Сессия с МАК картами</h3>
 
+                        <div class="game-card-image">
+    <picture>
+        <source srcset="assets/images/mak.webp" type="image/webp">
+        <img src="assets/images/mak.jpg" alt="Игра Сессия с МАК картами" loading="lazy" decoding="async">
+    </picture>
+</div>
+
                         <p class="game-card-text">
                             Метафорические карты не гадают и не дают готовых ответов, они просто снимают внутреннюю цензуру и позволяют сказать то, что вы давно чувствовали, но не решались произнести даже себе. Через образы и ассоциации на поверхность поднимается то, что рационально объяснить сложно, зато невозможно не узнать, когда оно перед глазами. Подходит тем, кто застрял в вопросе без ответа или хочет по-новому взглянуть на привычную ситуацию, без долгих разборов и лишних слов.
                         </p>
@@ -185,6 +214,43 @@
             </div>
 
         </section>
+
+                <section class="test" id="test">
+
+            <div class="container">
+
+                <div class="test-header">
+                    <div>
+                        <div class="test-eyebrow">Интерактив</div>
+                        <h2>Тест</h2>
+                    </div>
+                    <div class="test-mode-toggle" role="group" aria-label="Режим просмотра">
+                        <button type="button" data-mode="grid" class="active">Сетка</button>
+                        <button type="button" data-mode="board">Исследовать</button>
+                    </div>
+                </div>
+
+                <div class="test-viewport mode-grid" id="testViewport">
+                    <svg class="test-lines" id="testLines"></svg>
+                    <div class="test-grid" id="testGrid"></div>
+                </div>
+
+                <p class="test-hint">Перетаскивайте фото — расположение сохранится при следующем визите.</p>
+
+            </div>
+
+        </section>
+
+        <!-- Лайтбокс -->
+        <div class="test-lightbox" id="testLightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+            <button type="button" class="test-lightbox-close" id="testLightboxClose" aria-label="Закрыть">✕</button>
+            <button type="button" class="test-lightbox-nav test-lightbox-prev" id="testLightboxPrev" aria-label="Предыдущее фото">‹</button>
+            <button type="button" class="test-lightbox-nav test-lightbox-next" id="testLightboxNext" aria-label="Следующее фото">›</button>
+            <div class="test-lightbox-frame" id="testLightboxFrame">
+                <img id="testLightboxImg" src="" alt="">
+            </div>
+            <div class="test-lightbox-hint">Клик по фото — приблизить/отдалить · колесо мыши — зум · Esc — закрыть</div>
+        </div>
 
         <section class="events" id="events">
 
@@ -421,19 +487,6 @@
 
                     <a class="blog-card" href="blog/post-1.html">
 
-                        <div class="blog-card-cover">
-    <picture>
-        <source
-            srcset="assets/images/lila.webp"
-            type="image/webp">
-        <img
-            src="assets/images/lila.jpg"
-            alt="Лила.Поток"
-            loading="lazy"
-            decoding="async">
-    </picture>
-</div>
-
                         <div class="blog-card-body">
                             <span class="blog-card-date">27.07.2026</span>
                             <h3 class="blog-card-title">Практика «Лила.Поток»</h3>
@@ -444,19 +497,6 @@
 
                     <a class="blog-card" href="blog/post-2.html">
 
-                        <div class="blog-card-cover">
-    <picture>
-        <source
-            srcset="assets/images/dpd.webp"
-            type="image/webp">
-        <img
-            src="assets/images/dpd.jpg"
-            alt="Деньги просто деньги"
-            loading="lazy"
-            decoding="async">
-    </picture>
-</div>
-
                         <div class="blog-card-body">
                             <span class="blog-card-date">28.07.2026</span>
                             <h3 class="blog-card-title">Практика «Деньги просто деньги»</h3>
@@ -466,19 +506,6 @@
                     </a>
 
                     <a class="blog-card" href="blog/post-3.html">
-
-                        <div class="blog-card-cover">
-    <picture>
-        <source
-            srcset="assets/images/igs.webp"
-            type="image/webp">
-        <img
-            src="assets/images/igs.jpg"
-            alt="Источники женской силы"
-            loading="lazy"
-            decoding="async">
-    </picture>
-</div>
 
                         <div class="blog-card-body">
                             <span class="blog-card-date">29.07.2026</span>
@@ -759,6 +786,8 @@
         </div>
     </div>
 </footer>
+
+<script src="src/js/components/test.js"></script>
 
 </body>
 
