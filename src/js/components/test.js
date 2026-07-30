@@ -88,7 +88,7 @@
     photo.dataset.rot = pos.rot;
   }
 
-  function resetBoard() {
+    function resetBoard() {
     photos.forEach(function (photo) {
       if (photo.parentElement !== grid) {
         grid.appendChild(photo);
@@ -116,22 +116,33 @@
 
     boardInitialized = true;
     drawLines();
-    console.log('Test: board mode active, cards:', photos.length);
+    console.log('Test: board mode active');
   }
 
   function setMode(mode) {
-    console.log('Test: setMode called:', mode);
+    console.log('Test: setMode:', mode);
 
-    // Универсальная проверка: board = всё, что НЕ grid/stop/стоп/стопка
-    var isBoard = (mode === 'board' || mode === 'test' || mode === 'движение' || mode === 'move');
-    var isGrid = !isBoard;
+    if (mode === 'reset') {
+      // Рестарт: стираем сохранённую раскладку
+      localStorage.removeItem(STORAGE_KEY);
+      console.log('Test: layout reset');
+      // Если сейчас на доске — пересобираем заново рандомно
+      if (viewport.classList.contains('mode-board')) {
+        initBoard();
+      } else {
+        resetBoard();
+      }
+      return;
+    }
+
+    var isBoard = (mode === 'board');
 
     toggleButtons.forEach(function (b) {
       b.classList.toggle('active', b.dataset.mode === mode);
     });
 
     viewport.classList.toggle('mode-board', isBoard);
-    viewport.classList.toggle('mode-grid', isGrid);
+    viewport.classList.toggle('mode-grid', !isBoard);
 
     if (isBoard) {
       initBoard();

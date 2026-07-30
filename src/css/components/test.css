@@ -214,12 +214,12 @@
     padding:24px;
 }
 
-/* Карточка в сетке — фиксированная высота, фото целиком без обрезки */
+/* Карточка в сетке — фиксированная высота, фото целиком */
 .test-grid .test-card{
     position:static !important;
     transform:none !important;
     width:100% !important;
-    height:150px;              /* фиксированная высота */
+    height:140px;              /* фиксированная высота */
     cursor:pointer;
     left:auto !important;
     top:auto !important;
