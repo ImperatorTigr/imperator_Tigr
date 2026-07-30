@@ -83,17 +83,53 @@
     photo.dataset.rot = pos.rot;
   }
 
-  function initBoard() {
-    if (boardInitialized) return;
-    boardInitialized = true;
+    function initBoard() {
+    // Убрана проверка boardInitialized — теперь всегда расставляем при входе в режим
     var bounds = { width: viewport.clientWidth, height: viewport.clientHeight };
     var saved = loadLayout();
+
     photos.forEach(function (photo, index) {
       var pos = (saved && saved[photo.dataset.id]) || randomScatter(index, photos.length, bounds);
       applyTransform(photo, pos);
-      viewport.appendChild(photo);
+      if (photo.parentElement !== viewport) {
+        viewport.appendChild(photo);
+      }
     });
+
+    boardInitialized = true;
     drawLines();
+  }
+
+  function setMode(mode) {
+    toggleButtons.forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+    
+    // Работаем и с оригинальными data-mode, и если вы их переименовали
+    var isBoard = (mode === 'board' || mode === 'test');
+    viewport.classList.toggle('mode-board', isBoard);
+    viewport.classList.toggle('mode-grid', !isBoard);
+
+    if (isBoard) {
+      // Тест — переход в режим доски с сохранёнными позициями
+      initBoard();
+    } else {
+      // Стоп — возврат карточек в grid-контейнер, очистка inline-стилей
+      photos.forEach(function (photo) {
+        if (photo.parentElement !== grid) {
+          grid.appendChild(photo);
+        }
+        photo.style.left = '';
+        photo.style.top = '';
+        photo.style.transform = '';
+      });
+      /* 
+        Если нужно, чтобы Стоп также сбрасывала сохранённые позиции 
+        (при следующем Тест — снова рандом, а не пользовательский порядок),
+        раскомментируйте строку ниже:
+      */
+      // localStorage.removeItem(STORAGE_KEY);
+    }
   }
 
   function currentLayoutMap() {
