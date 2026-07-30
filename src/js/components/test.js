@@ -4,14 +4,15 @@
 /* =====================================================================
    СПИСОК ФОТО БЛОКА «ТЕСТ»
    Подготовьте файлы в assets/images/:
-   test-1.webp + test-1.jpg, test-2.webp + test-2.jpg, ...
+   test-01.webp + test-01.jpg, test-02.webp + test-02.jpg, ...
   ===================================================================== */
 var TEST_PHOTOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (n) {
+    var num = String(n).padStart(2, '0');
     return {
         id: String(n),
-        thumbWebp: BASE + 'test-' + n + '.webp',
-        thumbJpg:  BASE + 'test-' + n + '.jpg',
-        full:        BASE + 'test-' + n + '.jpg',
+        thumbWebp: BASE + 'test-' + num + '.webp',
+        thumbJpg:  BASE + 'test-' + num + '.jpg',
+        full:        BASE + 'test-' + num + '.jpg',
         alt: 'Тест, фото ' + n
     };
 });
