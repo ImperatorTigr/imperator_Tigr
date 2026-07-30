@@ -33,7 +33,6 @@
     color:var(--gold-mid);
 }
 
-/* Eyebrow как на logo_v2: плотный, широкий */
 .post-hero-eyebrow{
     display:block;
     font-family:"Manrope",sans-serif;
@@ -45,7 +44,6 @@
     margin-bottom:1.25rem;
 }
 
-/* Заголовок: sans-serif, массивный, чёткий как на logo_v2 */
 .post-hero-title{
     font-family:"Manrope",sans-serif;
     font-weight:600;
@@ -56,7 +54,6 @@
     margin-bottom:1.5rem;
 }
 
-/* Описание/дата: крупнее, воздушнее */
 .post-hero-date{
     font-family:"Manrope",sans-serif;
     font-size:1.15rem;
@@ -72,14 +69,15 @@
     justify-content:center;
 }
 
-/* Логотип увеличен до размеров logo_v2 */
-.post-hero-logo .logo-cube{
-    width:min(520px,100%);
-    height:auto;
+/* ===== Логотип — увеличен и защищён от перебивки ===== */
+.post-hero-logo .logo-cube,
+.post-hero-logo site-logo{
+    width:min(520px,100%) !important;
+    height:auto !important;
     aspect-ratio:1;
 }
 
-/* Фото-ревил тоже увеличено пропорционально */
+/* ===== Фото-ревил: без "золотой точки" ===== */
 .post-hero-photo{
     position:absolute;
     top:50%;
@@ -108,9 +106,34 @@
     display:block;
 }
 
+/* При раскрытии: фото мгновенно видно */
 .post-hero-logo.is-revealing .post-hero-photo{
     opacity:1;
     transform:translate(-50%,-50%) scale(1);
+}
+
+/* ===== УБИРАЕМ "ЗОЛОТУЮ ТОЧКУ" и весь логотип при раскрытии ===== */
+.post-hero-logo.is-revealing .logo-point,
+.post-hero-logo.is-revealing .logo-letter,
+.post-hero-logo.is-revealing .logo-word,
+.post-hero-logo.is-revealing .logo-frame-outer,
+.post-hero-logo.is-revealing .logo-grid-line{
+    opacity:0 !important;
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+}
+
+/* Дополнительная защита: если hover/is-triggered активен */
+.post-hero-logo.is-revealing .logo-cube:hover .logo-point,
+.post-hero-logo.is-revealing .logo-cube.is-triggered .logo-point,
+.post-hero-logo.is-revealing .logo-cube:hover .logo-letter,
+.post-hero-logo.is-revealing .logo-cube.is-triggered .logo-letter,
+.post-hero-logo.is-revealing .logo-cube:hover .logo-word,
+.post-hero-logo.is-revealing .logo-cube.is-triggered .logo-word{
+    animation:none !important;
+    opacity:0 !important;
+    transform:none !important;
 }
 
 @media (max-width:900px){
@@ -138,8 +161,9 @@
     .post-hero-back{
         order:-1;
     }
-    .post-hero-logo .logo-cube{
-        width:100%;
+    .post-hero-logo .logo-cube,
+    .post-hero-logo site-logo{
+        width:100% !important;
     }
     .post-hero-photo{
         width:100%;
@@ -149,117 +173,108 @@
 /* ---------- Светлая часть — текст статьи ---------- */
 
 .post{
-    padding-block: 5rem 6rem;
-    min-height: 40vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    padding-block:5rem 6rem;
+    min-height:40vh;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
 }
 
-/* Убрана "коробка" — текст дышит на фоне страницы */
 .post-stub{
-    font-family: "Manrope", sans-serif;
-    font-size: 1.15rem;
-    line-height: 1.85;
-    color: var(--color-text);
-    max-width: 70ch;           /* оптимальная ширина для чтения */
-    margin: 0 auto;            /* центрируем */
-    padding: 0 2rem;           /* боковые отступы */
+    font-family:"Manrope",sans-serif;
+    font-size:1.15rem;
+    line-height:1.85;
+    color:var(--color-text);
+    max-width:70ch;
+    margin:0 auto;
+    padding:0 2rem;
 }
 
-/* Заголовки внутри статьи */
 .post-stub h2{
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 600;
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-    color: var(--color-title);
-    margin-top: 3.5rem;
-    margin-bottom: 1.25rem;
-    line-height: 1.15;
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(1.8rem,3.2vw,2.4rem);
+    color:var(--color-title);
+    margin-top:3.5rem;
+    margin-bottom:1.25rem;
+    line-height:1.15;
 }
 
 .post-stub h3{
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 600;
-    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-    color: var(--color-title);
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(1.4rem,2.5vw,1.8rem);
+    color:var(--color-title);
+    margin-top:2.5rem;
+    margin-bottom:1rem;
 }
 
-/* Абзацы — воздух между ними */
 .post-stub p{
-    margin-bottom: 1.5rem;
+    margin-bottom:1.5rem;
 }
 
-/* Списки */
 .post-stub ul,
 .post-stub ol{
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    margin-bottom:1.5rem;
+    padding-left:1.5rem;
 }
 
 .post-stub li{
-    margin-bottom: 0.6rem;
+    margin-bottom:.6rem;
 }
 
-/* ===== Цитаты — изящные, с золотой линией ===== */
 .post-stub blockquote{
-    position: relative;
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-size: 1.35rem;
-    line-height: 1.55;
-    color: var(--color-title);
-    margin: 2.5rem 0 2.5rem 1.5rem;
-    padding: 1.25rem 2rem;
-    border-left: 3px solid var(--gold-mid);
-    background: linear-gradient(90deg, rgba(212,160,23,0.05), transparent 80%);
+    position:relative;
+    font-family:"Cormorant Garamond",serif;
+    font-style:italic;
+    font-size:1.35rem;
+    line-height:1.55;
+    color:var(--color-title);
+    margin:2.5rem 0 2.5rem 1.5rem;
+    padding:1.25rem 2rem;
+    border-left:3px solid var(--gold-mid);
+    background:linear-gradient(90deg,rgba(212,160,23,.05),transparent 80%);
 }
 
 .post-stub blockquote p{
-    margin: 0;
+    margin:0;
 }
 
-/* Автор цитаты */
 .post-stub blockquote cite{
-    display: block;
-    margin-top: 1rem;
-    font-family: "Manrope", sans-serif;
-    font-style: normal;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--gold-mid);
+    display:block;
+    margin-top:1rem;
+    font-family:"Manrope",sans-serif;
+    font-style:normal;
+    font-size:.8rem;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--gold-mid);
 }
 
-/* Выделение */
 .post-stub strong{
-    font-weight: 700;
-    color: var(--color-title);
+    font-weight:700;
+    color:var(--color-title);
 }
 
-/* Разделитель */
 .post-stub hr{
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
-    margin: 3rem auto;
-    max-width: 180px;
-    opacity: 0.35;
+    border:none;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold-mid),transparent);
+    margin:3rem auto;
+    max-width:180px;
+    opacity:.35;
 }
 
-/* Адаптив */
-@media (max-width: 640px){
+@media (max-width:640px){
     .post-stub{
-        font-size: 1.05rem;
-        line-height: 1.75;
-        padding: 0 1.25rem;
+        font-size:1.05rem;
+        line-height:1.75;
+        padding:0 1.25rem;
     }
     .post-stub blockquote{
-        font-size: 1.15rem;
-        margin-left: 0.75rem;
-        padding: 1rem 1.25rem;
+        font-size:1.15rem;
+        margin-left:.75rem;
+        padding:1rem 1.25rem;
     }
 }
 
