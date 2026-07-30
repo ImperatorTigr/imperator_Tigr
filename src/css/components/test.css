@@ -21,11 +21,11 @@
 
 .test-header-side{
     font-family:"Manrope",sans-serif;
-    font-size:.85rem;
-    line-height:1.6;
+    font-size:.7rem;          /* ← было .85rem, стало .7rem (~11px) */
+    line-height:1.5;
     color:var(--color-text);
-    opacity:.8;
-    max-width:280px;
+    opacity:.55;              /* ← мягче, не основной текст */
+    max-width:240px;          /* ← чуть уже, ибо шрифт мельче */
 }
 
 .test-header-left{
@@ -51,9 +51,9 @@
     }
     .test-header-side{
         text-align:center;
-        max-width:420px;
+        max-width:320px;
         margin:0 auto;
-        font-size:.8rem;
+        font-size:.65rem;
         justify-self:center;
     }
     .test-header-center .test-mode-toggle{
