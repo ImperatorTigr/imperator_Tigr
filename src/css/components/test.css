@@ -9,7 +9,7 @@
 .test-header{
     display:grid;
     grid-template-columns:1fr minmax(200px,auto) 1fr;
-    align-items:start;
+    align-items:start;        /* заголовок сверху */
     gap:32px;
     margin-bottom:28px;
 }
@@ -19,16 +19,18 @@
     min-width:200px;
 }
 
+/* Боковые тексты прижаты к низу — на уровне кнопок */
 .test-header-side{
+    align-self:end;             /* ← прижимаем к нижней линии grid */
     font-family:"Manrope",sans-serif;
-    font-size:.65rem;          /* ~10px */
+    font-size:.72rem;           /* ← чуть крупнее, было .65rem */
     line-height:1.45;
     color:var(--color-text);
-    opacity:.45;               /* мягкий, не основной текст */
+    opacity:.45;
     max-width:240px;
+    padding-bottom:4px;         /* ← микро-отступ чтобы сесть ровно с кнопками */
 }
 
-/* ВАЖНО: сбрасываем размер у параграфа внутри, иначе он перебивает */
 .test-header-side p{
     font-size:inherit;
     line-height:inherit;
@@ -51,13 +53,21 @@
 }
 
 @media (max-width:900px){
+    .test-header{
+        grid-template-columns:1fr;
+        gap:16px;
+        text-align:center;
+    }
     .test-header-side,
     .test-header-side p{
-        font-size:.6rem;
+        align-self:center;      /* ← на мобильном по центру */
+        font-size:.65rem;
         max-width:320px;
-    }
-    .test-header-side{
         justify-self:center;
+        padding-bottom:0;
+    }
+    .test-header-center .test-mode-toggle{
+        margin-top:10px;
     }
 }
 
