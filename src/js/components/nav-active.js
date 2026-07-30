@@ -1,6 +1,6 @@
 function initActiveNav(){
 
-    const sections=[...document.querySelectorAll("main section[id]")];
+    const sections=[...document.querySelectorAll("main section[id], footer[id], #footer")];
 
     const navList=document.querySelector(".nav-list");
 
