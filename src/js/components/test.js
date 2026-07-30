@@ -1,22 +1,34 @@
 (function(){
 'use strict';
 
-var BASE='https://imperatortigr.github.io/imperator_Tigr/assets/images/';
-var TEST_PHOTOS=[1,2,3,4,5,6,7].map(function(n){
-    var file=BASE+'gallery-'+n+'.jpg';
-    return{id:String(n),thumb:file,full:file,alt:'Атмосфера игры, фото '+n};
+/* =====================================================================
+   СПИСОК ФОТО БЛОКА «ТЕСТ»
+   Подготовьте файлы в assets/images/:
+   test-1.webp + test-1.jpg, test-2.webp + test-2.jpg, ...
+  ===================================================================== */
+var TEST_PHOTOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (n) {
+    return {
+        id: String(n),
+        thumbWebp: BASE + 'test-' + n + '.webp',
+        thumbJpg:  BASE + 'test-' + n + '.jpg',
+        full:        BASE + 'test-' + n + '.jpg',
+        alt: 'Тест, фото ' + n
+    };
 });
 
-var STORAGE_KEY='test-board-layout-v1';
-var viewport=document.getElementById('testViewport');
-var grid=document.getElementById('testGrid');
-var linesSvg=document.getElementById('testLines');
-var toggleButtons=document.querySelectorAll('.test-mode-toggle button');
+var STORAGE_KEY = 'test-board-layout-v1';
+var viewport = document.getElementById('testViewport');
+var grid = document.getElementById('testGrid');
+var linesSvg = document.getElementById('testLines');
+var toggleButtons = document.querySelectorAll('.test-mode-toggle button');
 
-function renderGrid(){
-    grid.innerHTML=TEST_PHOTOS.map(function(p){
-        return'<div class="test-card" data-id="'+p.id+'" data-full="'+p.full+'">'+
-            '<img src="'+p.thumb+'" alt="'+p.alt+'" loading="lazy" decoding="async">'+
+function renderGrid() {
+    grid.innerHTML = TEST_PHOTOS.map(function (p) {
+        return '<div class="test-card" data-id="' + p.id + '" data-full="' + p.full + '">' +
+            '<picture>' +
+                '<source srcset="' + p.thumbWebp + '" type="image/webp">' +
+                '<img src="' + p.thumbJpg + '" alt="' + p.alt + '" loading="lazy" decoding="async">' +
+            '</picture>' +
             '</div>';
     }).join('');
 }
