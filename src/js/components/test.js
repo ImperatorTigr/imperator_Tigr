@@ -40,14 +40,9 @@
   }
   renderGrid();
 
-    var photos = Array.prototype.slice.call(document.querySelectorAll('.test-card'));
+  var photos = Array.prototype.slice.call(document.querySelectorAll('.test-card'));
   var boardInitialized = false;
   var order = photos.map(function (p) { return p.dataset.id; });
-
-  /* ===== Логируем кнопки при старте ===== */
-  toggleButtons.forEach(function(btn, i){
-    console.log('Test: button', i, 'data-mode =', btn.dataset.mode, 'text =', btn.textContent.trim());
-  });
 
   function loadLayout() {
     try {
@@ -88,7 +83,7 @@
     photo.dataset.rot = pos.rot;
   }
 
-    function resetBoard() {
+  function resetBoard() {
     photos.forEach(function (photo) {
       if (photo.parentElement !== grid) {
         grid.appendChild(photo);
@@ -123,10 +118,8 @@
     console.log('Test: setMode:', mode);
 
     if (mode === 'reset') {
-      // Рестарт: стираем сохранённую раскладку
       localStorage.removeItem(STORAGE_KEY);
       console.log('Test: layout reset');
-      // Если сейчас на доске — пересобираем заново рандомно
       if (viewport.classList.contains('mode-board')) {
         initBoard();
       } else {
@@ -349,17 +342,6 @@
     if (e.key === 'ArrowLeft') showNeighbor(-1);
     if (e.key === 'ArrowRight') showNeighbor(1);
   });
-
-  function setMode(mode) {
-    toggleButtons.forEach(function (btn) {
-      btn.classList.toggle('active', btn.dataset.mode === mode);
-    });
-    viewport.classList.toggle('mode-board', mode === 'board');
-    viewport.classList.toggle('mode-grid', mode === 'grid');
-    if (mode === 'board') {
-      initBoard();
-    }
-  }
 
   toggleButtons.forEach(function (btn) {
     btn.addEventListener('click', function () {
