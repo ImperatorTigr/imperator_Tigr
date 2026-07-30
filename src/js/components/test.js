@@ -40,9 +40,14 @@
   }
   renderGrid();
 
-  var photos = Array.prototype.slice.call(document.querySelectorAll('.test-card'));
+    var photos = Array.prototype.slice.call(document.querySelectorAll('.test-card'));
   var boardInitialized = false;
   var order = photos.map(function (p) { return p.dataset.id; });
+
+  /* ===== Логируем кнопки при старте ===== */
+  toggleButtons.forEach(function(btn, i){
+    console.log('Test: button', i, 'data-mode =', btn.dataset.mode, 'text =', btn.textContent.trim());
+  });
 
   function loadLayout() {
     try {
@@ -59,7 +64,7 @@
     } catch (e) {}
   }
 
-    function randomScatter(index, total, bounds) {
+  function randomScatter(index, total, bounds) {
     var cols = Math.ceil(Math.sqrt(total));
     var cellW = bounds.width / cols;
     var cellH = bounds.height / Math.ceil(total / cols);
@@ -68,8 +73,8 @@
     var jitterX = (Math.random() - .5) * cellW * .4;
     var jitterY = (Math.random() - .5) * cellH * .4;
     return {
-      x: col * cellW + cellW / 2 - 110 + jitterX,   /* ← половина 220px */
-      y: row * cellH + cellH / 2 - 75 + jitterY,    /* ← половина ~150px (3/2) */
+      x: col * cellW + cellW / 2 - 110 + jitterX,
+      y: row * cellH + cellH / 2 - 75 + jitterY,
       rot: (Math.random() - .5) * 14
     };
   }
@@ -83,8 +88,7 @@
     photo.dataset.rot = pos.rot;
   }
 
-      function resetBoard() {
-    // Возвращаем карточки в grid и чистим inline-стили
+  function resetBoard() {
     photos.forEach(function (photo) {
       if (photo.parentElement !== grid) {
         grid.appendChild(photo);
@@ -118,12 +122,12 @@
   function setMode(mode) {
     console.log('Test: setMode called:', mode);
 
-    // Универсальная проверка: board = всё кроме grid/stop/стоп
-    var isGrid = (mode === 'grid' || mode === 'stop' || mode === 'стоп');
-    var isBoard = !isGrid;
+    // Универсальная проверка: board = всё, что НЕ grid/stop/стоп/стопка
+    var isBoard = (mode === 'board' || mode === 'test' || mode === 'движение' || mode === 'move');
+    var isGrid = !isBoard;
 
-    toggleButtons.forEach(function (btn) {
-      btn.classList.toggle('active', btn.dataset.mode === mode);
+    toggleButtons.forEach(function (b) {
+      b.classList.toggle('active', b.dataset.mode === mode);
     });
 
     viewport.classList.toggle('mode-board', isBoard);
