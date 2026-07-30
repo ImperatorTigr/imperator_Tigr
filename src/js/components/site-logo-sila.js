@@ -1,134 +1,124 @@
-function buildFace(letters,includeDefs){
+class SiteLogoSila extends HTMLElement {
+  connectedCallback() {
+    const inSubfolder = window.location.pathname.includes("/blog/");
+    const home = inSubfolder ? "../index.html" : "./";
 
-    const chip=(pos,x,y,ch,delay)=>`
+    // ── Лицевая сторона: кириллица ──
+    const svgFront = `
+      <svg class="sila-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="silaGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="var(--gold-light)"/>
+            <stop offset="50%" stop-color="var(--gold-mid)"/>
+            <stop offset="100%" stop-color="var(--gold-deep)"/>
+          </linearGradient>
+          <pattern id="tigerStripes" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+            <rect width="7" height="14" fill="rgba(20,18,15,0.18)"/>
+          </pattern>
+        </defs>
 
-<rect class="sila-chip-rect" x="${x}" y="${y}" width="130" height="130" rx="18" style="--chip-delay:${delay}"/>
+        <!-- Фаза 1: квадрат + сетка + СИЛА -->
+        <g class="sila-phase-1">
+          <rect class="sila-frame" x="20" y="20" width="260" height="260" rx="26"/>
+          <line class="sila-grid-line" x1="150" y1="20" x2="150" y2="280"/>
+          <line class="sila-grid-line" x1="20" y1="150" x2="280" y2="150"/>
 
-<text class="sila-chip-letter" x="${x+65}" y="${y+67}" style="--chip-delay:${delay}">${ch}</text>
+          <text class="sila-letter" style="--delay:.8s"  x="85" y="85">С</text>
+          <text class="sila-letter" style="--delay:1.0s" x="85" y="215">И</text>
+          <text class="sila-letter" style="--delay:1.2s" x="215" y="215">Л</text>
+          <text class="sila-letter" style="--delay:1.4s" x="215" y="85">А</text>
+        </g>
 
-`;
+        <!-- Фаза 2: прямоугольники + Т + ИГРА -->
+        <g class="sila-phase-2">
+          <rect class="sila-rect-left"  x="20" y="20" width="120" height="260" rx="22"/>
+          <rect class="sila-rect-right" x="160" y="20" width="120" height="260" rx="22"/>
 
-    const defs=includeDefs?`
+          <g class="sila-t-group">
+            <path class="sila-t-shape"
+                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"/>
+            <path class="sila-t-stripes"
+                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"
+                  fill="url(#tigerStripes)"/>
+          </g>
 
-<defs>
+          <text class="sila-igra-letter" style="--delay:2.6s"  x="150" y="142">И</text>
+          <text class="sila-igra-letter" style="--delay:2.78s" x="150" y="182">Г</text>
+          <text class="sila-igra-letter" style="--delay:2.96s" x="150" y="222">Р</text>
+          <text class="sila-igra-letter" style="--delay:3.14s" x="150" y="262">А</text>
+        </g>
+      </svg>
+    `;
 
-<linearGradient id="silaGold" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="var(--gold-light)"/>
-<stop offset="50%" stop-color="var(--gold-mid)"/>
-<stop offset="100%" stop-color="var(--gold-deep)"/>
-</linearGradient>
+    // ── Обратная сторона: латиница ──
+    const svgBack = `
+      <svg class="sila-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="silaGoldBack" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="var(--gold-light)"/>
+            <stop offset="50%" stop-color="var(--gold-mid)"/>
+            <stop offset="100%" stop-color="var(--gold-deep)"/>
+          </linearGradient>
+          <pattern id="tigerStripesBack" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+            <rect width="7" height="14" fill="rgba(20,18,15,0.18)"/>
+          </pattern>
+        </defs>
 
-</defs>
+        <g class="sila-phase-1-back">
+          <rect class="sila-frame" x="20" y="20" width="260" height="260" rx="26"/>
+          <line class="sila-grid-line" x1="150" y1="20" x2="150" y2="280"/>
+          <line class="sila-grid-line" x1="20" y1="150" x2="280" y2="150"/>
 
-`:"";
+          <text class="sila-letter-back" x="85" y="85">S</text>
+          <text class="sila-letter-back" x="85" y="215">I</text>
+          <text class="sila-letter-back" x="215" y="215">L</text>
+          <text class="sila-letter-back" x="215" y="85">A</text>
+        </g>
 
-    return `
+        <g class="sila-phase-2-back">
+          <rect class="sila-rect-left"  x="20" y="20" width="120" height="260" rx="22"/>
+          <rect class="sila-rect-right" x="160" y="20" width="120" height="260" rx="22"/>
 
-<svg class="sila-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <g class="sila-t-group">
+            <path class="sila-t-shape"
+                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"/>
+            <path class="sila-t-stripes"
+                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"
+                  fill="url(#tigerStripesBack)"/>
+          </g>
 
-${defs}
+          <text class="sila-igra-back" x="150" y="142">I</text>
+          <text class="sila-igra-back" x="150" y="182">G</text>
+          <text class="sila-igra-back" x="150" y="222">R</text>
+          <text class="sila-igra-back" x="150" y="262">A</text>
+        </g>
+      </svg>
+    `;
 
-${chip("tl",10,10,letters.tl,"0s")}
-${chip("tr",160,10,letters.tr,".12s")}
-${chip("bl",10,160,letters.bl,".24s")}
-${chip("br",160,160,letters.br,".36s")}
+    this.innerHTML = `
+      <a href="${home}" class="sila-logo" aria-label="СИЛА — Т-ИГРА">
+        <div class="sila-flip">
+          <div class="sila-face sila-face-front">${svgFront}</div>
+          <div class="sila-face sila-face-back">${svgBack}</div>
+        </div>
+      </a>
+    `;
 
-<path class="sila-hint" transform="translate(150,150)"
-      d="M-4 -22 C-24 -22 -32 -6 -22 10 C-14 22 6 22 14 10"/>
+    const link = this.querySelector(".sila-logo");
 
-<path class="sila-hint" transform="translate(150,150)"
-      d="M14 10 L20 4 M14 10 L6 16" fill="none"/>
+    setTimeout(() => {
+      link.classList.add("is-ready");
+    }, 4200);
 
-<g class="sila-flag-group">
+    const hasHover = window.matchMedia("(hover:hover)").matches;
 
-<rect class="sila-flag-shape" x="115" y="-30" width="70" height="24" rx="6"/>
-
-<rect class="sila-flag-shape" x="137" y="-6" width="26" height="110" rx="5"/>
-
-<line class="sila-flag-stripe" x1="122" y1="-24" x2="136" y2="-8"/>
-
-<line class="sila-flag-stripe" x1="136" y1="-24" x2="150" y2="-8"/>
-
-<line class="sila-flag-stripe" x1="150" y1="-24" x2="164" y2="-8"/>
-
-<line class="sila-flag-stripe" x1="141" y1="8" x2="155" y2="22"/>
-
-<line class="sila-flag-stripe" x1="141" y1="32" x2="155" y2="46"/>
-
-<line class="sila-flag-stripe" x1="141" y1="56" x2="155" y2="70"/>
-
-<line class="sila-flag-stripe" x1="141" y1="80" x2="155" y2="94"/>
-
-</g>
-
-<text class="sila-igra-letter" x="150" y="135">${letters.igra[0]}</text>
-
-<text class="sila-igra-letter" x="150" y="181">${letters.igra[1]}</text>
-
-<text class="sila-igra-letter" x="150" y="227">${letters.igra[2]}</text>
-
-<text class="sila-igra-letter" x="150" y="273">${letters.igra[3]}</text>
-
-</svg>
-
-`;
-
-}
-
-class SiteLogoSila extends HTMLElement{
-
-    connectedCallback(){
-
-        const front=buildFace({tl:"С",tr:"А",bl:"И",br:"Л",igra:["И","Г","Р","А"]},true);
-
-        const back=buildFace({tl:"S",tr:"A",bl:"I",br:"L",igra:["I","G","R","A"]},false);
-
-        this.innerHTML=`
-
-<a href="./" class="sila-logo" aria-label="СИЛА — Т-ИГРА">
-
-<div class="sila-flip">
-
-<div class="sila-face sila-face-front">${front}</div>
-
-<div class="sila-face sila-face-back">${back}</div>
-
-</div>
-
-</a>
-
-`;
-
-        const inSubfolder=window.location.pathname.includes("/blog/");
-
-        const home=inSubfolder?"../index.html":"./";
-
-        const link=this.querySelector(".sila-logo");
-
-        link.setAttribute("href",home);
-
-        setTimeout(()=>{
-
-            link.classList.add("is-ready");
-
-        },3200);
-
-        const hasHover=window.matchMedia("(hover:hover)").matches;
-
-        if(!hasHover){
-
-            link.addEventListener("click",e=>{
-
-                e.preventDefault();
-
-                link.classList.toggle("is-flipped");
-
-            });
-
-        }
-
+    if (!hasHover) {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        link.classList.toggle("is-flipped");
+      });
     }
-
+  }
 }
 
-customElements.define("site-logo-sila",SiteLogoSila);
+customElements.define("site-logo-sila", SiteLogoSila);

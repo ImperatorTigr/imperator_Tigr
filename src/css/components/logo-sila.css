@@ -1,309 +1,269 @@
-.sila-logo{
-
-    position:relative;
-
-    display:inline-flex;
-
-    width:64px;
-
-    height:64px;
-
-    perspective:900px;
-
-    cursor:pointer;
-
-    transition:width var(--speed-normal) ease,height var(--speed-normal) ease;
-
+/* ---------- Контейнер + 3D-переворот ---------- */
+.sila-logo {
+  position: relative;
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+  perspective: 900px;
+  cursor: pointer;
+  transition: width var(--speed-normal) ease, height var(--speed-normal) ease;
 }
 
-.sila-flip{
-
-    position:relative;
-
-    width:100%;
-
-    height:100%;
-
-    transform-style:preserve-3d;
-
-    transition:transform .85s cubic-bezier(.4,.15,.2,1);
-
+.sila-flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .85s cubic-bezier(.4, .15, .2, 1);
 }
 
 .sila-logo:hover .sila-flip,
-
-.sila-logo.is-flipped .sila-flip{
-
-    transform:rotateY(180deg);
-
+.sila-logo.is-flipped .sila-flip {
+  transform: rotateY(180deg);
 }
 
-.sila-face{
-
-    position:absolute;
-
-    inset:0;
-
-    backface-visibility:hidden;
-
-    -webkit-backface-visibility:hidden;
-
+.sila-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-.sila-face-back{
-
-    transform:rotateY(180deg);
-
+.sila-face-back {
+  transform: rotateY(180deg);
 }
 
-.sila-svg{
-
-    width:100%;
-
-    height:100%;
-
-    overflow:visible;
-
+.sila-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
-/* ---------- Квадранты ---------- */
+/* ================================================================
+   ЛИЦЕВАЯ СТОРОНА — анимация по фазам
+   ================================================================ */
 
-.sila-chip-rect{
-
-    fill:none;
-
-    stroke:url(#silaGold);
-
-    stroke-width:5;
-
-    transform-box:fill-box;
-
-    transform-origin:50% 50%;
-
-    opacity:0;
-
-    transform:scale(.4);
-
-    animation:silaChipIn .9s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
-
+/* ---------- Фаза 1: квадрат + сетка + СИЛА ---------- */
+.sila-phase-1 {
+  animation: silaPhase1Out .4s ease-in 1.5s forwards;
 }
 
-.sila-chip-letter{
-
-    font-family:"Cinzel",serif;
-
-    font-weight:600;
-
-    font-size:56px;
-
-    fill:url(#silaGold);
-
-    text-anchor:middle;
-
-    dominant-baseline:central;
-
-    transform-box:fill-box;
-
-    transform-origin:50% 50%;
-
-    opacity:0;
-
-    transform:scale(.4);
-
-    animation:silaChipIn .9s cubic-bezier(.34,1.4,.64,1) var(--chip-delay,0s) forwards;
-
+.sila-phase-1 .sila-frame {
+  fill: none;
+  stroke: url(#silaGold);
+  stroke-width: 5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transform: scale(0.8);
+  animation: silaFrameIn .6s ease-out forwards;
 }
 
-@keyframes silaChipIn{
-
-    0%{opacity:0;transform:scale(.4);}
-
-    60%{opacity:1;transform:scale(1.08);}
-
-    100%{opacity:1;transform:scale(1);}
-
+.sila-phase-1 .sila-grid-line {
+  stroke: var(--gold-mid);
+  stroke-width: 2.5;
+  opacity: 0;
+  animation: silaLineIn .4s ease-out .3s forwards;
 }
 
-/* ---------- Подсказка направления чтения ---------- */
-
-.sila-hint{
-
-    stroke:var(--gold-mid);
-
-    stroke-width:5;
-
-    fill:none;
-
-    stroke-linecap:round;
-
-    stroke-linejoin:round;
-
-    transform-box:fill-box;
-
-    transform-origin:50% 50%;
-
-    opacity:0;
-
-    transform:scale(.3);
-
-    animation:
-
-        silaHintIn .5s ease-out .15s forwards,
-
-        silaHintOut .5s ease-in 1.5s forwards;
-
+.sila-phase-1 .sila-letter {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 56px;
+  fill: url(#silaGold);
+  text-anchor: middle;
+  dominant-baseline: central;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  transform: scale(0);
+  animation: silaLetterBreath .6s cubic-bezier(.34, 1.4, .64, 1) var(--delay, 0s) forwards;
 }
 
-@keyframes silaHintIn{
-
-    from{opacity:0;transform:scale(.3);}
-
-    to{opacity:1;transform:scale(1);}
-
+/* ---------- Фаза 2: прямоугольники + Т + ИГРА ---------- */
+.sila-phase-2 {
+  opacity: 0;
+  animation: silaPhase2In .5s ease-out 1.6s forwards;
 }
 
-@keyframes silaHintOut{
-
-    from{opacity:1;transform:scale(1);}
-
-    to{opacity:0;transform:scale(0);}
-
+.sila-phase-2 .sila-rect-left,
+.sila-phase-2 .sila-rect-right {
+  fill: none;
+  stroke: url(#silaGold);
+  stroke-width: 5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: silaRectSlide .6s cubic-bezier(.34, 1.3, .64, 1) 1.8s forwards;
 }
 
-/* ---------- Флаг "Т" — контур + диагональные штрихи ---------- */
-
-.sila-flag-group{
-
-    opacity:0;
-
-    transform-box:fill-box;
-
-    transform-origin:50% 0%;
-
-    transform:scale(.5);
-
-    animation:silaFlagIn .7s cubic-bezier(.34,1.3,.64,1) 1.75s forwards;
-
+.sila-phase-2 .sila-rect-left {
+  transform: translateX(30px) scale(0.9);
 }
 
-@keyframes silaFlagIn{
-
-    from{opacity:0;transform:scale(.5);}
-
-    to{opacity:1;transform:scale(1);}
-
+.sila-phase-2 .sila-rect-right {
+  transform: translateX(-30px) scale(0.9);
 }
 
-.sila-flag-shape{
-
-    fill:none;
-
-    stroke:url(#silaGold);
-
-    stroke-width:4;
-
+.sila-phase-2 .sila-t-group {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  transform: scale(0);
+  animation: silaTIn .7s cubic-bezier(.34, 1.3, .64, 1) 2.0s forwards;
 }
 
-.sila-flag-stripe{
-
-    stroke:var(--gold-mid);
-
-    stroke-width:2.5;
-
-    stroke-linecap:round;
-
-    opacity:.85;
-
+.sila-phase-2 .sila-t-shape {
+  fill: url(#silaGold);
+  stroke: var(--gold-light);
+  stroke-width: 2;
 }
 
-/* ---------- Слово ИГРА / IGRA — слитно, по нижнему краю квадратов ---------- */
-
-.sila-igra-letter{
-
-    font-family:"Manrope",sans-serif;
-
-    font-weight:800;
-
-    font-size:34px;
-
-    fill:var(--gold-mid);
-
-    text-anchor:middle;
-
-    dominant-baseline:central;
-
-    transform-box:fill-box;
-
-    transform-origin:50% 50%;
-
-    opacity:0;
-
-    transform:scale(.4);
-
-    animation:silaIgraIn .55s cubic-bezier(.34,1.4,.64,1) forwards;
-
+.sila-phase-2 .sila-t-stripes {
+  pointer-events: none;
 }
 
-.sila-igra-letter:nth-of-type(1){animation-delay:1.9s;}
-
-.sila-igra-letter:nth-of-type(2){animation-delay:2.08s;}
-
-.sila-igra-letter:nth-of-type(3){animation-delay:2.26s;}
-
-.sila-igra-letter:nth-of-type(4){animation-delay:2.44s;}
-
-@keyframes silaIgraIn{
-
-    from{opacity:0;transform:scale(.4);}
-
-    to{opacity:1;transform:scale(1);}
-
+.sila-phase-2 .sila-igra-letter {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  fill: var(--gold-mid);
+  text-anchor: middle;
+  dominant-baseline: central;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  transform: scale(0.4);
+  animation: silaIgraIn .55s cubic-bezier(.34, 1.4, .64, 1) var(--delay, 0s) forwards;
 }
 
-/* ---------- После окончания входной анимации — фиксируем состояние ---------- */
-
-.sila-logo.is-ready .sila-chip-rect,
-
-.sila-logo.is-ready .sila-chip-letter,
-
-.sila-logo.is-ready .sila-flag-group,
-
-.sila-logo.is-ready .sila-igra-letter{
-
-    animation:none;
-
-    opacity:1;
-
-    transform:scale(1);
-
+/* ================================================================
+   ОБРАТНАЯ СТОРОНА — статично, без анимации
+   ================================================================ */
+.sila-phase-1-back .sila-frame {
+  fill: none;
+  stroke: url(#silaGoldBack);
+  stroke-width: 5;
+  opacity: 1;
 }
 
-.sila-logo.is-ready .sila-hint{
-
-    animation:none;
-
-    opacity:0;
-
+.sila-phase-1-back .sila-grid-line {
+  stroke: var(--gold-mid);
+  stroke-width: 2.5;
+  opacity: 1;
 }
 
-/* ---------- Плавное уменьшение при сжатии хедера ---------- */
-
-.site-header.is-scrolled .sila-logo{
-
-    width:44px;
-
-    height:44px;
-
+.sila-letter-back {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 56px;
+  fill: url(#silaGoldBack);
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 
-@media (max-width:768px){
+.sila-phase-2-back .sila-rect-left,
+.sila-phase-2-back .sila-rect-right {
+  fill: none;
+  stroke: url(#silaGoldBack);
+  stroke-width: 5;
+  opacity: 1;
+}
 
-    .sila-logo{
+.sila-phase-2-back .sila-t-group {
+  opacity: 1;
+  transform: none;
+}
 
-        width:56px;
+.sila-phase-2-back .sila-t-shape {
+  fill: url(#silaGoldBack);
+  stroke: var(--gold-light);
+  stroke-width: 2;
+}
 
-        height:56px;
+.sila-igra-back {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  fill: var(--gold-mid);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
 
-    }
+/* ================================================================
+   Keyframes
+   ================================================================ */
+@keyframes silaFrameIn {
+  to { opacity: 1; transform: scale(1); }
+}
 
+@keyframes silaLineIn {
+  to { opacity: 1; }
+}
+
+@keyframes silaLetterBreath {
+  0%   { opacity: 0; transform: scale(0); }
+  60%  { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes silaPhase1Out {
+  to { opacity: 0; }
+}
+
+@keyframes silaPhase2In {
+  to { opacity: 1; }
+}
+
+@keyframes silaRectSlide {
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes silaTIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes silaIgraIn {
+  from { opacity: 0; transform: scale(0.4); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ================================================================
+   Фиксация финального состояния после загрузки
+   ================================================================ */
+.sila-logo.is-ready .sila-phase-1 {
+  animation: none;
+  opacity: 0;
+}
+
+.sila-logo.is-ready .sila-phase-2 {
+  animation: none;
+  opacity: 1;
+}
+
+.sila-logo.is-ready .sila-phase-1 .sila-frame,
+.sila-logo.is-ready .sila-phase-1 .sila-grid-line,
+.sila-logo.is-ready .sila-phase-1 .sila-letter,
+.sila-logo.is-ready .sila-phase-2 .sila-rect-left,
+.sila-logo.is-ready .sila-phase-2 .sila-rect-right,
+.sila-logo.is-ready .sila-phase-2 .sila-t-group,
+.sila-logo.is-ready .sila-phase-2 .sila-igra-letter {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+/* ================================================================
+   Сжатие при скролле + адаптив
+   ================================================================ */
+.site-header.is-scrolled .sila-logo {
+  width: 44px;
+  height: 44px;
+}
+
+@media (max-width: 768px) {
+  .sila-logo {
+    width: 56px;
+    height: 56px;
+  }
 }
