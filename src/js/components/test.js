@@ -83,8 +83,22 @@
     photo.dataset.rot = pos.rot;
   }
 
-    function initBoard() {
-    // Убрана проверка boardInitialized — теперь всегда расставляем при входе в режим
+      function resetBoard() {
+    // Возвращаем карточки в grid и чистим inline-стили
+    photos.forEach(function (photo) {
+      if (photo.parentElement !== grid) {
+        grid.appendChild(photo);
+      }
+      photo.style.left = '';
+      photo.style.top = '';
+      photo.style.transform = '';
+      photo.classList.remove('dragging');
+    });
+    boardInitialized = false;
+    console.log('Test: reset to grid');
+  }
+
+  function initBoard() {
     var bounds = { width: viewport.clientWidth, height: viewport.clientHeight };
     var saved = loadLayout();
 
@@ -98,37 +112,27 @@
 
     boardInitialized = true;
     drawLines();
+    console.log('Test: board mode active, cards:', photos.length);
   }
 
   function setMode(mode) {
+    console.log('Test: setMode called:', mode);
+
+    // Универсальная проверка: board = всё кроме grid/stop/стоп
+    var isGrid = (mode === 'grid' || mode === 'stop' || mode === 'стоп');
+    var isBoard = !isGrid;
+
     toggleButtons.forEach(function (btn) {
       btn.classList.toggle('active', btn.dataset.mode === mode);
     });
-    
-    // Работаем и с оригинальными data-mode, и если вы их переименовали
-    var isBoard = (mode === 'board' || mode === 'test');
+
     viewport.classList.toggle('mode-board', isBoard);
-    viewport.classList.toggle('mode-grid', !isBoard);
+    viewport.classList.toggle('mode-grid', isGrid);
 
     if (isBoard) {
-      // Тест — переход в режим доски с сохранёнными позициями
       initBoard();
     } else {
-      // Стоп — возврат карточек в grid-контейнер, очистка inline-стилей
-      photos.forEach(function (photo) {
-        if (photo.parentElement !== grid) {
-          grid.appendChild(photo);
-        }
-        photo.style.left = '';
-        photo.style.top = '';
-        photo.style.transform = '';
-      });
-      /* 
-        Если нужно, чтобы Стоп также сбрасывала сохранённые позиции 
-        (при следующем Тест — снова рандом, а не пользовательский порядок),
-        раскомментируйте строку ниже:
-      */
-      // localStorage.removeItem(STORAGE_KEY);
+      resetBoard();
     }
   }
 

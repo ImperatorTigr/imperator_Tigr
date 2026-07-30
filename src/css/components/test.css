@@ -208,29 +208,33 @@
 /* ===== Сетка (режим по умолчанию) ===== */
 
 .test-grid{
-
     display:grid;
-
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-
+    grid-template-columns:repeat(4, 1fr);  /* ← ровно 4 колонки */
     gap:14px;
-
     padding:24px;
-
 }
 
+/* Карточка внутри сетки — горизонтальная, без абсолютного позиционирования */
 .test-grid .test-card{
-
     position:static !important;
-
     transform:none !important;
-
     width:100% !important;
-
-    aspect-ratio:4/5;
-
+    aspect-ratio:3/2;
     cursor:pointer;
+    left:auto !important;
+    top:auto !important;
+}
 
+@media (max-width:900px){
+    .test-grid{
+        grid-template-columns:repeat(2, 1fr);  /* 2 на планшете */
+    }
+}
+
+@media (max-width:480px){
+    .test-grid{
+        grid-template-columns:1fr;  /* 1 на телефоне */
+    }
 }
 
 /* ===== Карточка ===== */
