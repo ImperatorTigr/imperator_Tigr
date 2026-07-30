@@ -59,7 +59,7 @@
     } catch (e) {}
   }
 
-  function randomScatter(index, total, bounds) {
+    function randomScatter(index, total, bounds) {
     var cols = Math.ceil(Math.sqrt(total));
     var cellW = bounds.width / cols;
     var cellH = bounds.height / Math.ceil(total / cols);
@@ -68,8 +68,8 @@
     var jitterX = (Math.random() - .5) * cellW * .4;
     var jitterY = (Math.random() - .5) * cellH * .4;
     return {
-      x: col * cellW + cellW / 2 - 95 + jitterX,
-      y: row * cellH + cellH / 2 - 118 + jitterY,
+      x: col * cellW + cellW / 2 - 110 + jitterX,   /* ← половина 220px */
+      y: row * cellH + cellH / 2 - 75 + jitterY,    /* ← половина ~150px (3/2) */
       rot: (Math.random() - .5) * 14
     };
   }
