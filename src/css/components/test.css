@@ -21,11 +21,18 @@
 
 .test-header-side{
     font-family:"Manrope",sans-serif;
-    font-size:.7rem;          /* ← было .85rem, стало .7rem (~11px) */
-    line-height:1.5;
+    font-size:.65rem;          /* ~10px */
+    line-height:1.45;
     color:var(--color-text);
-    opacity:.55;              /* ← мягче, не основной текст */
-    max-width:240px;          /* ← чуть уже, ибо шрифт мельче */
+    opacity:.45;               /* мягкий, не основной текст */
+    max-width:240px;
+}
+
+/* ВАЖНО: сбрасываем размер у параграфа внутри, иначе он перебивает */
+.test-header-side p{
+    font-size:inherit;
+    line-height:inherit;
+    margin:0;
 }
 
 .test-header-left{
@@ -44,20 +51,13 @@
 }
 
 @media (max-width:900px){
-    .test-header{
-        grid-template-columns:1fr;
-        gap:16px;
-        text-align:center;
+    .test-header-side,
+    .test-header-side p{
+        font-size:.6rem;
+        max-width:320px;
     }
     .test-header-side{
-        text-align:center;
-        max-width:320px;
-        margin:0 auto;
-        font-size:.65rem;
         justify-self:center;
-    }
-    .test-header-center .test-mode-toggle{
-        margin-top:10px;
     }
 }
 
