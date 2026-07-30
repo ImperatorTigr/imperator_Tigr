@@ -21,7 +21,7 @@
 
 .test-header-side{
     font-family:"Manrope",sans-serif;
-    font-size:.55rem;          /* ← было .85rem, стало .7rem (~11px) */
+    font-size:.7rem;          /* ← было .85rem, стало .7rem (~11px) */
     line-height:1.5;
     color:var(--color-text);
     opacity:.55;              /* ← мягче, не основной текст */
