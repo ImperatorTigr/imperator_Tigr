@@ -161,7 +161,16 @@
     top:auto !important;
     overflow:hidden;
     border-radius:10px;
-    background:transparent;  /* ← убрали серый фон */
+    background:transparent;
+    box-shadow:0 6px 18px rgba(38,34,29,.12);  /* ← добавлена тень */
+    transition:transform .25s ease, box-shadow .25s ease;  /* ← плавность */
+}
+
+/* Hover в сетке — карточка приподнимается как на доске */
+.test-grid .test-card:hover{
+    transform:translateY(-3px) scale(1.02) !important;
+    box-shadow:0 14px 32px rgba(38,34,29,.22);
+    z-index:2;
 }
 
 .test-grid .test-card picture,
