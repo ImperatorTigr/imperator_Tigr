@@ -143,7 +143,7 @@
   animation: silaIgraBgIn .3s ease-out 2.5s forwards;
 }
 
-/* ===== Пульсация точек при hover ===== */
+/* Пульсация только opacity, без transform — чтобы не размывало ИГРА */
 .sila-logo:hover .sila-igra-dot {
   animation: silaDotPulse 1.2s ease-in-out infinite;
   animation-delay: var(--dot-delay, 0s);
@@ -274,8 +274,8 @@
 }
 
 @keyframes silaDotPulse {
-  0%, 100% { opacity: 0.35; transform: scale(0.85); }
-  50%      { opacity: 1;    transform: scale(1.25); }
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 1; }
 }
 
 /* ================================================================
