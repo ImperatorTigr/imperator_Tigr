@@ -4,15 +4,15 @@ class SiteLogo extends HTMLElement{
 
         const inSubfolder=window.location.pathname.includes("/blog/");
         const home=inSubfolder?"../index.html":"./";
-        
-        // На странице статьи — без ссылки, только hover
         const isArticle=inSubfolder;
+
         const hrefAttr=isArticle?``:`href="${home}"`;
+        const articleClass=isArticle?`is-article`:` `;
 
         this.innerHTML=`
 
 <a ${hrefAttr}
-   class="logo-cube"
+   class="logo-cube ${articleClass}"
    aria-label="IMPERATOR — Tigr">
 
 <svg class="logo-svg"
@@ -59,15 +59,15 @@ class SiteLogo extends HTMLElement{
 
 `;
 
-         const cube=this.querySelector(".logo-cube");
+        const cube=this.querySelector(".logo-cube");
 
         setTimeout(()=>{
+
             cube.classList.add("logo-ready");
+
         },2400);
 
-        /* ===== На странице статьи — клик отключён, точка скрыта ===== */
         if(isArticle){
-            cube.classList.add("is-article");
             cube.style.cursor="default";
             cube.addEventListener("click",e=>e.preventDefault());
             return;
