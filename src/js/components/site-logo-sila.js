@@ -34,16 +34,18 @@ class SiteLogoSila extends HTMLElement {
           <rect class="sila-rect-right" x="160" y="20" width="120" height="260" rx="22"/>
 
           <g class="sila-t-group">
+            <!-- Шапка: короче (80px), середина на y=20. Нога: шире (28px), перекрывает прямоугольники -->
             <path class="sila-t-shape"
-                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"/>
+                  d="M110,8 L190,8 L190,32 L164,32 L164,120 L136,120 L136,32 L110,32 Z"/>
             <path class="sila-t-stripes"
-                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"
+                  d="M110,8 L190,8 L190,32 L164,32 L164,120 L136,120 L136,32 L110,32 Z"
                   fill="url(#tigerStripes)"/>
           </g>
 
-          <!-- Белая подложка для ИГРА, продолжение ноги Т -->
-          <rect class="sila-igra-bg" x="140" y="118" width="20" height="162" rx="4"/>
+          <!-- Белая подложка — продолжение ноги Т, шире, под ИГРА -->
+          <rect class="sila-igra-bg" x="136" y="120" width="28" height="160" rx="6"/>
 
+          <!-- ИГРА: крупнее, читабельнее -->
           <text class="sila-igra-letter" style="--delay:2.6s"  x="150" y="148">И</text>
           <text class="sila-igra-letter" style="--delay:2.78s" x="150" y="188">Г</text>
           <text class="sila-igra-letter" style="--delay:2.96s" x="150" y="228">Р</text>
@@ -82,13 +84,13 @@ class SiteLogoSila extends HTMLElement {
 
           <g class="sila-t-group">
             <path class="sila-t-shape"
-                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"/>
+                  d="M110,8 L190,8 L190,32 L164,32 L164,120 L136,120 L136,32 L110,32 Z"/>
             <path class="sila-t-stripes"
-                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"
+                  d="M110,8 L190,8 L190,32 L164,32 L164,120 L136,120 L136,32 L110,32 Z"
                   fill="url(#tigerStripesBack)"/>
           </g>
 
-          <rect class="sila-igra-bg" x="140" y="118" width="20" height="162" rx="4"/>
+          <rect class="sila-igra-bg" x="136" y="120" width="28" height="160" rx="6"/>
 
           <text class="sila-igra-back" x="150" y="148">I</text>
           <text class="sila-igra-back" x="150" y="188">G</text>
