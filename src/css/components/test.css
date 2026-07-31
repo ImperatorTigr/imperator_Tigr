@@ -144,6 +144,7 @@
 }
 
 /* ===== Сетка (режим по умолчанию) ===== */
+/* ===== Сетка: десктоп ===== */
 .test-grid{
     display:grid;
     grid-template-columns:repeat(4, 1fr);
@@ -151,7 +152,6 @@
     padding:24px;
 }
 
-/* Карточка в сетке — фиксированная высота, фото целиком */
 .test-grid .test-card{
     position:static !important;
     transform:none !important;
@@ -173,6 +173,7 @@
     object-fit:contain;
 }
 
+/* ===== Адаптив ===== */
 @media (max-width:900px){
     .test-grid{
         grid-template-columns:repeat(2, 1fr);
@@ -181,7 +182,15 @@
 
 @media (max-width:480px){
     .test-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2, 1fr);  /* ← было 1fr, стало 2 */
+        gap:10px;
+        padding:16px;
+    }
+    .test-grid .test-card{
+        height:100px;                           /* ← было 140px, стало 100px */
+    }
+    .test-card{
+        width:150px;                            /* ← на доске тоже меньше */
     }
 }
 
