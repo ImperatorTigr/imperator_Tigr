@@ -65,6 +65,11 @@ class SiteHeader extends HTMLElement{
         const toggle=this.querySelector(".nav-toggle");
         const nav=this.querySelector(".nav");
 
+        /* ===== На страницах статей — хедер сразу сжатый ===== */
+        if(window.location.pathname.includes("/blog/")){
+            header.classList.add("is-scrolled");
+        }
+
         const SCROLL_THRESHOLD=40;
 
         const onScroll=()=>{

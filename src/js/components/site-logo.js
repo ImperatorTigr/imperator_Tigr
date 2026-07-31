@@ -3,12 +3,15 @@ class SiteLogo extends HTMLElement{
     connectedCallback(){
 
         const inSubfolder=window.location.pathname.includes("/blog/");
-
         const home=inSubfolder?"../index.html":"./";
+        
+        // На странице статьи — без ссылки, только hover
+        const isArticle=inSubfolder;
+        const hrefAttr=isArticle?``:`href="${home}"`;
 
         this.innerHTML=`
 
-<a href="${home}"
+<a ${hrefAttr}
    class="logo-cube"
    aria-label="IMPERATOR — Tigr">
 
@@ -63,6 +66,27 @@ class SiteLogo extends HTMLElement{
             cube.classList.add("logo-ready");
 
         },2400);
+
+        /* ===== На странице статьи — клик отключён, только hover ===== */
+        if(isArticle){
+            cube.style.cursor="default";
+            cube.addEventListener("click",e=>e.preventDefault());
+            return;
+        }
+
+        const hasHover=window.matchMedia("(hover:hover)").matches;
+
+        if(!hasHover){
+
+            cube.addEventListener("click",e=>{
+
+                e.preventDefault();
+
+                cube.classList.toggle("is-triggered");
+
+            });
+
+        }
 
     }
 
