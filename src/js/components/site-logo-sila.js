@@ -45,7 +45,7 @@ class SiteLogoSila extends HTMLElement {
   </g>
 
   <!-- Подложка: на 1px ниже прямоугольников, на 1px уже с каждой стороны -->
-  <rect class="sila-igra-bg" x="131" y="100" width="38" height="181"/>
+  <rect class="sila-igra-bg" x="131" y="100" width="38" height="183"/>
 
   <circle class="sila-igra-dot" cx="150" cy="142" r="2.5" style="--dot-delay:0s"/>
   <circle class="sila-igra-dot" cx="150" cy="182" r="2.5" style="--dot-delay:0.25s"/>
@@ -98,7 +98,7 @@ class SiteLogoSila extends HTMLElement {
           fill="url(#tigerStripesBack)"/>
   </g>
 
-  <rect class="sila-igra-bg" x="131" y="100" width="38" height="181"/>
+  <rect class="sila-igra-bg" x="131" y="100" width="38" height="183"/>
 
   <circle class="sila-igra-dot" cx="150" cy="142" r="2.5" style="--dot-delay:0s"/>
   <circle class="sila-igra-dot" cx="150" cy="182" r="2.5" style="--dot-delay:0.25s"/>
