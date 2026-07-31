@@ -36,23 +36,22 @@ class SiteLogoSila extends HTMLElement {
         d="M160,20 L258,20 A22,22 0 0,1 280,42 L280,258 A22,22 0 0,1 258,280 L160,280 Z"/>
 
   <g class="sila-t-group">
-    <!-- Шапка 80px + нога 80px — единый строгий столб -->
+    <!-- Шапка 56px (122-178), нога 34px (133-167) -->
     <path class="sila-t-shape"
-          d="M110,8 L190,8 L190,32 L190,100 L110,100 L110,32 Z"/>
+          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"/>
     <path class="sila-t-stripes"
-          d="M110,8 L190,8 L190,32 L190,100 L110,100 L110,32 Z"
+          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"
           fill="url(#tigerStripes)"/>
   </g>
 
-  <!-- Подложка: ширина 80px, от ноги Т до низа прямоугольников -->
+  <!-- Подложка: ваши значения, без изменений -->
   <rect class="sila-igra-bg" x="110" y="100" width="80" height="183"/>
 
-  <!-- Точки: ровно между буквами -->
+  <!-- Точки и ИГРА: без изменений -->
   <circle class="sila-igra-dot" cx="150" cy="145" r="2.5" style="--dot-delay:0s"/>
   <circle class="sila-igra-dot" cx="150" cy="193" r="2.5" style="--dot-delay:0.25s"/>
   <circle class="sila-igra-dot" cx="150" cy="241" r="2.5" style="--dot-delay:0.5s"/>
 
-  <!-- ИГРА: равномерные промежутки 48px -->
   <text class="sila-igra-letter" style="--delay:2.6s"  x="150" y="121">И</text>
   <text class="sila-igra-letter" style="--delay:2.78s" x="150" y="169">Г</text>
   <text class="sila-igra-letter" style="--delay:2.96s" x="150" y="217">Р</text>
@@ -93,9 +92,9 @@ class SiteLogoSila extends HTMLElement {
 
   <g class="sila-t-group">
     <path class="sila-t-shape"
-          d="M110,8 L190,8 L190,32 L190,100 L110,100 L110,32 Z"/>
+          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"/>
     <path class="sila-t-stripes"
-          d="M110,8 L190,8 L190,32 L190,100 L110,100 L110,32 Z"
+          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"
           fill="url(#tigerStripesBack)"/>
   </g>
 
