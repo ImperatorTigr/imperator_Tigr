@@ -113,20 +113,12 @@
   fill: url(#silaGold);
   stroke: var(--gold-light);
   stroke-width: 2;
-  transition: filter 0.35s ease;
 }
 
 .sila-phase-2 .sila-t-stripes {
   pointer-events: none;
 }
 
-/* ===== Golden Glow на Т при наведении ===== */
-.sila-logo:hover .sila-phase-2 .sila-t-shape,
-.sila-logo:hover .sila-phase-2-back .sila-t-shape {
-  filter: drop-shadow(0 0 10px rgba(212, 160, 23, 0.55));
-}
-
-/* Подложка для ИГРА */
 .sila-phase-2 .sila-igra-bg {
   fill: #FFFFFF;
   stroke: var(--gold-mid);
@@ -136,24 +128,17 @@
   animation: silaIgraBgIn .4s ease-out 2.4s forwards;
 }
 
-/* Точки-разделители */
+/* Точки: статичные, без мигания */
 .sila-igra-dot {
   fill: var(--gold-mid);
   opacity: 0;
   animation: silaIgraBgIn .3s ease-out 2.5s forwards;
 }
 
-/* Пульсация только opacity, без transform — чтобы не размывало ИГРА */
-.sila-logo:hover .sila-igra-dot {
-  animation: silaDotPulse 1.2s ease-in-out infinite;
-  animation-delay: var(--dot-delay, 0s);
-}
-
-/* ИГРА: тёмные, крупные, читабельные */
 .sila-phase-2 .sila-igra-letter {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 34px;          /* ← было 32px */
+  font-size: 34px;
   fill: var(--color-title);
   text-anchor: middle;
   dominant-baseline: central;
@@ -165,7 +150,7 @@
 }
 
 /* ================================================================
-   ОБРАТНАЯ СТОРОНА — статично, без анимации
+   ОБРАТНАЯ СТОРОНА — статично, без анимации, идентична лицевой
    ================================================================ */
 .sila-phase-1-back .sila-frame {
   fill: none;
@@ -207,13 +192,13 @@
   fill: url(#silaGoldBack);
   stroke: var(--gold-light);
   stroke-width: 2;
-  transition: filter 0.35s ease;
 }
 
 .sila-phase-2-back .sila-igra-bg {
   fill: #FFFFFF;
   stroke: var(--gold-mid);
   stroke-width: 1;
+  filter: drop-shadow(0 2px 5px rgba(38,34,29,0.10));
   opacity: 1;
 }
 
@@ -225,7 +210,7 @@
 .sila-igra-back {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 34px;          /* ← было 32px */
+  font-size: 34px;
   fill: var(--color-title);
   text-anchor: middle;
   dominant-baseline: central;
@@ -271,11 +256,6 @@
 @keyframes silaIgraIn {
   from { opacity: 0; transform: scale(0.4); }
   to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes silaDotPulse {
-  0%, 100% { opacity: 0.3; }
-  50%      { opacity: 1; }
 }
 
 /* ================================================================
