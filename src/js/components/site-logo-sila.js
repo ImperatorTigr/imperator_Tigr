@@ -3,7 +3,6 @@ class SiteLogoSila extends HTMLElement {
     const inSubfolder = window.location.pathname.includes("/blog/");
     const home = inSubfolder ? "../index.html" : "./";
 
-    // ── Лицевая сторона: кириллица ──
     const svgFront = `
       <svg class="sila-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -17,7 +16,7 @@ class SiteLogoSila extends HTMLElement {
           </pattern>
         </defs>
 
-        <!-- Фаза 1: квадрат + сетка + СИЛА -->
+        <!-- Фаза 1: квадрат + сетка + СИЛА (сетка и буквы остаются) -->
         <g class="sila-phase-1">
           <rect class="sila-frame" x="20" y="20" width="260" height="260" rx="26"/>
           <line class="sila-grid-line" x1="150" y1="20" x2="150" y2="280"/>
@@ -29,28 +28,30 @@ class SiteLogoSila extends HTMLElement {
           <text class="sila-letter" style="--delay:1.4s" x="215" y="85">А</text>
         </g>
 
-        <!-- Фаза 2: прямоугольники + Т + ИГРА -->
+        <!-- Фаза 2: прямоугольники + Т + подложка + ИГРА -->
         <g class="sila-phase-2">
           <rect class="sila-rect-left"  x="20" y="20" width="120" height="260" rx="22"/>
           <rect class="sila-rect-right" x="160" y="20" width="120" height="260" rx="22"/>
 
           <g class="sila-t-group">
             <path class="sila-t-shape"
-                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"/>
+                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"/>
             <path class="sila-t-stripes"
-                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"
+                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"
                   fill="url(#tigerStripes)"/>
           </g>
 
-          <text class="sila-igra-letter" style="--delay:2.6s"  x="150" y="142">И</text>
-          <text class="sila-igra-letter" style="--delay:2.78s" x="150" y="182">Г</text>
-          <text class="sila-igra-letter" style="--delay:2.96s" x="150" y="222">Р</text>
-          <text class="sila-igra-letter" style="--delay:3.14s" x="150" y="262">А</text>
+          <!-- Белая подложка для ИГРА, продолжение ноги Т -->
+          <rect class="sila-igra-bg" x="140" y="118" width="20" height="162" rx="4"/>
+
+          <text class="sila-igra-letter" style="--delay:2.6s"  x="150" y="148">И</text>
+          <text class="sila-igra-letter" style="--delay:2.78s" x="150" y="188">Г</text>
+          <text class="sila-igra-letter" style="--delay:2.96s" x="150" y="228">Р</text>
+          <text class="sila-igra-letter" style="--delay:3.14s" x="150" y="268">А</text>
         </g>
       </svg>
     `;
 
-    // ── Обратная сторона: латиница ──
     const svgBack = `
       <svg class="sila-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -81,16 +82,18 @@ class SiteLogoSila extends HTMLElement {
 
           <g class="sila-t-group">
             <path class="sila-t-shape"
-                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"/>
+                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"/>
             <path class="sila-t-stripes"
-                  d="M100,28 L200,28 L200,56 L172,56 L172,118 L128,118 L128,56 L100,56 Z"
+                  d="M90,28 L210,28 L210,56 L158,56 L158,118 L142,118 L142,56 L90,56 Z"
                   fill="url(#tigerStripesBack)"/>
           </g>
 
-          <text class="sila-igra-back" x="150" y="142">I</text>
-          <text class="sila-igra-back" x="150" y="182">G</text>
-          <text class="sila-igra-back" x="150" y="222">R</text>
-          <text class="sila-igra-back" x="150" y="262">A</text>
+          <rect class="sila-igra-bg" x="140" y="118" width="20" height="162" rx="4"/>
+
+          <text class="sila-igra-back" x="150" y="148">I</text>
+          <text class="sila-igra-back" x="150" y="188">G</text>
+          <text class="sila-igra-back" x="150" y="228">R</text>
+          <text class="sila-igra-back" x="150" y="268">A</text>
         </g>
       </svg>
     `;
@@ -105,20 +108,12 @@ class SiteLogoSila extends HTMLElement {
     `;
 
     const link = this.querySelector(".sila-logo");
-
-    setTimeout(() => {
-      link.classList.add("is-ready");
-    }, 4200);
+    setTimeout(() => { link.classList.add("is-ready"); }, 4200);
 
     const hasHover = window.matchMedia("(hover:hover)").matches;
-
     if (!hasHover) {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        link.classList.toggle("is-flipped");
-      });
+      link.addEventListener("click", e => { e.preventDefault(); link.classList.toggle("is-flipped"); });
     }
   }
 }
-
 customElements.define("site-logo-sila", SiteLogoSila);

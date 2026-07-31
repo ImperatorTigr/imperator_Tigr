@@ -44,10 +44,6 @@
    ================================================================ */
 
 /* ---------- Фаза 1: квадрат + сетка + СИЛА ---------- */
-.sila-phase-1 {
-  animation: silaPhase1Out .4s ease-in 1.5s forwards;
-}
-
 .sila-phase-1 .sila-frame {
   fill: none;
   stroke: url(#silaGold);
@@ -56,7 +52,7 @@
   transform-box: fill-box;
   transform-origin: 50% 50%;
   transform: scale(0.8);
-  animation: silaFrameIn .6s ease-out forwards;
+  animation: silaFrameIn .6s ease-out forwards, silaFrameOut .3s ease-in 1.5s forwards;
 }
 
 .sila-phase-1 .sila-grid-line {
@@ -80,7 +76,7 @@
   animation: silaLetterBreath .6s cubic-bezier(.34, 1.4, .64, 1) var(--delay, 0s) forwards;
 }
 
-/* ---------- Фаза 2: прямоугольники + Т + ИГРА ---------- */
+/* ---------- Фаза 2: прямоугольники + Т + подложка + ИГРА ---------- */
 .sila-phase-2 {
   opacity: 0;
   animation: silaPhase2In .5s ease-out 1.6s forwards;
@@ -123,11 +119,18 @@
   pointer-events: none;
 }
 
+/* Белая подложка для ИГРА — продолжение ноги Т */
+.sila-phase-2 .sila-igra-bg {
+  fill: #FFFFFF;
+  opacity: 0;
+  animation: silaIgraBgIn .4s ease-out 2.4s forwards;
+}
+
 .sila-phase-2 .sila-igra-letter {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 34px;
-  fill: var(--gold-mid);
+  font-size: 28px;
+  fill: var(--gold-deep);
   text-anchor: middle;
   dominant-baseline: central;
   transform-box: fill-box;
@@ -181,11 +184,16 @@
   stroke-width: 2;
 }
 
+.sila-phase-2-back .sila-igra-bg {
+  fill: #FFFFFF;
+  opacity: 1;
+}
+
 .sila-igra-back {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 34px;
-  fill: var(--gold-mid);
+  font-size: 28px;
+  fill: var(--gold-deep);
   text-anchor: middle;
   dominant-baseline: central;
 }
@@ -197,6 +205,10 @@
   to { opacity: 1; transform: scale(1); }
 }
 
+@keyframes silaFrameOut {
+  to { opacity: 0; }
+}
+
 @keyframes silaLineIn {
   to { opacity: 1; }
 }
@@ -205,10 +217,6 @@
   0%   { opacity: 0; transform: scale(0); }
   60%  { opacity: 1; transform: scale(1.08); }
   100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes silaPhase1Out {
-  to { opacity: 0; }
 }
 
 @keyframes silaPhase2In {
@@ -223,6 +231,10 @@
   to { opacity: 1; transform: scale(1); }
 }
 
+@keyframes silaIgraBgIn {
+  to { opacity: 1; }
+}
+
 @keyframes silaIgraIn {
   from { opacity: 0; transform: scale(0.4); }
   to   { opacity: 1; transform: scale(1); }
@@ -231,9 +243,16 @@
 /* ================================================================
    Фиксация финального состояния после загрузки
    ================================================================ */
-.sila-logo.is-ready .sila-phase-1 {
+.sila-logo.is-ready .sila-phase-1 .sila-frame {
   animation: none;
   opacity: 0;
+}
+
+.sila-logo.is-ready .sila-phase-1 .sila-grid-line,
+.sila-logo.is-ready .sila-phase-1 .sila-letter {
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
 
 .sila-logo.is-ready .sila-phase-2 {
@@ -241,12 +260,10 @@
   opacity: 1;
 }
 
-.sila-logo.is-ready .sila-phase-1 .sila-frame,
-.sila-logo.is-ready .sila-phase-1 .sila-grid-line,
-.sila-logo.is-ready .sila-phase-1 .sila-letter,
 .sila-logo.is-ready .sila-phase-2 .sila-rect-left,
 .sila-logo.is-ready .sila-phase-2 .sila-rect-right,
 .sila-logo.is-ready .sila-phase-2 .sila-t-group,
+.sila-logo.is-ready .sila-phase-2 .sila-igra-bg,
 .sila-logo.is-ready .sila-phase-2 .sila-igra-letter {
   animation: none;
   opacity: 1;
