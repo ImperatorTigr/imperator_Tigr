@@ -194,3 +194,15 @@
     }
 
 }
+
+/* Десктоп: изображения слегка затемнены, при наведении — яркость 100% */
+@media (hover: hover) {
+    .game-card-image img {
+        filter: brightness(0.85);
+        transition: filter 0.4s ease;
+    }
+
+    .game-card:hover .game-card-image img {
+        filter: brightness(1);
+    }
+}
