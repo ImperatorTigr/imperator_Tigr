@@ -36,26 +36,25 @@ class SiteLogoSila extends HTMLElement {
         d="M160,20 L258,20 A22,22 0 0,1 280,42 L280,258 A22,22 0 0,1 258,280 L160,280 Z"/>
 
   <g class="sila-t-group">
-    <!-- Шапка 60px (120-180), середина на y=20. Нога 38px (131-169), как подложка -->
+    <!-- Шапка 80px (110-190), нога 38px (131-169) -->
     <path class="sila-t-shape"
-          d="M120,8 L180,8 L180,32 L169,32 L169,100 L131,100 L131,32 L120,32 Z"/>
+          d="M110,8 L190,8 L190,32 L169,32 L169,100 L131,100 L131,32 L110,32 Z"/>
     <path class="sila-t-stripes"
-          d="M120,8 L180,8 L180,32 L169,32 L169,100 L131,100 L131,32 L120,32 Z"
+          d="M110,8 L190,8 L190,32 L169,32 L169,100 L131,100 L131,32 L110,32 Z"
           fill="url(#tigerStripes)"/>
   </g>
 
-  <!-- Подложка: на 1px ниже прямоугольников, на 1px уже с каждой стороны -->
-  <rect class="sila-igra-bg" x="131" y="100" width="38" height="183"/>
+  <rect class="sila-igra-bg" x="131" y="100" width="38" height="181"/>
 
-  <circle class="sila-igra-dot" cx="150" cy="142" r="2.5" style="--dot-delay:0s"/>
-  <circle class="sila-igra-dot" cx="150" cy="182" r="2.5" style="--dot-delay:0.25s"/>
-  <circle class="sila-igra-dot" cx="150" cy="222" r="2.5" style="--dot-delay:0.5s"/>
+  <circle class="sila-igra-dot" cx="150" cy="141" r="2.5" style="--dot-delay:0s"/>
+  <circle class="sila-igra-dot" cx="150" cy="187" r="2.5" style="--dot-delay:0.25s"/>
+  <circle class="sila-igra-dot" cx="150" cy="238" r="2.5" style="--dot-delay:0.5s"/>
 
-  <!-- ИГРА: поднято, шаг 40px -->
-  <text class="sila-igra-letter" style="--delay:2.6s"  x="150" y="122">И</text>
-  <text class="sila-igra-letter" style="--delay:2.78s" x="150" y="162">Г</text>
-  <text class="sila-igra-letter" style="--delay:2.96s" x="150" y="202">Р</text>
-  <text class="sila-igra-letter" style="--delay:3.14s" x="150" y="242">А</text>
+  <!-- ИГРА: крупнее, воздушнее, А опущена -->
+  <text class="sila-igra-letter" style="--delay:2.6s"  x="150" y="118">И</text>
+  <text class="sila-igra-letter" style="--delay:2.78s" x="150" y="164">Г</text>
+  <text class="sila-igra-letter" style="--delay:2.96s" x="150" y="210">Р</text>
+  <text class="sila-igra-letter" style="--delay:3.14s" x="150" y="266">А</text>
 </g>
       </svg>
     `;
@@ -92,22 +91,22 @@ class SiteLogoSila extends HTMLElement {
 
   <g class="sila-t-group">
     <path class="sila-t-shape"
-          d="M120,8 L180,8 L180,32 L169,32 L169,100 L131,100 L131,32 L120,32 Z"/>
+          d="M110,8 L190,8 L190,32 L169,32 L169,100 L131,100 L131,32 L110,32 Z"/>
     <path class="sila-t-stripes"
-          d="M120,8 L180,8 L180,32 L169,32 L169,100 L131,100 L131,32 L120,32 Z"
+          d="M110,8 L190,8 L190,32 L169,32 L169,100 L131,100 L131,32 L110,32 Z"
           fill="url(#tigerStripesBack)"/>
   </g>
 
-  <rect class="sila-igra-bg" x="131" y="100" width="38" height="183"/>
+  <rect class="sila-igra-bg" x="131" y="100" width="38" height="181"/>
 
-  <circle class="sila-igra-dot" cx="150" cy="142" r="2.5" style="--dot-delay:0s"/>
-  <circle class="sila-igra-dot" cx="150" cy="182" r="2.5" style="--dot-delay:0.25s"/>
-  <circle class="sila-igra-dot" cx="150" cy="222" r="2.5" style="--dot-delay:0.5s"/>
+  <circle class="sila-igra-dot" cx="150" cy="141" r="2.5" style="--dot-delay:0s"/>
+  <circle class="sila-igra-dot" cx="150" cy="187" r="2.5" style="--dot-delay:0.25s"/>
+  <circle class="sila-igra-dot" cx="150" cy="238" r="2.5" style="--dot-delay:0.5s"/>
 
-  <text class="sila-igra-back" x="150" y="122">I</text>
-  <text class="sila-igra-back" x="150" y="162">G</text>
-  <text class="sila-igra-back" x="150" y="202">R</text>
-  <text class="sila-igra-back" x="150" y="242">A</text>
+  <text class="sila-igra-back" x="150" y="118">I</text>
+  <text class="sila-igra-back" x="150" y="164">G</text>
+  <text class="sila-igra-back" x="150" y="210">R</text>
+  <text class="sila-igra-back" x="150" y="266">A</text>
 </g>
       </svg>
     `;

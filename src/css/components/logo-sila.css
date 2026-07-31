@@ -153,7 +153,7 @@
 .sila-phase-2 .sila-igra-letter {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 32px;
+  font-size: 34px;          /* ← было 32px */
   fill: var(--color-title);
   text-anchor: middle;
   dominant-baseline: central;
@@ -225,7 +225,7 @@
 .sila-igra-back {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 32px;
+  font-size: 34px;          /* ← было 32px */
   fill: var(--color-title);
   text-anchor: middle;
   dominant-baseline: central;
