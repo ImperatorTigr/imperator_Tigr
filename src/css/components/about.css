@@ -21,27 +21,17 @@
 }
 
 .about-photo{
-
-    aspect-ratio:4/5;
-
+    aspect-ratio:3/2;           /* ← горизонтальное на десктопе */
     border-radius:var(--radius-md);
-
     background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
-
     overflow:hidden;
-
 }
 
 .about-photo img{
-
     width:100%;
-
     height:100%;
-
     object-fit:cover;
-
     display:block;
-
 }
 
 .about-text p{
@@ -119,19 +109,14 @@
 @media (max-width:768px){
 
     .about-grid{
-
         grid-template-columns:1fr;
-
         gap:2rem;
-
     }
 
     .about-photo{
-
+        aspect-ratio:4/5;       /* ← вертикальное на мобильном */
         max-width:320px;
-
         margin-inline:auto;
-
     }
 
 }
