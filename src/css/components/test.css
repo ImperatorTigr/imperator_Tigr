@@ -190,15 +190,16 @@
 
 @media (max-width:480px){
     .test-grid{
-        grid-template-columns:repeat(2, 1fr);  /* ← было 1fr, стало 2 */
+        grid-template-columns:repeat(2, 1fr);
         gap:6px;
         padding:16px;
     }
     .test-grid .test-card{
-        height:100px;                           /* ← было 140px, стало 100px */
+        height:90px;          /* ← чуть компактнее */
     }
     .test-card{
-        width:150px;                            /* ← на доске тоже меньше */
+        width:120px;          /* ← вместо 150px */
+        aspect-ratio:3/2;     /* ← фиксированная высота 80px */
     }
 }
 
