@@ -36,16 +36,16 @@ class SiteLogoSila extends HTMLElement {
         d="M160,20 L258,20 A22,22 0 0,1 280,42 L280,258 A22,22 0 0,1 258,280 L160,280 Z"/>
 
   <g class="sila-t-group">
-    <!-- Шапка 56px (122-178), нога 34px (133-167) -->
+    <!-- Шапка 80px (110-190), нога 34px (133-167) -->
     <path class="sila-t-shape"
-          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"/>
+          d="M110,8 L190,8 L190,32 L167,32 L167,100 L133,100 L133,32 L110,32 Z"/>
     <path class="sila-t-stripes"
-          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"
+          d="M110,8 L190,8 L190,32 L167,32 L167,100 L133,100 L133,32 L110,32 Z"
           fill="url(#tigerStripes)"/>
   </g>
 
-  <!-- Подложка: ваши значения, без изменений -->
-  <rect class="sila-igra-bg" x="110" y="100" width="80" height="183"/>
+  <!-- Подложка: ширина = ноге Т (34px), центрирована -->
+  <rect class="sila-igra-bg" x="133" y="100" width="34" height="183"/>
 
   <!-- Точки и ИГРА: без изменений -->
   <circle class="sila-igra-dot" cx="150" cy="145" r="2.5" style="--dot-delay:0s"/>
@@ -92,13 +92,13 @@ class SiteLogoSila extends HTMLElement {
 
   <g class="sila-t-group">
     <path class="sila-t-shape"
-          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"/>
+          d="M110,8 L190,8 L190,32 L167,32 L167,100 L133,100 L133,32 L110,32 Z"/>
     <path class="sila-t-stripes"
-          d="M122,8 L178,8 L178,32 L167,32 L167,100 L133,100 L133,32 L122,32 Z"
+          d="M110,8 L190,8 L190,32 L167,32 L167,100 L133,100 L133,32 L110,32 Z"
           fill="url(#tigerStripesBack)"/>
   </g>
 
-  <rect class="sila-igra-bg" x="110" y="100" width="80" height="183"/>
+  <rect class="sila-igra-bg" x="133" y="100" width="34" height="183"/>
 
   <circle class="sila-igra-dot" cx="150" cy="145" r="2.5" style="--dot-delay:0s"/>
   <circle class="sila-igra-dot" cx="150" cy="193" r="2.5" style="--dot-delay:0.25s"/>
