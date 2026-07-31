@@ -292,6 +292,15 @@
 
 }
 
+@media (orientation: portrait) and (max-width: 768px){
+    .hero-light-sweep::before{
+        left:auto;
+        right:0;
+        width:var(--sweep-width,0%);
+        height:160%;
+    }
+}
+
 @media (prefers-reduced-motion:reduce){
 
     .hero-bg img,
