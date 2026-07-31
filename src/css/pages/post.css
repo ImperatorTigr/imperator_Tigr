@@ -182,8 +182,8 @@
 
 .post-stub{
     font-family:"Manrope",sans-serif;
-    font-size:1.15rem;
-    line-height:1.85;
+    font-size:1.05rem;
+    line-height:1.75;
     color:var(--color-text);
     max-width:70ch;
     margin:0 auto;
@@ -220,7 +220,13 @@
 }
 
 .post-stub li{
-    margin-bottom:.6rem;
+    font-size:inherit;
+    line-height:inherit;
+    margin-bottom:.5rem;
+}
+
+.post-stub li:last-child{
+    margin-bottom:0;
 }
 
 .post-stub blockquote{
@@ -268,7 +274,7 @@
 
 @media (max-width:640px){
     .post-stub{
-        font-size:1.05rem;
+        font-size:1rem;
         line-height:1.75;
         padding:0 1.25rem;
     }
