@@ -59,17 +59,19 @@
     } catch (e) {}
   }
 
-  function randomScatter(index, total, bounds) {
-    var cols = Math.ceil(Math.sqrt(total));
+  function randomScatter(index, total, bounds, cardW, cardH) {
+    var gap = 16;
+    var cols = Math.max(1, Math.floor(bounds.width / (cardW + gap)));
+    var rows = Math.ceil(total / cols);
     var cellW = bounds.width / cols;
-    var cellH = bounds.height / Math.ceil(total / cols);
+    var cellH = bounds.height / rows;
     var col = index % cols;
     var row = Math.floor(index / cols);
-    var jitterX = (Math.random() - .5) * cellW * .4;
-    var jitterY = (Math.random() - .5) * cellH * .4;
+    var jitterX = (Math.random() - .5) * cellW * .35;
+    var jitterY = (Math.random() - .5) * cellH * .35;
     return {
-      x: col * cellW + cellW / 2 - 110 + jitterX,
-      y: row * cellH + cellH / 2 - 75 + jitterY,
+      x: col * cellW + cellW / 2 - cardW / 2 + jitterX,
+      y: row * cellH + cellH / 2 - cardH / 2 + jitterY,
       rot: (Math.random() - .5) * 14
     };
   }
@@ -101,8 +103,17 @@
     var bounds = { width: viewport.clientWidth, height: viewport.clientHeight };
     var saved = loadLayout();
 
+    // Измеряем реальные размеры карточки в режиме доски
+    var probe = photos[0];
+    var wasInGrid = probe.parentElement === grid;
+    if (wasInGrid) {
+      viewport.appendChild(probe);
+    }
+    var cardW = probe.offsetWidth || 220;
+    var cardH = probe.offsetHeight || 150;
+
     photos.forEach(function (photo, index) {
-      var pos = (saved && saved[photo.dataset.id]) || randomScatter(index, photos.length, bounds);
+      var pos = (saved && saved[photo.dataset.id]) || randomScatter(index, photos.length, bounds, cardW, cardH);
       applyTransform(photo, pos);
       if (photo.parentElement !== viewport) {
         viewport.appendChild(photo);
@@ -111,7 +122,7 @@
 
     boardInitialized = true;
     drawLines();
-    console.log('Test: board mode active');
+    console.log('Test: board mode active, card size ' + cardW + 'x' + cardH);
   }
 
   function setMode(mode) {

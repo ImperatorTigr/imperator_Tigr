@@ -122,6 +122,18 @@
     box-shadow:inset 0 0 0 1px rgba(38,34,29,.08);
 }
 
+@media (max-width:768px){
+    .test-viewport{
+        min-height:420px;
+    }
+}
+
+@media (max-width:480px){
+    .test-viewport{
+        min-height:360px;
+    }
+}
+
 .test-lines{
     position:absolute;
     inset:0;
@@ -162,8 +174,8 @@
     overflow:hidden;
     border-radius:10px;
     background:transparent;
-    box-shadow:0 6px 18px rgba(38,34,29,.12);  /* ← добавлена тень */
-    transition:transform .25s ease, box-shadow .25s ease;  /* ← плавность */
+    box-shadow:0 6px 18px rgba(38,34,29,.12);
+    transition:transform .25s ease, box-shadow .25s ease;
 }
 
 /* Hover в сетке — карточка приподнимается как на доске */
@@ -181,7 +193,7 @@
     object-fit:contain;
 }
 
-/* ===== Адаптив ===== */
+/* ===== Адаптив сетки ===== */
 @media (max-width:900px){
     .test-grid{
         grid-template-columns:repeat(2, 1fr);
@@ -195,11 +207,7 @@
         padding:16px;
     }
     .test-grid .test-card{
-        height:90px;          /* ← чуть компактнее */
-    }
-    .test-card{
-        width:120px;          /* ← вместо 150px */
-        aspect-ratio:3/2;     /* ← фиксированная высота 80px */
+        height:90px;
     }
 }
 
@@ -214,7 +222,20 @@
     touch-action:none;
     will-change:transform;
     transition:box-shadow .25s ease;
-    background:transparent;  /* ← убрали серый фон */
+    background:transparent;
+}
+
+/* Адаптивные размеры карточки на доске */
+@media (max-width:768px){
+    .test-card{
+        width:160px;
+    }
+}
+
+@media (max-width:480px){
+    .test-card{
+        width:130px;
+    }
 }
 
 .test-card img{
