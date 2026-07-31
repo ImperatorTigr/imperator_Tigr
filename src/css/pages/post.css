@@ -2,7 +2,8 @@
 
 .post-hero{
     position:relative;
-    padding-block:5rem;
+    padding-top: calc(5rem - 15px);
+    padding-bottom: 5rem;
     background:
         radial-gradient(ellipse at 30% 20%,rgba(20,61,89,.6),transparent 55%),
         linear-gradient(135deg,#0F2A44 0%,var(--logo-bg) 55%,#071624 100%);
