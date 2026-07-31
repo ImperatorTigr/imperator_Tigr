@@ -38,7 +38,7 @@ function initHeroParallax(hero,bg,sweep){
 
             if(isPortraitMobile()){
                 // Портрет: правый край фиксирован, левый уходит влево (ширина растёт)
-                const sweepWidth=sweepProgress*170;
+                const sweepWidth=sweepProgress*180;
                 sweep.style.setProperty("--sweep-width",`${sweepWidth}%`);
                 sweep.style.removeProperty("--sweep-left");
             }else{
