@@ -376,3 +376,10 @@
     box-shadow:0 0 8px rgba(212,160,23,.75);
 
 }
+
+/* На десктопе скрываем первый пункт меню — «Главная» */
+@media (min-width: 769px){
+    .nav-list li:first-child{
+        display:none;
+    }
+}
