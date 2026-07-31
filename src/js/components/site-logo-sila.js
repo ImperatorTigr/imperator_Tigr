@@ -120,9 +120,11 @@ class SiteLogoSila extends HTMLElement {
     setTimeout(() => { link.classList.add("is-ready"); }, 4200);
 
     const hasHover = window.matchMedia("(hover:hover)").matches;
-    if (!hasHover) {
-      link.addEventListener("click", e => { e.preventDefault(); link.classList.toggle("is-flipped"); });
-    }
+            if(!hasHover){
+            link.addEventListener("click",()=>{
+                link.classList.toggle("is-flipped");
+            });
+        }
   }
 }
 customElements.define("site-logo-sila", SiteLogoSila);
