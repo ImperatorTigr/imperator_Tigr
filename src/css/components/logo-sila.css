@@ -122,15 +122,24 @@
 /* Белая подложка для ИГРА — продолжение ноги Т */
 .sila-phase-2 .sila-igra-bg {
   fill: #FFFFFF;
+  stroke: var(--gold-mid);
+  stroke-width: 1;
+  filter: drop-shadow(0 2px 5px rgba(38,34,29,0.10));
   opacity: 0;
   animation: silaIgraBgIn .4s ease-out 2.4s forwards;
+}
+
+.sila-igra-dot {
+  fill: var(--gold-mid);
+  opacity: 0;
+  animation: silaIgraBgIn .3s ease-out 2.5s forwards;
 }
 
 .sila-phase-2 .sila-igra-letter {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 30px;          /* ← было 28px, стало 30px */
-  fill: var(--gold-deep);   /* ← тёмно-золотой для контраста на белом */
+  font-size: 32px;              /* ← крупнее */
+  fill: var(--color-title);     /* ← тёмный вместо золотого */
   text-anchor: middle;
   dominant-baseline: central;
   transform-box: fill-box;
@@ -192,8 +201,8 @@
 .sila-igra-back {
   font-family: "Manrope", sans-serif;
   font-weight: 800;
-  font-size: 30px;          /* ← было 28px */
-  fill: var(--gold-deep);
+  font-size: 32px;
+  fill: var(--color-title);
   text-anchor: middle;
   dominant-baseline: central;
 }
