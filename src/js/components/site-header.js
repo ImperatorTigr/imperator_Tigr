@@ -70,17 +70,27 @@ class SiteHeader extends HTMLElement{
             header.classList.add("is-scrolled");
         }
 
+        const header=this.querySelector(".site-header");
+        const toggle=this.querySelector(".nav-toggle");
+        const nav=this.querySelector(".nav");
+
         const SCROLL_THRESHOLD=40;
+        const isArticlePage=window.location.pathname.includes("/blog/");
+        let forceScrolled=false;
 
         const onScroll=()=>{
-
+            if(forceScrolled) return;
             header.classList.toggle("is-scrolled",window.scrollY>SCROLL_THRESHOLD);
-
         };
 
         window.addEventListener("scroll",onScroll,{passive:true});
 
-        onScroll();
+        if(isArticlePage){
+            header.classList.add("is-scrolled");
+            forceScrolled=true;
+        } else {
+            onScroll();
+        }
 
         toggle.addEventListener("click",()=>{
 

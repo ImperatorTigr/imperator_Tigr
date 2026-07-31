@@ -59,16 +59,15 @@ class SiteLogo extends HTMLElement{
 
 `;
 
-        const cube=this.querySelector(".logo-cube");
+         const cube=this.querySelector(".logo-cube");
 
         setTimeout(()=>{
-
             cube.classList.add("logo-ready");
-
         },2400);
 
-        /* ===== На странице статьи — клик отключён, только hover ===== */
+        /* ===== На странице статьи — клик отключён, точка скрыта ===== */
         if(isArticle){
+            cube.classList.add("is-article");
             cube.style.cursor="default";
             cube.addEventListener("click",e=>e.preventDefault());
             return;

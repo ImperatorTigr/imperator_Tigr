@@ -276,3 +276,14 @@
     transform:scale(1);
 
 }
+
+/* ===== На странице статьи — точка полностью отключена ===== */
+.logo-cube.is-article .logo-point,
+.logo-cube.is-article:hover .logo-point,
+.logo-cube.is-article.is-triggered .logo-point,
+.logo-cube.is-article.logo-ready .logo-point{
+    opacity:0 !important;
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+}
