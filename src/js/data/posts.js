@@ -28,7 +28,7 @@ export const POSTS=[
 
         date:"29.07.2026"
 
-    }
+    },
 
     {
 
@@ -38,7 +38,7 @@ export const POSTS=[
 
         date:"30.07.2026"
 
-    }
+    },
 
     {
 
@@ -48,7 +48,7 @@ export const POSTS=[
 
         date:"31.07.2026"
 
-    }
+    },
 
     {
 
@@ -60,14 +60,5 @@ export const POSTS=[
 
     }
 
-    {
-
-        slug:"igs",
-
-        title:"[Заменить: заголовок статьи 3]",
-
-        date:"[ДД месяц ГГГГ]"
-
-    }
 
 ];
