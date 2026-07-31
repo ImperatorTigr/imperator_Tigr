@@ -1,23 +1,14 @@
 .about{
-
     padding-block:5rem;
-
     background:var(--color-surface);
-
 }
 
 .about-grid{
-
     display:grid;
-
     grid-template-columns:minmax(240px,380px) 1fr;
-
     gap:3rem;
-
     align-items:center;
-
     margin-bottom:4rem;
-
 }
 
 .about-photo{
@@ -35,7 +26,6 @@
 }
 
 @media (max-width:768px){
-
     .about-grid{
         grid-template-columns:1fr;
         gap:2rem;
@@ -62,77 +52,69 @@
         object-fit:cover;
         display:block;
     }
+}
 
+/* ===== Унифицированный текст ===== */
+.about-text p,
+.about-text li{
+    font-family:"Manrope",sans-serif;
+    font-size:1rem;
+    color:var(--color-text);
+    line-height:1.75;
 }
 
 .about-text p{
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:1rem;
-
-    color:var(--color-text);
-
-    line-height:1.75;
-
     margin-top:0;
-
     margin-bottom:1.25rem;
-
     max-width:none;
-
 }
 
 .about-text p:last-child{
-
     margin-bottom:0;
+}
 
+.about-text ul{
+    margin:0 0 1.25rem;
+    padding-left:1.25rem;
+    list-style:disc;
+}
+
+.about-text ul:last-child{
+    margin-bottom:0;
+}
+
+.about-text li{
+    margin-bottom:0.5rem;
+}
+
+.about-text li:last-child{
+    margin-bottom:0;
 }
 
 .about-facts{
-
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
     gap:1.5rem;
-
 }
 
 .about-fact{
-
     text-align:center;
-
     padding:2rem 1rem;
-
     background:var(--color-bg);
-
     border-radius:var(--radius-md);
-
 }
 
 .about-fact-number{
-
     display:block;
-
     font-family:"Cormorant Garamond",serif;
-
     font-weight:700;
-
     font-size:2.5rem;
-
     color:var(--gold-mid);
-
     margin-bottom:.5rem;
-
 }
 
 .about-fact-label{
-
     font-family:"Manrope",sans-serif;
-
     font-size:.85rem;
-
     color:var(--color-text);
-
 }
