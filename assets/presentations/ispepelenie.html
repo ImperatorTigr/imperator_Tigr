@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Испепеление — Деньги просто деньги</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --gold-light:#E8C96A;
+    --gold-mid:#D4A017;
+    --gold-deep:#B8860B;
+    --color-bg:#F7F5F0;
+    --color-surface:#FFFFFF;
+    --color-title:#1A1814;
+    --color-text:#3A3530;
+    --color-hero:#0F2A44;
+    --radius-md:16px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html,body{
+    width:100%;height:100%;
+    font-family:"Manrope",sans-serif;
+    background:#111;
+    overflow:hidden;
+    color:var(--color-title);
+}
+
+.slide{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:4rem 5vw;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .6s ease, visibility .6s ease;
+    z-index:0;
+}
+
+.slide.active{
+    opacity:1;
+    visibility:visible;
+    z-index:10;
+}
+
+.slide-light{background:var(--color-bg);}
+.slide-dark{
+    background:
+        radial-gradient(ellipse at 30% 20%,rgba(20,61,89,.6),transparent 55%),
+        linear-gradient(135deg,#0F2A44 0%,#1a3a5c 55%,#071624 100%);
+    color:#fff;
+}
+.slide-dark .slide-title{color:#fff;}
+.slide-dark .slide-subtitle{color:rgba(255,255,255,.7);}
+.slide-dark .slide-body{color:rgba(255,255,255,.85);}
+
+.slide-content{
+    max-width:1100px;
+    width:100%;
+    text-align:center;
+}
+
+.slide-eyebrow{
+    font-family:"Manrope",sans-serif;
+    font-size:.85rem;
+    font-weight:600;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:var(--gold-mid);
+    margin-bottom:1.5rem;
+}
+
+.slide-title{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:700;
+    font-size:clamp(2.4rem,5vw,4.5rem);
+    line-height:1.1;
+    margin-bottom:1.5rem;
+    color:var(--color-title);
+}
+
+.slide-subtitle{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(1.1rem,2vw,1.5rem);
+    font-weight:300;
+    line-height:1.6;
+    max-width:50ch;
+    margin:0 auto 2rem;
+    color:var(--color-text);
+}
+
+.slide-body{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(1rem,1.6vw,1.25rem);
+    line-height:1.75;
+    max-width:65ch;
+    margin:0 auto;
+    color:var(--color-text);
+    text-align:left;
+}
+
+.slide-body.center{text-align:center;}
+.slide-body ul{list-style:none;padding:0;}
+.slide-body li{
+    position:relative;
+    padding-left:1.75rem;
+    margin-bottom:1rem;
+}
+.slide-body li::before{
+    content:"◆";
+    position:absolute;
+    left:0;
+    color:var(--gold-mid);
+    font-size:.7rem;
+    top:.35rem;
+}
+
+.cards-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1.5rem;
+    margin-top:2.5rem;
+    max-width:900px;
+    margin-inline:auto;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(212,160,23,.25);
+    border-radius:var(--radius-md);
+    padding:2rem 1.5rem;
+    text-align:center;
+    backdrop-filter:blur(4px);
+}
+.slide-light .card{
+    background:#fff;
+    border:1px solid rgba(38,34,29,.1);
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+.card-num{
+    font-family:"Cormorant Garamond",serif;
+    font-size:2.5rem;
+    font-weight:700;
+    color:var(--gold-mid);
+    margin-bottom:.75rem;
+}
+.card-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:1.4rem;
+    font-weight:600;
+    margin-bottom:.5rem;
+}
+.card-desc{font-size:.9rem;line-height:1.55;opacity:.8;}
+
+.quote-box{
+    border-left:3px solid var(--gold-mid);
+    padding:1.5rem 2rem;
+    margin:2rem auto 0;
+    max-width:55ch;
+    text-align:left;
+    background:linear-gradient(90deg,rgba(212,160,23,.05),transparent 80%);
+}
+.quote-box p{
+    font-family:"Cormorant Garamond",serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.45;
+    color:var(--color-title);
+}
+.slide-dark .quote-box p{color:#fff;}
+
+.progress-bar{
+    position:fixed;
+    bottom:0;left:0;
+    height:3px;
+    background:linear-gradient(90deg,var(--gold-light),var(--gold-mid));
+    transition:width .4s ease;
+    z-index:100;
+}
+
+.nav-hint{
+    position:fixed;
+    bottom:1.25rem;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:.7rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.35);
+    z-index:50;
+    pointer-events:none;
+}
+.slide-light ~ .nav-hint{color:rgba(58,53,48,.35);}
+
+.slide-counter{
+    position:fixed;
+    top:1.5rem;
+    right:2rem;
+    font-family:"Manrope",sans-serif;
+    font-size:.75rem;
+    font-weight:600;
+    color:var(--gold-mid);
+    opacity:.6;
+    z-index:50;
+    pointer-events:none;
+}
+
+@media (max-width:768px){
+    .slide{padding:2.5rem 1.5rem;}
+    .cards-row{grid-template-columns:1fr;}
+    .quote-box{padding:1rem 1.25rem;}
+    .quote-box p{font-size:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="slide-counter" id="counter">1 / 10</div>
+<div class="progress-bar" id="progress" style="width:10%"></div>
+
+<div class="slide slide-dark active">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Трансформационная игра</div>
+        <h1 class="slide-title">Деньги просто деньги</h1>
+        <p class="slide-subtitle">Практика «Испепеление»<br>негативных установок, блоков и ограничивающих убеждений</p>
+        <div style="margin-top:2rem;font-size:.85rem;opacity:.5;letter-spacing:.1em;text-transform:uppercase;">
+            Дмитрий Карякин · Император Тигр
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-light">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Цель практики</div>
+        <h2 class="slide-title">Что мы делаем сегодня</h2>
+        <div class="slide-body center">
+            <p style="margin-bottom:1.5rem;">Мы не будем «бороться» с негативом. Мы его <b style="color:var(--gold-deep);">увидим, назовём и отпустим</b> — через осознанное превращение в тепло.</p>
+            <p>Испепеление — это не уничтожение. Это <b>трансмутация</b>: то, что ограничивало, становится топливом для роста.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-dark">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Теория</div>
+        <h2 class="slide-title">Установки, блоки, убеждения</h2>
+        <div class="cards-row">
+            <div class="card">
+                <div class="card-num">01</div>
+                <div class="card-title">Установка</div>
+                <div class="card-desc">Автоматическая программа, полученная в детстве. «Деньги — зло».</div>
+            </div>
+            <div class="card">
+                <div class="card-num">02</div>
+                <div class="card-title">Блок</div>
+                <div class="card-desc">Эмоциональная пробка. Страх, стыд, тревога при мысли о деньгах.</div>
+            </div>
+            <div class="card">
+                <div class="card-num">03</div>
+                <div class="card-title">Убеждение</div>
+                <div class="card-desc">Логическая конструкция. «Чтобы заработать, нужно много работать».</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-light">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Механика</div>
+        <h2 class="slide-title">Как работает ограничитель</h2>
+        <div class="slide-body">
+            <ul>
+                <li><b>Событие</b> → мозг ищет похожее в памяти</li>
+                <li><b>Найдена установка</b> → она подкрашивает реальность</li>
+                <li><b>Эмоциональный отклик</b> → тело реагирует до мысли</li>
+                <li><b>Действие по шаблону</b> → мы повторяем старое поведение</li>
+                <li><b>Подтверждение</b> → «видите, я же говорил» — цикл замкнут</li>
+            </ul>
+            <div class="quote-box">
+                <p>«Мы не видим мир таким, каков он есть. Мы видим мир таким, каковы мы сами.»</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-dark">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Диагностика</div>
+        <h2 class="slide-title">Частые установки про деньги</h2>
+        <div class="slide-body">
+            <ul>
+                <li>«Богатые люди — жадные и нечестные»</li>
+                <li>«Деньги не растут на деревьях»</li>
+                <li>«Не в деньгах счастье» (как запрет на достаток)</li>
+                <li>«Лучше меньше, но честно» (страх большего)</li>
+                <li>«Я не умею зарабатывать» (идентичность)</li>
+                <li>«Деньги уходят быстрее, чем приходят» (сценарий)</li>
+            </ul>
+            <p style="margin-top:1.5rem;text-align:center;font-size:.95rem;opacity:.7;">Какая из этих фраз откликается вам лично? Запомните номер.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-light">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Практика</div>
+        <h2 class="slide-title">Алгоритм «Испепеление»</h2>
+        <div class="cards-row" style="max-width:1000px;">
+            <div class="card">
+                <div class="card-num">1</div>
+                <div class="card-title">Назвать</div>
+                <div class="card-desc">Выяснить точную формулировку установки. Не «что-то не так», а конкретная фраза.</div>
+            </div>
+            <div class="card">
+                <div class="card-num">2</div>
+                <div class="card-title">Почувствовать</div>
+                <div class="card-desc">Где в теле застряла эта установка? Тепло, холод, сжатие — отметить.</div>
+            </div>
+            <div class="card">
+                <div class="card-num">3</div>
+                <div class="card-title">Испепелить</div>
+                <div class="card-desc">Представить, как огонь осознанности прожигает формулировку дотла. Без остатка.</div>
+            </div>
+            <div class="card">
+                <div class="card-num">4</div>
+                <div class="card-title">Заменить</div>
+                <div class="card-desc">В пустоту, где была установка, вписать новое убеждение — позитивное, конкретное, своё.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-dark">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Ваша работа</div>
+        <h2 class="slide-title">Что делать прямо сейчас</h2>
+        <div class="slide-body">
+            <ul>
+                <li>Возьмите лист бумаги и ручку</li>
+                <li>Запишите <b>3–5 фраз</b>, которые вы слышали про деньги в детстве</li>
+                <li>Выберите <b>одну</b> — самую живую, самую болезненную</li>
+                <li>Закройте глаза. Почувствуйте, где она сидит в теле</li>
+                <li>Представьте, что перед вами — лист с этой фразой. Поднесите пламя. Смотрите, как она сгорает без следа</li>
+                <li>Когда пепел остыл — напишите новую фразу на этом месте</li>
+            </ul>
+            <div class="quote-box" style="margin-top:2rem;">
+                <p>«Огонь не уничтожает — он очищает. То, что осталось после огня, — уже не было вашим врагом.»</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-light">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Важно</div>
+        <h2 class="slide-title">Правила безопасности</h2>
+        <div class="slide-body">
+            <ul>
+                <li><b>Не анализируйте</b> — чувствуйте. Мозг хочет понять, тело хочет отпустить</li>
+                <li><b>Не торопитесь.</b> Огонь не горит быстрее, чем ему положено</li>
+                <li><b>Если тяжело</b> — дышите. Глубокий вдох через нос, медленный выдох ртом</li>
+                <li><b>Новая фраза</b> должна быть в настоящем времени, утвердительной, конкретной</li>
+                <li><b>Пример замены:</b> «Деньги — зло» → «Деньги — инструмент моей свободы»</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-dark">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Финал</div>
+        <h2 class="slide-title">Что изменилось?</h2>
+        <div class="slide-body center">
+            <p style="margin-bottom:1.5rem;">Если вы чувствуете лёгкость, тепло или странную пустоту там, где раньше было сжатие — <b>работа сделана</b>.</p>
+            <p style="margin-bottom:2rem;">Пустота — это не потеря. Это <b>место для нового</b>.</p>
+            <div class="quote-box" style="margin-inline:auto;">
+                <p>«Истина = сумма правд.<br>Вся наша жизнь — ИГРА.<br>А деньги — просто деньги.»</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide slide-light">
+    <div class="slide-content">
+        <div class="slide-eyebrow">Император Тигр</div>
+        <h2 class="slide-title">Дмитрий Карякин</h2>
+        <p class="slide-subtitle">Игропрактик · Фасилитатор · Проводник в мир трансформационных игр</p>
+        <div style="margin-top:2.5rem;font-size:1.1rem;line-height:2;color:var(--color-text);">
+            <p><b style="color:var(--gold-deep);">sila.t-igra.com</b></p>
+            <p>Трансформационные игры · Полезные практики · Игровая механика</p>
+        </div>
+        <div style="margin-top:2rem;font-size:.8rem;opacity:.5;letter-spacing:.15em;text-transform:uppercase;">
+            СИЛА — Сообщество Интересных Людей
+        </div>
+    </div>
+</div>
+
+<div class="nav-hint" id="navHint">← → или клик · Esc для выхода</div>
+
+<script>
+(function(){
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    const progress = document.getElementById('progress');
+    const navHint = document.getElementById('navHint');
+    let current = 0;
+    const total = slides.length;
+
+    function update(){
+        slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+        counter.textContent = (current+1) + ' / ' + total;
+        progress.style.width = ((current+1)/total*100) + '%';
+        const active = slides[current];
+        if(active.classList.contains('slide-light')){
+            navHint.style.color = 'rgba(58,53,48,.35)';
+        }else{
+            navHint.style.color = 'rgba(255,255,255,.35)';
+        }
+    }
+
+    function next(){ if(current < total-1){ current++; update(); } }
+    function prev(){ if(current > 0){ current--; update(); } }
+
+    document.addEventListener('keydown', e=>{
+        if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){ e.preventDefault(); next(); }
+        if(e.key==='ArrowLeft'){ e.preventDefault(); prev(); }
+        if(e.key==='Escape'){ document.exitFullscreen?.() || document.webkitExitFullscreen?.(); }
+    });
+
+    document.addEventListener('click', e=>{
+        const w = window.innerWidth;
+        if(e.clientX > w/2) next(); else prev();
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e=>{ touchStartX = e.changedTouches[0].screenX; });
+    document.addEventListener('touchend', e=>{
+        const dx = e.changedTouches[0].screenX - touchStartX;
+        if(Math.abs(dx)>50){ dx<0 ? next() : prev(); }
+    });
+
+    update();
+})();
+</script>
+</body>
+</html>
