@@ -1,0 +1,305 @@
+/* =========================================================
+   TESTIMONIALS WALL
+   Text testimonials: compact cards + fullscreen reader
+   Video testimonials: YouTube facade + lazy iframe
+   Audio testimonials: existing waveform/player
+   ========================================================= */
+
+/* ---------- Text review card ---------- */
+
+.testimonial-text {
+    position: relative;
+}
+
+.testimonial-text-body {
+    position: relative;
+    margin-bottom: 0;
+    max-height: 9.5em;
+    overflow: hidden;
+    transition: max-height .25s ease;
+}
+
+/* Fade at the bottom only when the review is truncated */
+.testimonial-text.is-truncated .testimonial-text-body {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 72%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 72%,
+        transparent 100%
+    );
+}
+
+/* Read button */
+.testimonial-read-more {
+    display: none;
+    position: relative;
+    z-index: 2;
+    margin: 12px 0 4px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: .9;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.testimonial-text.is-truncated .testimonial-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.testimonial-read-more:hover {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+.testimonial-read-more:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 3px;
+}
+
+/* ---------- Fullscreen text reader ---------- */
+
+.testimonial-reader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 4vw, 48px);
+    background: rgba(12, 12, 12, .72);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity .25s ease,
+        visibility 0s linear .25s;
+}
+
+.testimonial-reader.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+        opacity .25s ease,
+        visibility 0s linear 0s;
+}
+
+.testimonial-reader-panel {
+    position: relative;
+    width: min(760px, 100%);
+    max-height: min(88vh, 900px);
+    overflow: hidden;
+
+    background: var(--testimonial-reader-bg, #f8f4ec);
+    color: var(--testimonial-reader-color, #25231f);
+    border-radius: 10px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .28);
+
+    transform: translateY(18px) scale(.97);
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+
+.testimonial-reader.is-open .testimonial-reader-panel {
+    transform: translateY(0) scale(1);
+}
+
+.testimonial-reader-content {
+    max-height: min(88vh, 900px);
+    overflow-y: auto;
+    padding: clamp(30px, 6vw, 64px);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.testimonial-reader-badge {
+    display: inline-block;
+    margin-bottom: 22px;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .65;
+}
+
+.testimonial-reader-quote {
+    margin: 0 0 28px;
+    font-size: clamp(19px, 2.2vw, 27px);
+    line-height: 1.65;
+    white-space: pre-wrap;
+}
+
+.testimonial-reader-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.testimonial-reader-avatar {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.testimonial-reader-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-reader-name {
+    font-weight: 600;
+}
+
+.testimonial-reader-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, .07);
+    color: inherit;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.testimonial-reader-close:hover {
+    background: rgba(0, 0, 0, .12);
+    transform: rotate(4deg);
+}
+
+.testimonial-reader-close:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* Prevent page scrolling while reader is open */
+html.testimonial-reader-open,
+html.testimonial-reader-open body {
+    overflow: hidden;
+}
+
+/* ---------- YouTube facade ---------- */
+
+.youtube-facade {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+}
+
+.youtube-facade > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .35s ease, filter .35s ease;
+}
+
+.youtube-facade:hover > img {
+    transform: scale(1.025);
+    filter: brightness(.82);
+}
+
+.youtube-facade .testimonial-video-trigger {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.youtube-facade.is-loaded {
+    cursor: default;
+}
+
+.youtube-facade.is-loaded > iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    border: 0;
+}
+
+.youtube-facade.is-loaded .testimonial-video-trigger {
+    display: none;
+}
+
+/* ---------- Accessibility / mobile ---------- */
+
+@media (max-width: 640px) {
+
+    .testimonial-reader {
+        padding: 0;
+        align-items: stretch;
+    }
+
+    .testimonial-reader-panel {
+        width: 100%;
+        max-height: 100dvh;
+        height: 100dvh;
+        border-radius: 0;
+    }
+
+    .testimonial-reader-content {
+        max-height: 100dvh;
+        padding: 64px 24px 32px;
+    }
+
+    .testimonial-reader-quote {
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    .testimonial-reader-close {
+        top: 12px;
+        right: 12px;
+    }
+
+    .youtube-facade {
+        min-height: 180px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .testimonial-reader,
+    .testimonial-reader-panel,
+    .testimonial-text-body,
+    .testimonial-read-more,
+    .youtube-facade > img {
+        transition: none;
+    }
+}
