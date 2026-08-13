@@ -12,10 +12,11 @@
 }
 
 .about-photo{
-    aspect-ratio:3/2;
+    min-height:calc(100% + 1rem);
     border-radius:var(--radius-md);
     background:linear-gradient(135deg,var(--gold-light),var(--gold-mid) 60%,var(--gold-deep));
     overflow:hidden;
+    cursor:zoom-in;
 }
 
 .about-photo img{
