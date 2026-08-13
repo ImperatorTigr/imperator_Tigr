@@ -650,19 +650,27 @@
                     <div class="testimonial-pin seal-left" style="--rot:-2.5deg">
 
                         
-                        <article class="testimonial-card testimonial-video">
+                        <article class="testimonial-card testimonial-video youtube-testimonial">
 
-                            <div class="testimonial-video-frame">
+        <div class="testimonial-video-frame youtube-video-frame"
+             data-youtube-id="6VOWW0GRFTE">
 
-                                <video muted loop playsinline preload="none"
-                                       poster="assets/images/testimonial-1-poster.jpg"
-                                       data-src="assets/video/testimonial-1-preview.mp4"></video>
+            <!-- Постер до запуска YouTube -->
+            <img
+                src="assets/images/testimonial-anastasia.jpg"
+                alt="Видеоотзыв Анастасии"
+                class="youtube-video-poster"
+            >
 
-                                <button class="testimonial-video-trigger"
-                                        data-video="assets/video/testimonial-1.mp4"
-                                        aria-label="Смотреть отзыв">
-                                    <span class="testimonial-play-icon">▶</span>
-                                </button>
+            <!-- Кнопка запуска -->
+            <button
+                class="testimonial-video-trigger youtube-play-trigger"
+                type="button"
+                aria-label="Смотреть видеоотзыв">
+
+                <span class="testimonial-play-icon">▶</span>
+
+            </button>
 
                             </div>
 
