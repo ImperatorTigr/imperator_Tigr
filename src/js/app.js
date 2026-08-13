@@ -3,7 +3,7 @@ import "./components/site-logo.js";
 import "./components/site-logo-sila.js";
 import "./components/gallery-lightbox.js";
 import "./components/site-calendar.js";
-import "./components/testimonials.js";
+import "./components/testimonials-wall.js";
 import "./components/post-nav.js";
 import "./components/contact-form.js";
 import "./components/nav-active.js";
