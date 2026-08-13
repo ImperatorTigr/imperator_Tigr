@@ -1,7 +1,9 @@
 function initGalleryLightbox(){
 
     const galleryGrid=document.querySelector(".gallery-grid");
-    const aboutPhotos=[...document.querySelectorAll(".about-photo")];
+    const aboutPhotos=[
+    ...document.querySelectorAll('.about-photo[role="button"]')
+];
 
     if(!galleryGrid && !aboutPhotos.length)return;
 
