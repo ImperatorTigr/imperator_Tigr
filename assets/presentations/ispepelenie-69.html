@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Испепеление - 69 установок</title>
+<style>
+:root {
+  --bg:#11110f; --panel:#191815; --panel2:#211f1a; --text:#f3efe7;
+  --muted:#b5aea1; --gold:#d4a017; --line:rgba(212,160,23,.28);
+  --accent:#e0b52f; --danger:#c97b58;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#080807;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{overflow:hidden}
+.presentation{height:100vh;width:100vw}
+.slide{height:100vh;width:100vw;display:none;position:relative;padding:7vh 8vw 6vh;overflow:auto;background:
+radial-gradient(circle at 80% 20%,rgba(212,160,23,.08),transparent 30%),
+linear-gradient(135deg,#11110f,#0b0b0a)}
+.slide.active{display:block}
+.slide:after{content:"";position:absolute;inset:0;pointer-events:none;border:1px solid rgba(255,255,255,.04)}
+.cover{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-left:12vw}
+.cover-mark{position:absolute;right:10vw;top:14vh;font-size:28vw;line-height:.8;font-family:Georgia,serif;color:rgba(212,160,23,.08);font-weight:700}
+.brand{position:absolute;top:5vh;left:8vw;letter-spacing:.18em;color:var(--gold);font-size:12px}
+.kicker{font-size:12px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(48px,8vw,112px);line-height:.95;margin:0 0 22px;max-width:900px}
+h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(34px,4.3vw,64px);line-height:1.02;margin:0 0 30px;max-width:1100px}
+h3{margin:0 0 10px;font-size:18px}
+p{line-height:1.55;color:#d1cbc0;margin:0 0 12px}
+.subtitle{font-size:clamp(22px,3vw,42px);line-height:1.25;color:#e6dfd2}
+.subtitle span{color:var(--muted)}
+.author{margin-top:48px;color:var(--muted);font-size:15px;letter-spacing:.03em}
+.site{margin-top:14px;color:var(--gold);font-size:14px}
+.lead{font-size:clamp(18px,2vw,27px);max-width:1050px;color:#d8d1c5}
+.centered{text-align:center;margin:35px auto 0}
+.statement{margin:20px 0 32px;padding:26px 30px;border-left:2px solid var(--gold);background:rgba(255,255,255,.035);font-family:Georgia,serif;font-size:clamp(22px,2.5vw,34px);line-height:1.35}
+.statement.small{font-size:20px;margin-top:35px}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{padding:26px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);min-height:150px}
+.card.dark{background:#16140f;border-color:var(--line)}
+.card .num{color:var(--gold);font-size:13px;letter-spacing:.15em}
+.formula{margin:35px auto 0;padding:18px 24px;border:1px solid var(--line);text-align:center;color:var(--muted);font-size:18px;max-width:1050px}
+.formula b{color:var(--text)}
+.formula.big{font-size:24px;display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap}
+.formula.big b{font-family:Georgia,serif;font-size:48px;color:var(--gold)}
+.formula.big span{font-size:14px;text-transform:uppercase;letter-spacing:.1em}
+.install-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:22px}
+.install{padding:11px 12px;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.05);display:flex;gap:10px;align-items:flex-start}
+.install span{color:var(--gold);font-variant-numeric:tabular-nums;font-size:11px;margin-top:2px}
+.install b{font-size:12px;line-height:1.3;font-weight:500;color:#ddd7cc}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:35px 0}
+.steps>div{padding:20px 16px;background:rgba(255,255,255,.035);border-top:2px solid var(--gold)}
+.steps span{display:block;color:var(--gold);font-size:12px;margin-bottom:25px}
+.steps b{display:block;font-size:16px;margin-bottom:8px}
+.steps small{color:var(--muted);line-height:1.4}
+.quote{font-family:Georgia,serif;font-size:clamp(26px,3.2vw,48px);line-height:1.2;padding:25px 0 30px;border-bottom:1px solid var(--line);margin-bottom:25px}
+.micro{margin-top:25px;color:var(--gold);font-size:14px;letter-spacing:.06em}
+.split-symbol{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:40px}
+.symbol{font-size:34px;display:block;margin-bottom:14px}
+.before-after{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;margin:40px 0}
+.before-after>div{padding:28px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+.before-after .old{border-color:rgba(201,123,88,.35)}
+.before-after .new{border-color:var(--line)}
+.before-after span{display:block;color:var(--muted);font-size:12px;margin-bottom:12px}
+.before-after b{font-family:Georgia,serif;font-size:23px;line-height:1.35}
+.arrow{font-size:38px;color:var(--gold);background:none!important;border:0!important;padding:0!important}
+.action-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:35px}
+.action-grid>div{padding:22px;background:rgba(255,255,255,.035)}
+.action-grid span{color:var(--gold);display:block;font-size:12px;margin-bottom:10px}
+.example{border:1px solid var(--line);background:rgba(255,255,255,.025);padding:26px 30px}
+.example-title{font-family:Georgia,serif;font-size:24px;margin-bottom:22px;color:#f0e8da}
+.example-row{display:grid;grid-template-columns:40px 1fr;gap:8px;padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
+.example-row>span{font-size:20px}
+.comparison{display:grid;grid-template-columns:1fr 70px 1fr;gap:25px;align-items:start;margin-top:35px}
+.comparison>div{padding:28px;background:rgba(255,255,255,.035);min-height:250px}
+.comparison .versus{background:none;padding:30px 0;text-align:center;color:var(--gold);font-size:42px}
+.rules{display:grid;gap:10px;margin-top:25px}
+.rules>div{display:grid;grid-template-columns:45px 1fr;gap:8px;padding:18px;background:rgba(255,255,255,.035);color:var(--gold)}
+.rules b,.rules span{grid-column:2}
+.rules b{color:var(--text)}
+.rules span{color:var(--muted);font-size:14px}
+.final{justify-content:center;align-items:center;text-align:center}
+.final h1{font-size:clamp(42px,6vw,80px)}
+.final .subtitle{font-size:clamp(20px,2.5vw,32px)}
+.final-line{margin-top:45px;color:var(--gold);letter-spacing:.12em;font-size:12px;text-transform:uppercase}
+.controls{position:fixed;right:22px;bottom:18px;z-index:20;display:flex;gap:7px;align-items:center}
+.controls button{background:rgba(20,20,18,.75);color:#ddd;border:1px solid rgba(255,255,255,.12);width:40px;height:34px;border-radius:4px;cursor:pointer}
+.controls button:hover{border-color:var(--gold);color:var(--gold)}
+.counter{color:var(--muted);font-size:12px;min-width:54px;text-align:center}
+.progress{position:fixed;left:0;top:0;height:2px;background:var(--gold);z-index:30;transition:width .25s}
+@media(max-width:900px){
+ .slide{padding:7vh 6vw 8vh}
+ .install-grid{grid-template-columns:repeat(2,1fr)}
+ .steps{grid-template-columns:1fr 1fr}
+ .two-col,.split-symbol,.action-grid,.comparison,.before-after{grid-template-columns:1fr}
+ .before-after .arrow{transform:rotate(90deg);justify-self:center}
+ .comparison .versus{padding:0;min-height:0}
+}
+@media(max-width:600px){
+ .install-grid{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr}
+ .slide{padding:7vh 5vw 12vh}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="presentation" id="presentation">
+
+<section class="slide cover">
+  <div class="brand">СИЛА · ПРАКТИКА</div>
+  <div class="cover-mark">И</div>
+  <div class="kicker">ТРАНСФОРМАЦИОННАЯ ПРАКТИКА</div>
+  <h1>Испепеление</h1>
+  <p class="subtitle">69 установок<br><span>и один путь их трансформации</span></p>
+  <div class="author">Дмитрий Карякин · Император Тигр</div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">СУТЬ</div>
+  <h2>Не убрать негатив. Заменить сценарий.</h2>
+  <div class="statement">Ограничивающая установка редко исчезает от того, что мы просто называем её «неправильной».</div>
+    <div class="two-col">
+      <div class="card"><span class="num">01</span><h3>Осознать</h3><p>Увидеть фразу, которая незаметно влияет на решения, эмоции и поведение.</p></div>
+      <div class="card"><span class="num">02</span><h3>Трансформировать</h3><p>Разобрать её механизм и заменить на убеждение, которое поддерживает действие, а не ограничивает его.</p></div>
+    </div>
+    <div class="formula"><b>осознание</b> → <b>разбор</b> → <b>новая установка</b> → <b>действие</b> → <b>закрепление</b></div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">69 УСТАНОВОК</div>
+  <h2>Карта установок 1 / 3</h2>
+  <p class="lead">Не 69 отдельных проблем, а 69 точек входа в один и тот же процесс работы с убеждением.</p><div class="install-grid"><div class="install"><span>01</span><b>«Деньги напрямую зависят от количества сделанной работы»</b></div><div class="install"><span>02</span><b>«Если я буду контролировать процесс, то ошибок не произойдет»</b></div><div class="install"><span>03</span><b>«Большие деньги — это опасно»</b></div><div class="install"><span>04</span><b>«Брать большие деньги за свою работу стыдно»</b></div><div class="install"><span>05</span><b>«Если я буду назначать хорошую цену, окружающие будут меня осуждать»</b></div><div class="install"><span>06</span><b>«Если я буду копить деньги, то мои родные и близкие останутся без помощи»</b></div><div class="install"><span>07</span><b>«Невозможно работать эффективно, если есть семья»</b></div><div class="install"><span>08</span><b>«Страх безденежья — лучший мотиватор работать»</b></div><div class="install"><span>09</span><b>«Только стабильная работа с хорошей зарплатой может обеспечить спокойную жизнь»</b></div><div class="install"><span>10</span><b>«Без связей не заработаешь»</b></div><div class="install"><span>11</span><b>«Кому-то дано уметь зарабатывать, кому-то нет»</b></div><div class="install"><span>12</span><b>«Только если я придумаю что-то новое, смогу заработать»</b></div><div class="install"><span>13</span><b>«В жизни всегда приходится выбирать: любовь или богатство»</b></div><div class="install"><span>14</span><b>«Все богатые люди несчастные»</b></div><div class="install"><span>15</span><b>«Деньги портят людей»</b></div><div class="install"><span>16</span><b>«Сколько бы я ни заработал, всё равно не хватит»</b></div><div class="install"><span>17</span><b>«Чтобы много заработать, нужно идти по головам»</b></div><div class="install"><span>18</span><b>«Голь на выдумки хитра»</b></div><div class="install"><span>19</span><b>«Деньги должны даваться через страдания и рабский труд»</b></div><div class="install"><span>20</span><b>«Только если у меня будет поддержка, я смогу увеличить свой доход»</b></div><div class="install"><span>21</span><b>«Без уникального предложения невозможно заработать»</b></div><div class="install"><span>22</span><b>«Если у меня не будет денег, я не буду от них зависеть»</b></div><div class="install"><span>23</span><b>«Нет денег – нет проблем»</b></div></div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">69 УСТАНОВОК</div>
+  <h2>Карта установок 2 / 3</h2>
+  <p class="lead">Не 69 отдельных проблем, а 69 точек входа в один и тот же процесс работы с убеждением.</p><div class="install-grid"><div class="install"><span>24</span><b>«Если мой партнёр будет богатым, я заброшу собственное развитие»</b></div><div class="install"><span>25</span><b>«Мне нельзя пользоваться деньгами партнёра/родителя/ребёнка»</b></div><div class="install"><span>26</span><b>«Доход мужа (жены) и наши отношения связаны»</b></div><div class="install"><span>27</span><b>«$$$ в месяц – это нереально»</b></div><div class="install"><span>28</span><b>«Если мой партнёр будет богатым(ой), я буду бедным(ой)»</b></div><div class="install"><span>29</span><b>«Если я разорюсь, партнёр меня бросит»</b></div><div class="install"><span>30</span><b>«Если мой бизнес разорится, я никогда не смогу начать другой»</b></div><div class="install"><span>31</span><b>«Если я стану банкротом, от меня отвернутся родители/дети/люди»</b></div><div class="install"><span>32</span><b>«Если у меня будут деньги, люди будут постоянно просить у меня в долг»</b></div><div class="install"><span>33</span><b>«Сколько бы я ни получил, всё равно потрачу»</b></div><div class="install"><span>34</span><b>«Только имея хорошее образование, я могу быть богатым(ой)»</b></div><div class="install"><span>35</span><b>«Если мой партнёр станет богатым, ему перестанет быть нужна семья»</b></div><div class="install"><span>36</span><b>«Если мой партнёр будет давать мне деньги, я буду зависеть от него»</b></div><div class="install"><span>37</span><b>«Если мой партнёр станет богатым, он будет унижать меня»</b></div><div class="install"><span>38</span><b>«Если мой партнёр будет давать мне деньги, то он (она) будет контролировать мою жизнь»</b></div><div class="install"><span>39</span><b>«Зарабатывать больше уже невозможно!»</b></div><div class="install"><span>40</span><b>«Сейчас не то время, чтобы зарабатывать много»</b></div><div class="install"><span>41</span><b>«Зарабатывая деньги, невозможно открыть своё предназначение»</b></div><div class="install"><span>42</span><b>«Если у меня будут деньги, я стану жестоким человеком»</b></div><div class="install"><span>43</span><b>«Только если у меня будут долги, я пойму, кто на самом деле мои друзья»</b></div><div class="install"><span>44</span><b>«Если у меня будут долги, я отработаю карму, и только так я пойму уроки жизни»</b></div><div class="install"><span>45</span><b>«Зарабатывать большие деньги могут только талантливые люди»</b></div><div class="install"><span>46</span><b>«Я не умею зарабатывать деньги, могу только тратить»</b></div></div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">69 УСТАНОВОК</div>
+  <h2>Карта установок 3 / 3</h2>
+  <p class="lead">Не 69 отдельных проблем, а 69 точек входа в один и тот же процесс работы с убеждением.</p><div class="install-grid"><div class="install"><span>47</span><b>«У меня не денежное мышление»</b></div><div class="install"><span>48</span><b>«Деньги в жизни не главное»</b></div><div class="install"><span>49</span><b>«В жизни главное – деньги»</b></div><div class="install"><span>50</span><b>«Честным трудом денег не заработаешь»</b></div><div class="install"><span>51</span><b>«Стыдно быть богатым, когда вокруг столько нуждающихся»</b></div><div class="install"><span>52</span><b>«Деньги надо сохранять на «чёрный день»»</b></div><div class="install"><span>53</span><b>«Если деньги есть, их надо все потратить, иначе они «жгут» карман»</b></div><div class="install"><span>54</span><b>«Кто нищим родился, тот нищим и помрёт. Против судьбы не пойдёшь»</b></div><div class="install"><span>55</span><b>«Деньги – причина всех несчастий»</b></div><div class="install"><span>56</span><b>«Деньги — это зло»</b></div><div class="install"><span>57</span><b>«Богатые люди — алчные и жадные»</b></div><div class="install"><span>58</span><b>«Быстрее верблюд в игольное ушко пролезет, чем богатый в рай попадёт.»</b></div><div class="install"><span>59</span><b>«Если мои дела будут идти успешно, люди будут мне завидовать и ненавидеть «за глаза»»</b></div><div class="install"><span>60</span><b>«Я всегда должен(а) тратить Деньги правильно»</b></div><div class="install"><span>61</span><b>«Деньги трудно достаются»</b></div><div class="install"><span>62</span><b>«Время – деньги»</b></div><div class="install"><span>63</span><b>«Невозможно иметь деньги и свободное время одновременно»</b></div><div class="install"><span>64</span><b>«Деньги бездуховны»</b></div><div class="install"><span>65</span><b>«Необходимо сделать много того, что не нравится, чтобы иметь достаточно денег»</b></div><div class="install"><span>66</span><b>«В мире не хватает денег»</b></div><div class="install"><span>67</span><b>«Я зарабатываю столько, сколько заслуживаю»</b></div><div class="install"><span>68</span><b>«Если бы я был умным человеком, то легко обеспечил бы себя к этому возрасту/времени»</b></div><div class="install"><span>69</span><b>«Тот, кто беспокоится о деньгах – вульгарен»</b></div></div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">АЛГОРИТМ</div>
+  <h2>Пять этапов одной работы</h2>
+  <div class="steps">
+      <div><span>01</span><b>Идентификация</b><small>Увидеть и назвать</small></div>
+      <div><span>02</span><b>Деконструкция</b><small>Разобрать механизм</small></div>
+      <div><span>03</span><b>Рефрейминг</b><small>Сформулировать новое</small></div>
+      <div><span>04</span><b>Интеграция</b><small>Перевести в действие</small></div>
+      <div><span>05</span><b>Рефлексия</b><small>Закрепить и проверить</small></div>
+    </div>
+    <p class="lead centered">Одна и та же архитектура применяется к каждой из 69 установок.</p>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ШАГ 1</div>
+  <h2>01 · Идентификация и валидация</h2>
+  <div class="quote">«Деньги напрямую зависят от количества сделанной работы»</div>
+    <div class="two-col">
+      <div class="card"><h3>Точная формулировка</h3><p>Не «у меня что-то не так с деньгами», а конкретная фраза, которую человек действительно узнаёт как свою.</p></div>
+      <div class="card"><h3>Её эффект</h3><p>Как установка влияет на решения: заставляет работать больше, ограничивает доход, создаёт перегрузку и мешает искать другие способы создания ценности.</p></div>
+    </div>
+    <div class="micro">Сначала мы делаем невидимую программу видимой.</div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ШАГ 2</div>
+  <h2>02 · Деконструкция</h2>
+  <div class="split-symbol"><div><span class="symbol">⭕️</span><h3>Анализ вреда</h3><p>3–4 конкретных механизма: внутренний конфликт, самосаботаж, страх, жертвенность, дефицитное мышление.</p></div>
+    <div><span class="symbol">⌕</span><h3>Поиск происхождения</h3><p>Детство, семья, культура, окружение, личный опыт, социальные стереотипы и другие источники.</p></div></div>
+    <div class="statement small">Мы не спрашиваем только «правда ли это?». Мы спрашиваем: <b>«Что происходит со мной, когда я в это верю?»</b></div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ШАГ 3</div>
+  <h2>03 · Переформулирование</h2>
+  <div class="before-after">
+      <div class="old"><span>⭕️ Старая установка</span><b>«Работа = деньги»</b></div>
+      <div class="arrow">→</div>
+      <div class="new"><span>✳️ Новая установка</span><b>«Мой доход зависит не только от количества работы, но и от её ценности»</b></div>
+    </div>
+    <p class="lead">Новая формулировка не должна быть красивой мантрой. Она должна быть <b>реалистичной, продуктивной и пригодной для действия.</b></p>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ШАГ 4</div>
+  <h2>04 · Практическая интеграция</h2>
+  <div class="action-grid">
+      <div><span>✴️ 01</span><b>Изменить действие</b><p>Работать умнее, а не просто больше.</p></div>
+      <div><span>✴️ 02</span><b>Изменить навык</b><p>Повышать ценность своей работы.</p></div>
+      <div><span>✴️ 03</span><b>Изменить систему</b><p>Автоматизировать, делегировать, создавать новые источники дохода.</p></div>
+      <div><span>✴️ 04</span><b>Изменить решение</b><p>Договариваться о цене и выбирать более эффективные условия.</p></div>
+    </div>
+    <div class="statement small">Понять новую установку недостаточно. Она должна начать проявляться в поведении.</div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ШАГ 5</div>
+  <h2>05 · Синтез и рефлексия</h2>
+  <div class="two-col">
+      <div class="card dark"><span class="symbol">☯️</span><h3>Вывод · антидот</h3><p>Короткий тезис, который фиксирует новую парадигму.</p><b>«Важно не просто много работать, а правильно выстраивать стратегию дохода.»</b></div>
+      <div class="card dark"><span class="symbol">☣️</span><h3>Рефлексивный вопрос</h3><p>Вопрос возвращает человека к собственному опыту.</p><b>«Как ты видишь способы выйти за рамки этой установки?»</b></div>
+    </div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ПРИМЕР</div>
+  <h2>Одна установка. Полный цикл.</h2>
+  <div class="example">
+      <div class="example-title">① «Деньги напрямую зависят от количества сделанной работы»</div>
+      <div class="example-row"><span>⭕️</span><p><b>Разбор:</b> больше часов не гарантируют больший доход; оплата зависит от ценности результата; модель ограничивает доход и может вести к перегрузке.</p></div>
+      <div class="example-row"><span>✳️</span><p><b>Новая парадигма:</b> доход зависит не только от количества работы, но и от её ценности, стратегии и способа организации.</p></div>
+      <div class="example-row"><span>✴️</span><p><b>Действия:</b> автоматизация, делегирование, повышение ценности навыков, изменение ценообразования.</p></div>
+      <div class="example-row"><span>☯️</span><p><b>Вывод:</b> важно не просто много работать, а правильно выстраивать стратегию дохода.</p></div>
+      <div class="example-row"><span>☣️</span><p><b>Вопрос:</b> как ты видишь способы выйти за рамки этой установки?</p></div>
+    </div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ПРИНЦИП</div>
+  <h2>69 установок - 69 точек входа</h2>
+  <div class="statement">У каждой установки свой текст, источник, эмоциональный заряд и способ проявления.</div>
+    <div class="formula big"><b>69</b><span>установок</span> → <b>1</b><span>метод</span> → <b>5</b><span>этапов</span> → <b>новое</b><span>поведение</span></div>
+    <p class="lead centered">Поэтому человек работает не с абстрактным «денежным мышлением», а с конкретной мыслью, которая реально управляет его решениями.</p>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">ОТЛИЧИЕ</div>
+  <h2>Что делает «Испепеление» отличным от позитивного мышления</h2>
+  <div class="comparison">
+      <div><h3>Не просто</h3><p>«Деньги — это хорошо».</p><p>«Я достоин больших денег».</p><p>«Всё получится».</p></div>
+      <div class="versus">→</div>
+      <div><h3>А</h3><p><b>какая мысль</b> ограничивает?</p><p><b>почему</b> она появилась?</p><p><b>как</b> она влияет на поведение?</p><p><b>что</b> я выбираю вместо неё?</p><p><b>что</b> я сделаю иначе?</p></div>
+    </div>
+</section>
+
+
+<section class="slide">
+  <div class="kicker">БЕЗОПАСНОСТЬ И ГРАНИЦЫ</div>
+  <h2>Важно</h2>
+  <div class="rules">
+      <div>01 <b>Установка не обязана быть «ложной».</b><span>Мы исследуем её полезность и последствия для конкретного человека.</span></div>
+      <div>02 <b>Новая установка не должна противоречить реальности.</b><span>Она должна расширять варианты действий, а не заменять одну иллюзию другой.</span></div>
+      <div>03 <b>Проработка не отменяет внешние обстоятельства.</b><span>Навыки, рынок, ресурсы и ограничения остаются реальными факторами.</span></div>
+      <div>04 <b>Изменение убеждения проверяется действием.</b><span>Если новое убеждение ничего не меняет в поведении, работа ещё не закончена.</span></div>
+    </div>
+</section>
+
+
+<section class="slide cover final">
+  <div class="kicker">ИСПЕПЕЛЕНИЕ</div>
+  <h1>Установка - не истина.</h1>
+  <p class="subtitle">Это мысль, которую можно увидеть,<br>исследовать и заменить.</p>
+  <div class="final-line">69 установок · 5 этапов · один принцип</div>
+  <div class="author">Дмитрий Карякин · Император Тигр</div>
+  <div class="site">sila.t-igra.com</div>
+</section>
+
+</main>
+<div class="controls">
+  <button id="prev" aria-label="Предыдущий">←</button>
+  <div class="counter" id="counter"></div>
+  <button id="next" aria-label="Следующий">→</button>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let index=0;
+const counter=document.getElementById('counter');
+const progress=document.getElementById('progress');
+function show(i){
+  index=(i+slides.length)%slides.length;
+  slides.forEach((s,n)=>s.classList.toggle('active',n===index));
+  counter.textContent=(index+1)+' / '+slides.length;
+  progress.style.width=((index+1)/slides.length*100)+'%';
+  history.replaceState(null,'','#'+(index+1));
+}
+function next(){show(index+1)}
+function prev(){show(index-1)}
+document.getElementById('next').onclick=next;
+document.getElementById('prev').onclick=prev;
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){e.preventDefault();next()}
+ if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+ if(e.key==='Escape'){location.hash=''}
+});
+document.getElementById('presentation').addEventListener('click',e=>{
+ if(e.target.closest('button,a')) return;
+ next();
+});
+let startX=0;
+document.addEventListener('touchstart',e=>startX=e.changedTouches[0].screenX,{passive:true});
+document.addEventListener('touchend',e=>{
+ const dx=e.changedTouches[0].screenX-startX;
+ if(Math.abs(dx)>50) dx<0?next():prev();
+},{passive:true});
+const initial=parseInt(location.hash.slice(1),10);
+show(Number.isFinite(initial)&&initial>0?initial-1:0);
+</script>
+</body>
+</html>
