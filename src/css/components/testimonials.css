@@ -23,13 +23,15 @@
 }
 
 @media (max-width:600px){
-
     .testimonials-wall{
-
         columns:1;
-
     }
-
+    .testimonial-pin{
+        transform:none;
+    }
+    .testimonial-pin:hover{
+        transform:scale(1.02) translateY(-2px);
+    }
 }
 
 .testimonial-pin{
